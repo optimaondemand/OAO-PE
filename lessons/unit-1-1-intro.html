@@ -69,8 +69,8 @@
     background:rgba(255,255,255,.18);border-radius:6px;overflow:hidden;}
   .track-fill{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--cyan),var(--green));
     border-radius:6px;transition:width .5s cubic-bezier(.2,.8,.2,1);}
-  .track-owl{position:absolute;top:-4px;left:0;font-size:22px;transform:translateX(-50%);
-    transition:left .5s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));}
+  .track-owl{position:absolute;top:1px;left:0;height:28px;width:auto;transform:translateX(-50%);
+    transition:left .5s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 2px 3px rgba(0,0,0,.45));}
 
   .points{flex:0 0 auto;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);
     border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 12px;font-family:var(--disp);
@@ -166,7 +166,7 @@
 
   /* wiggle timer */
   .timerwrap{text-align:center;}
-  .owlmove{font-size:72px;display:inline-block;}
+  .owlmove{height:80px;width:auto;display:inline-block;}
   .owlmove.go{animation:wiggle .7s ease-in-out infinite;}
   @keyframes wiggle{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-10px)}}
   .ring{font-family:var(--disp);font-weight:700;font-size:40px;color:var(--navy);margin:8px 0;}
@@ -217,7 +217,7 @@
   .stars{position:absolute;inset:0;overflow:hidden;}
   .stars i{position:absolute;color:#fff;opacity:0;animation:twinkle 3s ease-in-out infinite;}
   @keyframes twinkle{0%,100%{opacity:0;transform:scale(.6)}50%{opacity:.9;transform:scale(1)}}
-  .intro-owl{font-size:84px;animation:fly 2.6s cubic-bezier(.2,.7,.2,1) forwards;filter:drop-shadow(0 8px 20px rgba(0,0,0,.4));}
+  .intro-owl{height:108px;width:auto;animation:fly 2.6s cubic-bezier(.2,.7,.2,1) forwards;filter:drop-shadow(0 10px 22px rgba(0,0,0,.45));}
   @keyframes fly{0%{transform:translateY(120px) scale(.4) rotate(-12deg);opacity:0}
     40%{opacity:1}60%{transform:translateY(-16px) scale(1.1) rotate(6deg)}
     100%{transform:translateY(0) scale(1) rotate(0)}}
@@ -241,9 +241,11 @@
   /* ===== FINISH ===== */
   .finish{text-align:center;padding-top:10px;}
   .badge{width:150px;height:150px;margin:6px auto 10px;border-radius:50%;
-    background:radial-gradient(circle at 50% 35%, #fff6df, var(--gold));
-    display:flex;align-items:center;justify-content:center;font-size:76px;
-    box-shadow:0 14px 40px rgba(199,146,44,.5);animation:pop .6s ease;}
+    background:radial-gradient(circle at 50% 32%, #1b3566, var(--navy));
+    border:4px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 40px rgba(14,28,66,.4),0 0 0 6px rgba(199,146,44,.15);animation:pop .6s ease;}
+  .badge img{height:104px;width:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));}
   .rankname{font-family:var(--disp);font-weight:700;font-size:26px;color:var(--navy);}
   .scoreline{font-size:18px;color:var(--muted);margin:6px 0 2px;}
 
@@ -273,7 +275,7 @@
     <div class="hud-title">Mission: Move!<small>Unit 1.1 · Intro to P.E.</small></div>
     <div class="track">
       <div class="track-line"><div class="track-fill" id="fill"></div></div>
-      <div class="track-owl" id="trackowl">🦉</div>
+      <img class="track-owl" id="trackowl" src="../assets/optima-owl.png" alt="Optima owl"/>
     </div>
     <div class="points" id="points"><span class="star">✦</span><span id="pts">0</span> FP</div>
   </div>
@@ -357,7 +359,7 @@
           <div class="mbox-h">⏱️ Movement Snack <span class="tag">Get up!</span></div>
           <p class="mbox-sub">Stand up and follow the owl for a <strong>30-second</strong> movement snack. Feel those happiness sparkles!</p>
           <div class="timerwrap">
-            <div class="owlmove" id="movowl">🦉</div>
+            <img class="owlmove" id="movowl" src="../assets/optima-owl.png" alt="Optima owl"/>
             <div class="ring" id="ring">0:30</div>
             <div class="cue" id="snackcue">Tap Start and copy the owl!</div>
             <div style="margin-top:8px;"><button class="beatbtn" id="snackstart" style="background:var(--purple);">Start the snack ▶</button></div>
@@ -420,7 +422,7 @@
     <!-- 7 FINISH -->
     <section class="screen" data-final="1">
       <div class="wrap finish">
-        <div class="badge" id="badge">🌟</div>
+        <div class="badge" id="badge"><img src="../assets/optima-owl.png" alt="Optima owl"/></div>
         <div class="rankname" id="rankname">Mission Accomplished!</div>
         <div class="scoreline">You earned <strong id="finalpts">0</strong> Flight Points this week!</div>
         <p style="font-size:16px;color:var(--muted);max-width:520px;margin:6px auto 0;">Every point is a step toward your next owl rank in <strong>Flight Club</strong>. Awesome moving, superstar! 🎉</p>
@@ -444,7 +446,7 @@
   <!-- ===== INTRO OVERLAY ===== -->
   <div class="intro" id="intro">
     <div class="stars" id="stars"></div>
-    <div class="intro-owl">🦉</div>
+    <img class="intro-owl" src="../assets/optima-owl.png" alt="Optima owl"/>
     <div class="intro-title">Mission: Move!</div>
     <div class="intro-sub">3rd Grade Physical Education · Optima Academy Online</div>
     <div class="intro-unit">Unit 1.1 — Intro to P.E.</div>
@@ -493,7 +495,6 @@
     points += n;
     ptsEl.textContent = points;
     pointsBox.classList.remove('pop'); void pointsBox.offsetWidth; pointsBox.classList.add('pop');
-    trackowl.textContent = rankFor(points).emoji;
     showToast('+' + n + ' Flight Points!');
   }
 
@@ -716,13 +717,11 @@
   function renderFinish(){
     var r = rankFor(points);
     document.getElementById('finalpts').textContent = points;
-    document.getElementById('badge').textContent = r.emoji;
     document.getElementById('rankname').textContent = 'Rank: ' + r.name + ' ' + r.emoji;
     burst();
   }
   document.getElementById('replay').addEventListener('click', function(){
     points=0; ptsEl.textContent=0; pointsAwarded={}; gates={}; maxStep=0;
-    trackowl.textContent='🦉';
     // reset visuals
     document.querySelectorAll('.tapcard').forEach(function(c){c.className='tapcard';});
     document.querySelectorAll('.flip').forEach(function(f){f.className='flip';});
