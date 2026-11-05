@@ -1223,20 +1223,18 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 /* Fredoka reads best a step heavier */
 .course-pe4 h1, .course-pe4 h2, .course-pe4 h3 { font-weight: 600; letter-spacing: .2px; }
 
-/* confetti party paper (v2.1): soft color glows up top, then four offset
-   dot grids in the full OAO palette — sky, gold, green, pink */
+/* playground court paper (v2.2): painted court lines seen from above —
+   a center circle, corner arcs, and court lines in the OAO colors —
+   tiled down the page like stacked courts, with soft glows up top */
 .course-pe4 {
   background-color: #EEF7FC;
   background-image:
-    radial-gradient(560px 360px at 6% -4%, rgba(85,200,232,.25), transparent 70%),
-    radial-gradient(560px 360px at 96% 1%, rgba(199,146,44,.18), transparent 70%),
-    radial-gradient(rgba(85,200,232,.38) 2.6px, transparent 2.6px),
-    radial-gradient(rgba(199,146,44,.32) 2.2px, transparent 2.2px),
-    radial-gradient(rgba(118,192,67,.3) 2.6px, transparent 2.6px),
-    radial-gradient(rgba(165,62,151,.24) 2px, transparent 2px);
-  background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px, 58px 58px, 58px 58px;
-  background-position: 0 0, 0 0, 0 0, 23px 23px, 12px 30px, 41px 6px;
-  background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+    radial-gradient(560px 360px at 6% -4%, rgba(85,200,232,.22), transparent 70%),
+    radial-gradient(560px 360px at 96% 1%, rgba(199,146,44,.16), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='1000'%3E%3Cg fill='none' stroke-width='10' stroke-linecap='round'%3E%3Ccircle cx='700' cy='500' r='210' stroke='%2355C8E8' opacity='.2'/%3E%3Ccircle cx='700' cy='500' r='9' fill='%23C7922C' stroke='none' opacity='.28'/%3E%3Cpath d='M700 60 V290' stroke='%2355C8E8' opacity='.15'/%3E%3Cpath d='M700 710 V940' stroke='%2355C8E8' opacity='.15'/%3E%3Ccircle cx='0' cy='0' r='300' stroke='%23C7922C' opacity='.18'/%3E%3Ccircle cx='1400' cy='0' r='230' stroke='%23A53E97' opacity='.15'/%3E%3Ccircle cx='0' cy='1000' r='230' stroke='%23A53E97' opacity='.15'/%3E%3Ccircle cx='1400' cy='1000' r='300' stroke='%2376C043' opacity='.18'/%3E%3Cpath d='M330 500 H470' stroke='%2376C043' opacity='.16' stroke-dasharray='26 22'/%3E%3Cpath d='M930 500 H1070' stroke='%23C7922C' opacity='.16' stroke-dasharray='26 22'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%, 100% 100%, 1150px 822px;
+  background-position: 0 0, 0 0, 50% 0;
+  background-repeat: no-repeat, no-repeat, repeat;
 }
 
 /* title underline: a thick dashed running-track lane */
