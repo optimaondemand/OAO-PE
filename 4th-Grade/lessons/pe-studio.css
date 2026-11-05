@@ -4,7 +4,7 @@
    Do not fork this per lesson. Change it here, rebuild, done.
    ===================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
 
 /* ---------- tokens ---------- */
 :root {
@@ -1190,81 +1190,173 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 .model[data-model="constellation"] .mpick.on.sdone::after { color: #fff; }
 @media (prefers-reduced-motion: reduce) { .model[data-model="constellation"] svg * { animation: none !important; stroke-dashoffset: 0 !important; } }
 
-/* =====================================================================
-   PE VARIANT (v1.0 PE, 2026-11-05) · "playground + playbook" look,
-   on only under body.course-pe4 (Mission: Move!, 4th Grade PE).
-   Art and science pages are untouched. Same tokens, same components.
-   ===================================================================== */
-/* elementary voice: bigger type, rounder corners */
-.course-pe4 { --radius: 22px; --radius-sm: 14px; font-size: 19px; }
 
-/* playground paper: the warm page color with a faint halftone dot pattern */
+/* =====================================================================
+   PE THEME (v2.0, 2026-11-05) · "recess!" — the 4th-grade-friendly look,
+   on only under body.course-pe4 (Mission: Move!, 4th Grade PE).
+   Art and science pages are untouched. Same components, new skin:
+   bright OAO palette, Fredoka headings, sticker badges, 3D-press
+   buttons, confetti paper. The intro reads --heart for the heart fill.
+   ===================================================================== */
+.course-pe4 {
+  /* elementary voice: bigger type, rounder everything, friendlier display face */
+  --radius: 24px; --radius-sm: 16px; font-size: 19px;
+  --display: 'Fredoka', 'Nunito', 'Segoe UI', sans-serif;
+
+  /* bright OAO palette (matches the course homepage + syllabus) */
+  --paper:      #F2F9FC;   /* light sky */
+  --card:       #FFFFFF;
+  --ink:        #1F2B47;
+  --ink-soft:   #54617D;
+  --line:       #D7E5EE;
+  --learn:      #3E8E2F;   /* gamer green  · learning, correct */
+  --learn-soft: #E5F4DD;
+  --make:       #D9640F;   /* odyssey orange · doing, try again */
+  --make-soft:  #FDEBD9;
+  --spark:      #B9841F;   /* gateway gold · tips, timers, move breaks */
+  --spark-soft: #F9EFD6;
+  --wonder:     #67308F;   /* portal purple · reflection, vocab, coach */
+  --wonder-soft:#F1E7F8;
+  --heart:      #E4553F;   /* the intro's heart stays heart-colored */
+  --shadow: 0 6px 16px rgba(14,28,66,.10), 0 2px 4px rgba(14,28,66,.06);
+}
+/* Fredoka reads best a step heavier */
+.course-pe4 h1, .course-pe4 h2, .course-pe4 h3 { font-weight: 600; letter-spacing: .2px; }
+
+/* confetti paper: two offset dot grids, sky + gold */
 .course-pe4 {
   background-color: var(--paper);
-  background-image: radial-gradient(rgba(34,48,74,.065) 1.5px, transparent 1.5px);
-  background-size: 26px 26px;
+  background-image:
+    radial-gradient(rgba(85,200,232,.22) 2px, transparent 2px),
+    radial-gradient(rgba(199,146,44,.14) 2px, transparent 2px);
+  background-size: 36px 36px, 36px 36px;
+  background-position: 0 0, 18px 18px;
 }
 
-/* the title underline becomes a dashed running-track lane */
-.course-pe4 .hero h1 .squiggle path { stroke: var(--make); stroke-dasharray: 10 7; }
+/* title underline: a thick dashed running-track lane */
+.course-pe4 .hero h1 .squiggle { width: 150px; height: 12px; }
+.course-pe4 .hero h1 .squiggle path { stroke: var(--make); stroke-width: 4; stroke-dasharray: 11 8; }
 
-/* checkpoint dots read like a race course; the last dot is the finish line */
+/* cards: chunkier, friendlier */
+.course-pe4 .card { border-width: 2px; }
+
+/* kickers become stickers: solid color, white text, white edge, a tiny tilt */
+.course-pe4 .kicker {
+  color: #fff; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(14,28,66,.18);
+  transform: rotate(-1deg); font-size: 12.5px; padding: 5px 14px 5px 10px;
+}
+.course-pe4 .kicker.learn  { background: var(--learn); color: #fff; }
+.course-pe4 .kicker.make   { background: var(--make); color: #fff; }
+.course-pe4 .kicker.spark  { background: var(--spark); color: #fff; }
+.course-pe4 .kicker.wonder { background: var(--wonder); color: #fff; }
+.course-pe4 .bigidea .kicker { background: var(--spark); color: #fff; transform: rotate(-1deg); }
+
+/* chips: a touch bigger */
+.course-pe4 .chip { font-size: 14px; padding: 6px 15px; border-width: 2px; }
+.course-pe4 .chip.time { color: #8A6414; }
+
+/* mission path: big tappable dots, finish line keeps the checkered flag */
+.course-pe4 .path .dot { min-width: 38px; height: 38px; font-size: 16px; border-width: 3px; }
+.course-pe4 .path .seg { flex: 0 0 22px; height: 3px; }
+.course-pe4 .path .label { font-size: 14px; }
 .course-pe4 .path .dot.finish {
-  background:
-    repeating-conic-gradient(#22304A 0% 25%, #fff 0% 50%) 0 0 / 10px 10px;
+  background: repeating-conic-gradient(#1F2B47 0% 25%, #fff 0% 50%) 0 0 / 12px 12px;
   color: transparent; border-color: var(--ink);
 }
 
-/* ---- team pinnies: sort tokens get a mesh edge, bins get a lip ---- */
+/* buttons press like playground buttons: 3D shadow, push down on tap */
+.course-pe4 .btn {
+  padding: 12px 24px; font-size: 1em;
+  box-shadow: 0 4px 0 rgba(14,28,66,.28);
+}
+.course-pe4 .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(14,28,66,.28); }
+.course-pe4 .opts button {
+  border-width: 2.5px; padding: 10px 20px; box-shadow: 0 3px 0 var(--line);
+}
+.course-pe4 .opts button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }
+.course-pe4 .opts button.correct { box-shadow: 0 3px 0 var(--learn-soft); }
+.course-pe4 .opts button.incorrect { box-shadow: 0 3px 0 var(--make-soft); }
+.course-pe4 .reset { border-width: 2px; padding: 7px 16px; }
+
+/* reveal cards: jersey-stripe tops in the OAO palette, chunky while closed */
+.course-pe4 .reveal { border-width: 2.5px; min-height: 104px; }
+.course-pe4 .reveal .hint { font-size: 13.5px; }
+.course-pe4 .reveals .reveal { border-style: solid; border-top-width: 8px; border-radius: var(--radius-sm); }
+.course-pe4 .reveals .reveal:nth-child(1) { border-top-color: var(--heart); }
+.course-pe4 .reveals .reveal:nth-child(2) { border-top-color: #55C8E8; }
+.course-pe4 .reveals .reveal:nth-child(3) { border-top-color: #C7922C; }
+.course-pe4 .reveals .reveal:nth-child(4) { border-top-color: #76C043; }
+.course-pe4 .reveals .reveal:nth-child(5) { border-top-color: #A53E97; }
+.course-pe4 .vocab .reveal { border-radius: var(--radius-sm); }
+
+/* equipment shelf sort: pinnie tokens, bins with a lip (kept from v1, brightened) */
 .course-pe4 .sort .pool {
-  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: #fff; border: 2px dashed var(--line); border-radius: var(--radius-sm);
   padding: 12px; position: relative;
 }
 .course-pe4 .sort .pool::before {
-  content: 'EQUIPMENT SHELF'; position: absolute; top: -9px; left: 12px; font-size: 10px;
-  font-weight: 800; letter-spacing: 1.4px; color: var(--ink-soft); background: var(--paper); padding: 0 6px;
+  content: 'EQUIPMENT SHELF'; position: absolute; top: -10px; left: 14px; font-size: 10.5px;
+  font-weight: 800; letter-spacing: 1.4px; color: var(--ink-soft); background: #fff; padding: 0 8px; border-radius: 99px;
 }
 .course-pe4 .sort .token {
-  border-radius: 999px; border-width: 2px; border-color: var(--ink);
-  background: linear-gradient(90deg, var(--spark-soft) 0 24px, #fff 24px);
-  padding-left: 32px; position: relative;
+  border-radius: 999px; border-width: 2.5px; border-color: var(--ink);
+  background: linear-gradient(90deg, var(--spark-soft) 0 26px, #fff 26px);
+  padding: 9px 14px 9px 34px; position: relative; font-weight: 700;
+  box-shadow: 0 2px 0 var(--line);
 }
 .course-pe4 .sort .token::before {
-  content: ''; position: absolute; left: 8px; top: 50%; width: 12px; height: 12px; margin-top: -6px;
+  content: ''; position: absolute; left: 9px; top: 50%; width: 13px; height: 13px; margin-top: -6.5px;
   border-radius: 50%; background: var(--spark); box-shadow: inset 0 0 0 2px #fff, 0 0 0 1.5px var(--spark);
 }
 .course-pe4 .sort .token.picked { background: var(--ink); color: #fff; border-color: var(--ink); }
-.course-pe4 .sort .token.picked::before { background: var(--brand-sky); box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 1.5px var(--brand-sky); }
+.course-pe4 .sort .token.picked::before { background: #55C8E8; box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 1.5px #55C8E8; }
 .course-pe4 .sort .token.right { border-color: var(--learn); background: var(--learn-soft); }
 .course-pe4 .sort .token.right::before { background: var(--learn); box-shadow: inset 0 0 0 2px #fff, 0 0 0 1.5px var(--learn); }
 .course-pe4 .sort .token.wrong { border-color: var(--make); background: var(--make-soft); }
 .course-pe4 .sort .token.wrong::before { background: var(--make); box-shadow: inset 0 0 0 2px #fff, 0 0 0 1.5px var(--make); }
 .course-pe4 .sort .buckets {
-  background: #DCE4EA; border-radius: var(--radius); padding: 10px; gap: 10px;
-  box-shadow: inset 0 2px 6px rgba(34,48,74,.18), 0 1px 0 #fff;
+  background: #D8E7F0; border-radius: var(--radius); padding: 12px; gap: 12px;
+  box-shadow: inset 0 2px 8px rgba(14,28,66,.16), 0 1px 0 #fff;
 }
 .course-pe4 .sort .bucket {
-  border: 1px solid #B9C7D2; border-style: solid; border-radius: 12px;
-  background: linear-gradient(180deg, #F3F7FA, #E8EFF4);
-  box-shadow: inset 0 3px 8px rgba(34,48,74,.14); padding: 30px 10px 10px; position: relative; min-height: 96px;
+  border: 2px solid #B6CBD9; border-radius: 14px; background: linear-gradient(180deg, #F5FAFD, #E9F2F8);
+  box-shadow: inset 0 3px 8px rgba(14,28,66,.12); padding: 34px 10px 10px; position: relative; min-height: 100px;
 }
 .course-pe4 .sort .bucket .bname {
-  position: absolute; top: 8px; left: 10px; right: 10px; background: #fff; border: 1px solid #B9C7D2;
-  border-radius: 4px; padding: 2px 8px; font-size: 11px; color: var(--ink); text-align: center; letter-spacing: .8px;
+  position: absolute; top: 9px; left: 10px; right: 10px; background: #fff; border: 1.5px solid #B6CBD9;
+  border-radius: 99px; padding: 3px 10px; font-size: 11px; color: var(--ink); text-align: center; letter-spacing: .8px;
 }
 .course-pe4 .sort .bucket:hover, .course-pe4 .sort .bucket.target { border-color: var(--make); }
 
-/* ---- move break: a .todo wrapped in .card.tint-spark with a bouncing kicker ball ---- */
-.course-pe4 .movebreak { border: 2px dashed var(--spark); background: var(--spark-soft); }
-.course-pe4 .movebreak .todo li { background: #fff; }
+/* move break: a gold dashed energy card with a bouncing clock */
+.course-pe4 .movebreak { border: 3px dashed var(--spark); background: var(--spark-soft); }
+.course-pe4 .movebreak .todo li { background: #fff; border-width: 2px; }
 @keyframes pe-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 .course-pe4 .movebreak .kicker svg { animation: pe-bounce 1.2s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .course-pe4 .movebreak .kicker svg { animation: none; } }
+.course-pe4 .todo .timer { font-size: 1em; padding: 6px 16px; border-width: 2px; }
+.course-pe4 .todo input[type=checkbox] { width: 24px; height: 24px; }
 
-/* organ reveal cards: give each a jersey-stripe top edge */
-.course-pe4 .reveals .reveal { border-style: solid; border-width: 2px; border-top-width: 6px; }
-.course-pe4 .reveals .reveal:nth-child(1) { border-top-color: var(--make); }
-.course-pe4 .reveals .reveal:nth-child(2) { border-top-color: var(--brand-sky); }
-.course-pe4 .reveals .reveal:nth-child(3) { border-top-color: var(--spark); }
-.course-pe4 .reveals .reveal:nth-child(4) { border-top-color: var(--ink-soft); }
-.course-pe4 .reveals .reveal:nth-child(5) { border-top-color: var(--wonder); }
+/* voice guide: Coach Rivera gets a bigger play button */
+.course-pe4 .voice { border-left-width: 6px; }
+.course-pe4 .voice .play { width: 58px; height: 58px; }
+.course-pe4 .voice .play svg { width: 25px; height: 25px; }
+
+/* sticky note: a little more tilt and a happier yellow */
+.course-pe4 .sticky { background: #FFF1A8; transform: rotate(-.8deg); }
+
+/* big idea: navy with faint confetti dots */
+.course-pe4 .bigidea {
+  background-color: var(--brand-navy);
+  background-image:
+    radial-gradient(rgba(85,200,232,.22) 2px, transparent 2px),
+    radial-gradient(rgba(224,169,58,.2) 2px, transparent 2px);
+  background-size: 34px 34px, 34px 34px;
+  background-position: 0 0, 17px 17px;
+}
+
+/* next-step tags and goals get the brighter palette automatically via tokens */
+.course-pe4 .next a, .course-pe4 .next div.ni { border-width: 2px; }
+.course-pe4 .goals li { font-weight: 600; }
+.course-pe4 .goals li::before { top: 4px; }
+
+@media (prefers-reduced-motion: reduce) { .course-pe4 .movebreak .kicker svg { animation: none; } }
