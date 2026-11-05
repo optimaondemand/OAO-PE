@@ -1223,14 +1223,20 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 /* Fredoka reads best a step heavier */
 .course-pe4 h1, .course-pe4 h2, .course-pe4 h3 { font-weight: 600; letter-spacing: .2px; }
 
-/* confetti paper: two offset dot grids, sky + gold */
+/* confetti party paper (v2.1): soft color glows up top, then four offset
+   dot grids in the full OAO palette — sky, gold, green, pink */
 .course-pe4 {
-  background-color: var(--paper);
+  background-color: #EEF7FC;
   background-image:
-    radial-gradient(rgba(85,200,232,.22) 2px, transparent 2px),
-    radial-gradient(rgba(199,146,44,.14) 2px, transparent 2px);
-  background-size: 36px 36px, 36px 36px;
-  background-position: 0 0, 18px 18px;
+    radial-gradient(560px 360px at 6% -4%, rgba(85,200,232,.25), transparent 70%),
+    radial-gradient(560px 360px at 96% 1%, rgba(199,146,44,.18), transparent 70%),
+    radial-gradient(rgba(85,200,232,.38) 2.6px, transparent 2.6px),
+    radial-gradient(rgba(199,146,44,.32) 2.2px, transparent 2.2px),
+    radial-gradient(rgba(118,192,67,.3) 2.6px, transparent 2.6px),
+    radial-gradient(rgba(165,62,151,.24) 2px, transparent 2px);
+  background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px, 58px 58px, 58px 58px;
+  background-position: 0 0, 0 0, 0 0, 23px 23px, 12px 30px, 41px 6px;
+  background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
 }
 
 /* title underline: a thick dashed running-track lane */
