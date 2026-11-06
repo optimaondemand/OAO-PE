@@ -4583,3 +4583,117 @@
     load(sets[0]);
   });
 })();
+
+/* =====================================================================
+   "You Make the Call!" referee game (PE, v1.0 2026-11-06).
+   Markup contract (no per-lesson JS):
+     .refgame[data-badge][data-done]
+       .round[data-correct][data-hint]
+         .scene            — the play, in words
+         .calls button[data-choice][data-fb]
+   The script builds a scoreboard, deals one play at a time, scores
+   first-try calls with a star, and ends with a badge + confetti.
+   ===================================================================== */
+(function () {
+  var REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function h(tag, cls, txt) { var n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; }
+  document.querySelectorAll('.refgame').forEach(function (g) {
+    var rounds = [].slice.call(g.querySelectorAll('.round'));
+    if (!rounds.length) return;
+    var N = rounds.length, i = 0, tries = 0, score = 0;
+
+    /* scoreboard */
+    var board = h('div', 'rg-board');
+    var title = h('div', 'rg-title', "📣 You're the ref");
+    var meta = h('div', 'rg-roundno', '');
+    var slots = h('div', 'rg-score');
+    var slotEls = rounds.map(function () { var s = h('span', 'rg-slot', ''); slots.appendChild(s); return s; });
+    board.appendChild(title); board.appendChild(meta); board.appendChild(slots);
+    g.insertBefore(board, g.firstChild);
+
+    /* verdict strip + next button */
+    var foot = h('div', 'rg-foot');
+    var verdict = h('div', 'rg-verdict'); verdict.setAttribute('aria-live', 'polite');
+    var next = h('button', 'btn make rg-next', 'Next play →'); next.type = 'button'; next.hidden = true;
+    foot.appendChild(verdict); foot.appendChild(next);
+    g.appendChild(foot);
+
+    function show(n) {
+      i = n; tries = 0;
+      rounds.forEach(function (r, k) { r.classList.toggle('on', k === n); });
+      meta.textContent = 'Play ' + (n + 1) + ' of ' + N;
+      verdict.className = 'rg-verdict'; verdict.textContent = '';
+      next.hidden = true;
+    }
+
+    g.addEventListener('click', function (e) {
+      var b = e.target.closest('.calls button');
+      if (!b || b.disabled || !g.contains(b)) return;
+      var r = b.closest('.round');
+      if (!r || !r.classList.contains('on')) return;
+      tries++;
+      if (b.dataset.choice === r.dataset.correct) {
+        b.classList.add('correct');
+        r.querySelectorAll('.calls button').forEach(function (x) { x.disabled = true; });
+        if (tries === 1) { score++; slotEls[i].classList.add('won'); slotEls[i].textContent = '★'; }
+        else { slotEls[i].classList.add('ok'); slotEls[i].textContent = '✓'; }
+        verdict.className = 'rg-verdict good';
+        verdict.textContent = '🟢 GOOD CALL! ' + (b.dataset.fb || '');
+        next.hidden = false;
+        next.textContent = (i === N - 1) ? 'See my ref report 🏅' : 'Next play →';
+      } else {
+        b.classList.add('incorrect'); b.disabled = true;
+        verdict.className = 'rg-verdict foul';
+        verdict.textContent = '🟠 FWEEET! That’s a foul. ' + (r.dataset.hint ? r.dataset.hint + ' ' : '') + 'Try again.';
+      }
+    });
+
+    next.addEventListener('click', function () {
+      if (i < N - 1) { show(i + 1); return; }
+      finale();
+    });
+
+    function finale() {
+      g.classList.add('done');
+      var fin = h('div', 'rg-final');
+      fin.appendChild(h('div', 'rg-badge', '🏅'));
+      fin.appendChild(h('div', 'rg-fintitle', g.dataset.badge || 'Certified Good-Sport Ref'));
+      fin.appendChild(h('p', 'rg-finline', score === N
+        ? 'Perfect game — ' + N + ' out of ' + N + ' first-try calls!'
+        : 'You made ' + score + ' out of ' + N + ' calls on the first try.'));
+      if (g.dataset.done) fin.appendChild(h('p', 'rg-finmsg', g.dataset.done));
+      var again = h('button', 'reset rg-again', 'Ref it again'); again.type = 'button';
+      again.addEventListener('click', reset);
+      fin.appendChild(again);
+      g.appendChild(fin);
+      if (!REDUCE) confetti();
+    }
+
+    function confetti() {
+      var c = h('div', 'rg-confetti'), colors = ['#55C8E8', '#C7922C', '#76C043', '#A53E97', '#E4553F'];
+      for (var k = 0; k < 40; k++) {
+        var p = h('i');
+        p.style.left = (Math.random() * 100) + '%';
+        p.style.background = colors[k % colors.length];
+        p.style.animationDuration = (1.6 + Math.random() * 1.4) + 's';
+        p.style.animationDelay = (Math.random() * 0.7) + 's';
+        c.appendChild(p);
+      }
+      g.appendChild(c);
+      setTimeout(function () { c.remove(); }, 4000);
+    }
+
+    function reset() {
+      score = 0;
+      slotEls.forEach(function (s) { s.className = 'rg-slot'; s.textContent = ''; });
+      rounds.forEach(function (r) {
+        r.querySelectorAll('.calls button').forEach(function (x) { x.disabled = false; x.classList.remove('correct', 'incorrect'); });
+      });
+      g.classList.remove('done');
+      var fin = g.querySelector('.rg-final'); if (fin) fin.remove();
+      show(0);
+    }
+
+    show(0);
+  });
+})();

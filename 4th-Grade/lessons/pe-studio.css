@@ -1364,3 +1364,81 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 .course-pe4 .goals li::before { top: 4px; }
 
 @media (prefers-reduced-motion: reduce) { .course-pe4 .movebreak .kicker svg { animation: none; } }
+
+/* ---- "You Make the Call!" referee game (PE, v1.0 2026-11-06) ----
+   A scoreboard card: navy board on top, one play at a time below,
+   stars for first-try calls, badge + confetti finale. */
+.refgame {
+  position: relative; overflow: hidden; margin-top: 10px;
+  background: var(--card); border: 2px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow); padding: 0 0 18px;
+}
+.refgame .rg-board {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  background: var(--brand-navy, #15233F); color: #fff; padding: 13px 18px;
+}
+.refgame .rg-title {
+  font-family: var(--display); font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; font-size: 16px; color: #F3C969;
+}
+.refgame .rg-roundno { font-size: 12.5px; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: #9FB4D8; }
+.refgame .rg-score { margin-left: auto; display: flex; gap: 6px; }
+.refgame .rg-slot {
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  border: 2px dashed rgba(255,255,255,.4); font-size: 15px; color: #F3C969;
+}
+.refgame .rg-slot.won { border-style: solid; border-color: #F3C969; background: rgba(243,201,105,.18); }
+.refgame .rg-slot.ok  { border-style: solid; border-color: #76C043; background: rgba(118,192,67,.18); color: #B9E39A; }
+
+.refgame .round { display: none; padding: 18px 18px 0; }
+.refgame .round.on { display: block; animation: rg-in .35s ease; }
+@keyframes rg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.refgame .scene {
+  font-size: 1.06em; font-weight: 600; line-height: 1.5;
+  background: var(--paper); border: 2px solid var(--line);
+  border-radius: var(--radius-sm); padding: 14px 16px;
+}
+.refgame .calls { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.refgame .calls button {
+  text-align: left; font: inherit; font-weight: 700; color: var(--ink);
+  background: #fff; border: 2.5px solid var(--line); border-radius: 14px;
+  padding: 12px 16px; cursor: pointer; box-shadow: 0 3px 0 var(--line);
+  transition: transform .08s ease, border-color .15s ease;
+}
+.refgame .calls button:hover:not(:disabled) { border-color: var(--make); }
+.refgame .calls button:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }
+.refgame .calls button:disabled { cursor: default; }
+.refgame .calls button.correct { border-color: var(--learn); background: var(--learn-soft); box-shadow: 0 3px 0 var(--learn-soft); }
+.refgame .calls button.incorrect { border-color: var(--make); background: var(--make-soft); opacity: .7; animation: rg-shake .3s ease; }
+@keyframes rg-shake { 0%,100% { transform: none; } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+.refgame .rg-foot { padding: 0 18px; }
+.refgame .rg-verdict { font-weight: 700; border-radius: 12px; }
+.refgame .rg-verdict.good { margin-top: 12px; padding: 12px 14px; background: var(--learn-soft); color: #2F6B23; border: 2px solid var(--learn); }
+.refgame .rg-verdict.foul { margin-top: 12px; padding: 12px 14px; background: var(--make-soft); color: #8A3D06; border: 2px dashed var(--make); }
+.refgame .rg-next { margin-top: 12px; }
+.refgame.done .round, .refgame.done .rg-foot { display: none; }
+
+.refgame .rg-final { padding: 26px 18px 6px; text-align: center; animation: rg-in .35s ease; }
+.refgame .rg-badge {
+  width: 88px; height: 88px; margin: 0 auto; border-radius: 50%;
+  display: grid; place-items: center; font-size: 42px;
+  background: radial-gradient(circle at 35% 30%, #FFE9A8, #F3C969 60%, #C7922C);
+  border: 3px solid #fff; box-shadow: var(--shadow), 0 0 0 3px #C7922C;
+}
+.refgame .rg-fintitle { font-family: var(--display); font-weight: 600; font-size: 1.3em; margin-top: 12px; color: var(--ink); }
+.refgame .rg-finline { font-weight: 700; color: var(--ink-soft); margin: 6px 0 0; }
+.refgame .rg-finmsg { color: var(--ink-soft); margin: 10px auto 0; max-width: 48ch; }
+.refgame .rg-again { margin-top: 14px; }
+.refgame .rg-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.refgame .rg-confetti i {
+  position: absolute; top: -14px; width: 9px; height: 14px; border-radius: 2px;
+  opacity: .95; animation: rg-fall linear forwards;
+}
+@keyframes rg-fall { to { transform: translateY(640px) rotate(540deg); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .refgame .round.on, .refgame .rg-final { animation: none; }
+  .refgame .calls button.incorrect { animation: none; }
+  .refgame .rg-confetti { display: none; }
+}
