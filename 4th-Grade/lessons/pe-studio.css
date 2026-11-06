@@ -1293,43 +1293,54 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 .course-pe4 .reveals .reveal:nth-child(5) { border-top-color: #A53E97; }
 .course-pe4 .vocab .reveal { border-radius: var(--radius-sm); }
 
-/* equipment shelf sort: pinnie tokens, bins with a lip (kept from v1, brightened) */
+/* game-day sort (v2.3): activity cards start in the gym bag, then get
+   sorted onto a hardwood gym floor — green turf for "in the game"
+   (physical activity), sideline bench slats for "resting". */
 .course-pe4 .sort .pool {
   background: #fff; border: 2px dashed var(--line); border-radius: var(--radius-sm);
-  padding: 12px; position: relative;
+  padding: 14px 12px 12px; position: relative;
 }
 .course-pe4 .sort .pool::before {
-  content: 'EQUIPMENT SHELF'; position: absolute; top: -10px; left: 14px; font-size: 10.5px;
+  content: '🎒 GYM BAG'; position: absolute; top: -11px; left: 14px; font-size: 10.5px;
   font-weight: 800; letter-spacing: 1.4px; color: var(--ink-soft); background: #fff; padding: 0 8px; border-radius: 99px;
 }
 .course-pe4 .sort .token {
-  border-radius: 999px; border-width: 2.5px; border-color: var(--ink);
-  background: linear-gradient(90deg, var(--spark-soft) 0 26px, #fff 26px);
-  padding: 9px 14px 9px 34px; position: relative; font-weight: 700;
-  box-shadow: 0 2px 0 var(--line);
+  border-radius: 999px; border-width: 2.5px; border-color: var(--ink); background: #fff;
+  padding: 9px 16px; font-weight: 700;
+  box-shadow: 0 3px 0 var(--line);
 }
-.course-pe4 .sort .token::before {
-  content: ''; position: absolute; left: 9px; top: 50%; width: 13px; height: 13px; margin-top: -6.5px;
-  border-radius: 50%; background: var(--spark); box-shadow: inset 0 0 0 2px #fff, 0 0 0 1.5px var(--spark);
-}
-.course-pe4 .sort .token.picked { background: var(--ink); color: #fff; border-color: var(--ink); }
-.course-pe4 .sort .token.picked::before { background: #55C8E8; box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 1.5px #55C8E8; }
+.course-pe4 .sort .token.picked { background: var(--ink); color: #fff; border-color: var(--ink); transform: rotate(-2deg) scale(1.04); }
 .course-pe4 .sort .token.right { border-color: var(--learn); background: var(--learn-soft); }
-.course-pe4 .sort .token.right::before { background: var(--learn); box-shadow: inset 0 0 0 2px #fff, 0 0 0 1.5px var(--learn); }
 .course-pe4 .sort .token.wrong { border-color: var(--make); background: var(--make-soft); }
-.course-pe4 .sort .token.wrong::before { background: var(--make); box-shadow: inset 0 0 0 2px #fff, 0 0 0 1.5px var(--make); }
 .course-pe4 .sort .buckets {
-  background: #D8E7F0; border-radius: var(--radius); padding: 12px; gap: 12px;
-  box-shadow: inset 0 2px 8px rgba(14,28,66,.16), 0 1px 0 #fff;
+  /* hardwood gym floor */
+  background: repeating-linear-gradient(90deg, #EFDDB9 0 46px, #E7D0A4 46px 92px);
+  border: 2px solid #D9BE8F; border-radius: var(--radius); padding: 12px; gap: 12px;
+  box-shadow: inset 0 2px 10px rgba(110,74,20,.22), 0 1px 0 #fff;
 }
 .course-pe4 .sort .bucket {
-  border: 2px solid #B6CBD9; border-radius: 14px; background: linear-gradient(180deg, #F5FAFD, #E9F2F8);
-  box-shadow: inset 0 3px 8px rgba(14,28,66,.12); padding: 34px 10px 10px; position: relative; min-height: 100px;
+  border-radius: 14px; padding: 36px 10px 12px; position: relative; min-height: 104px;
+  box-shadow: inset 0 3px 8px rgba(14,28,66,.10);
+}
+.course-pe4 .sort .bucket[data-b="yes"] {
+  /* the game: green turf with a painted center arc */
+  border: 2.5px solid #76C043;
+  background:
+    radial-gradient(150px 80px at 50% 118%, rgba(255,255,255,.5), transparent 62%),
+    repeating-linear-gradient(0deg, #E0F2D3 0 16px, #D6EDC5 16px 32px);
+}
+.course-pe4 .sort .bucket[data-b="no"] {
+  /* the bench: sideline slats */
+  border: 2.5px solid #B6CBD9;
+  background: repeating-linear-gradient(0deg, #F4F8FB 0 16px, #E4EDF4 16px 20px);
 }
 .course-pe4 .sort .bucket .bname {
   position: absolute; top: 9px; left: 10px; right: 10px; background: #fff; border: 1.5px solid #B6CBD9;
   border-radius: 99px; padding: 3px 10px; font-size: 11px; color: var(--ink); text-align: center; letter-spacing: .8px;
 }
+.course-pe4 .sort .bucket[data-b="yes"] .bname { border-color: #76C043; color: #2F6B23; }
+.course-pe4 .sort .bucket[data-b="yes"] .bname::before { content: '🏃 '; }
+.course-pe4 .sort .bucket[data-b="no"] .bname::before { content: '🛋️ '; }
 .course-pe4 .sort .bucket:hover, .course-pe4 .sort .bucket.target { border-color: var(--make); }
 
 /* move break: a gold dashed energy card with a bouncing clock */
