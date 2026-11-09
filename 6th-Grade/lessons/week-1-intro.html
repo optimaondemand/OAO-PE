@@ -43,9 +43,12 @@
   ----------------------------------------------------------------
   VIDEO
   ----------------------------------------------------------------
-  CONFIG.VIDEO_URL points at ../Videos/6th_Grade_PE_Intro-1.mp4,
-  hosted in this repo beside the lesson. Leave it as '' and the
-  player shows a labelled placeholder instead of breaking.
+  CONFIG.VIDEO_URL is intentionally blank on the public pilot copy.
+  GitHub Pages times out syncing this repo when another video is
+  added to the tree, so the film is not served from here. In Canvas,
+  set it to the Canvas URL of 6th_Grade_PE_Intro.mp4 (Files ->
+  Uploaded Media -> copy link). Blank shows a labelled card instead
+  of breaking.
   ----------------------------------------------------------------
 
   NOTES FOR REVIEW
@@ -1679,7 +1682,7 @@
    ================================================================== */
 const CONFIG = {
   // Canvas URL for 6th_Grade_PE_Intro.mp4. Leave '' to show a placeholder.
-  VIDEO_URL: '../Videos/6th_Grade_PE_Intro-1.mp4',
+  VIDEO_URL: '',
   STORE_KEY: 'mm.s1.w1.v1'
 };
 
@@ -1879,8 +1882,8 @@ $('#replay').addEventListener('click', ()=>{ startIntro(); $('#scroller').scroll
   }else{
     box.innerHTML =
       '<div class="vid-ph"><div><b>'+ico('flag')+' Course intro video</b>' +
-      '<span>Set <code>CONFIG.VIDEO_URL</code> at the top of this file to the Canvas link for ' +
-      '<em>6th_Grade_PE_Intro.mp4</em> and the player replaces this card.</span></div></div>';
+      '<span>The Week 1 intro film plays here in Canvas. ' +
+      'Everything below is the lesson itself &mdash; start with Station 1.</span></div></div>';
   }
 })();
 
