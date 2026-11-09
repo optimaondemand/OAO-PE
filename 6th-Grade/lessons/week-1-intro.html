@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! Week 1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+  ================================================================
+  MISSION: MOVE!  —  INTERACTIVE LESSON TEMPLATE  (PILOT)
+  M/J Comprehensive Physical Education Grade 6/7 · 1508060
+  Semester 1 · Unit 1.1 · Week 1 · Intro to Physical Education
+  ================================================================
+
+  WHAT THIS IS
+  ------------
+  The reusable interactive shell for every lesson in the course,
+  built out on Week 1 content as the pilot. Lesson prose is
+  unchanged from the Canvas page — the sparkle, the journey and the
+  activities are what's new.
+
+  Delivery: hosted on GitHub Pages, embedded in Canvas via <iframe>.
+  Canvas strips <script> from Pages, so the interactivity has to
+  live here, not in the Page body.
+
+  CANVAS EMBED SNIPPET (paste into the Canvas Page HTML editor):
+
+    <p><iframe
+       src="https://optimaondemand.github.io/OAO-PE/6th-Grade/lessons/week-1-intro.html"
+       width="100%" height="900" frameborder="0" allowfullscreen
+       style="border:0;border-radius:14px;overflow:hidden;"
+       title="Week 1: Intro on Physical Activity — interactive lesson"
+       ></iframe></p>
+
+  The page is built as a fixed-height console: the header and
+  station rail stay pinned and the lesson body scrolls inside the
+  iframe. 900px is the sweet spot; 800 minimum.
+
+  ----------------------------------------------------------------
+  VIDEO
+  ----------------------------------------------------------------
+  CONFIG.VIDEO_URL points at ../Videos/6th_Grade_PE_Intro-1.mp4,
+  hosted in this repo beside the lesson. Leave it as '' and the
+  player shows a labelled placeholder instead of breaking.
+  ----------------------------------------------------------------
+
+  NOTES FOR REVIEW
+  ----------------
+  · Progress saves per student in their own browser (localStorage).
+    Nothing is graded and nothing leaves the device. If a browser
+    blocks storage inside a cross-origin iframe, the lesson still
+    runs — progress just resets on reload.
+  · Every drag-and-drop also works as click-to-select, click-to-place,
+    so it works on touch and with a keyboard.
+  · Honours prefers-reduced-motion: the intro resolves instantly and
+    decorative motion stops.
+  · Heart-rate math matches what the course teaches in Unit 1.4
+    (Max HR = 220 - age; five zones as % of max), so the baseline a
+    student logs here is the one Week 8's "My Target Heart-Rate
+    Zone" assignment asks them to use.
+  ================================================================
+-->
+
+<style>
+  :root{
+    /* Optima brand palette — same tokens as the course homepage */
+    --binary-blue:#0E1C42;
+    --bitstream-blue:#55C8E8;
+    --gateway-gold:#C7922C;
+    --portal-purple:#67308F;
+    --pixel-pink:#A53E97;
+    --gamer-green:#76C043;
+    --odyssey-orange:#F78F1E;
+    --dark-bitstream:#0E5568;
+
+    --ink:#1a1d29;
+    --ink-soft:#46506b;
+    --line:#e2e6ee;
+    --paper:#eef1f6;
+    --card:#ffffff;
+
+    /* PE theme — athletic type stack.
+       Barlow Condensed does the jersey/scoreboard work (headings, chips,
+       buttons, every number); Barlow carries the reading text. */
+    --font:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --display:'Barlow Condensed','Barlow',system-ui,'Arial Narrow',Helvetica,sans-serif;
+    --mono:'Barlow Condensed','Barlow',ui-monospace,SFMono-Regular,Consolas,monospace;
+    --code:ui-monospace,SFMono-Regular,'SF Mono',Consolas,'Liberation Mono',monospace;
+    --turf:#0f7a3d;
+    --clay:#c05621;
+    --r:12px;
+    --shadow:0 4px 20px rgba(14,28,66,.10);
+    --shadow-lg:0 18px 50px rgba(14,28,66,.22);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+  button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+  :focus-visible{outline:3px solid var(--bitstream-blue);outline-offset:3px;border-radius:6px}
+
+  /* ==========================================================
+     1. ANIMATED INTRO — the mission launch sequence
+     ========================================================== */
+  .intro{
+    position:fixed;inset:0;z-index:200;
+    background:
+      radial-gradient(900px 500px at 78% -10%, rgba(85,200,232,.22), transparent 62%),
+      radial-gradient(760px 460px at 12% 108%, rgba(199,146,44,.20), transparent 60%),
+      linear-gradient(145deg,#0a1430 0%,var(--binary-blue) 42%,var(--dark-bitstream) 100%);
+    color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:24px;overflow:hidden;
+  }
+  .intro.is-out{animation:introOut .8s cubic-bezier(.65,0,.35,1) forwards}
+  @keyframes introOut{to{opacity:0;transform:scale(1.06);visibility:hidden}}
+
+  /* grid floor */
+  .intro-grid{
+    position:absolute;left:-25%;right:-25%;bottom:-30%;height:68%;
+    background-image:
+      linear-gradient(rgba(85,200,232,.16) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(85,200,232,.16) 1px,transparent 1px);
+    background-size:46px 46px;
+    transform:perspective(420px) rotateX(64deg);
+    mask-image:linear-gradient(to top,#000 5%,transparent 85%);
+    -webkit-mask-image:linear-gradient(to top,#000 5%,transparent 85%);
+    animation:gridRun 2.6s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes gridRun{to{background-position:0 46px,0 0}}
+
+  /* expanding pulse rings */
+  .ring{
+    position:absolute;top:50%;left:50%;width:150px;height:150px;margin:-75px 0 0 -75px;
+    border:2px solid rgba(85,200,232,.55);border-radius:50%;
+    animation:ringOut 3.4s cubic-bezier(.2,.7,.3,1) infinite;pointer-events:none;
+  }
+  .ring:nth-of-type(2){animation-delay:1.13s}
+  .ring:nth-of-type(3){animation-delay:2.26s}
+  @keyframes ringOut{
+    0%{transform:scale(.3);opacity:0}
+    18%{opacity:.75}
+    100%{transform:scale(5.4);opacity:0}
+  }
+
+  .intro-inner{position:relative;z-index:3;max-width:760px;width:100%}
+
+  /* EKG trace */
+  .ekg{width:100%;max-width:560px;height:72px;display:block;margin:0 auto 10px;overflow:visible}
+  .ekg path{
+    fill:none;stroke:var(--bitstream-blue);stroke-width:3;
+    stroke-linecap:round;stroke-linejoin:round;
+    filter:drop-shadow(0 0 8px rgba(85,200,232,.85));
+    stroke-dasharray:1200;stroke-dashoffset:1200;
+    animation:trace 2.1s cubic-bezier(.5,0,.3,1) .15s forwards;
+  }
+  @keyframes trace{to{stroke-dashoffset:0}}
+  .ekg-dot{
+    fill:#fff;opacity:0;
+    filter:drop-shadow(0 0 7px var(--bitstream-blue));
+    animation:dotIn .5s ease 1.9s forwards, dotBeat 1s ease-in-out 2.4s infinite;
+  }
+  @keyframes dotIn{to{opacity:1}}
+  @keyframes dotBeat{0%,100%{r:4}45%{r:7}}
+
+  .intro-eyebrow{
+    font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--bitstream-blue);font-weight:700;margin-bottom:14px;
+    opacity:0;animation:riseIn .7s ease 1.5s forwards;
+  }
+  .intro-title{
+    font-size:clamp(38px,8.5vw,76px);line-height:.96;font-weight:800;
+    letter-spacing:-.03em;margin-bottom:4px;
+  }
+  .intro-title .w{display:inline-block;opacity:0;transform:translateY(32px) rotate(-5deg);
+    animation:wordIn .85s cubic-bezier(.2,.9,.25,1) forwards}
+  .intro-title .w:nth-child(1){animation-delay:1.75s}
+  .intro-title .w:nth-child(2){animation-delay:1.92s;color:var(--gateway-gold)}
+  @keyframes wordIn{to{opacity:1;transform:none}}
+  .bang{
+    display:inline-block;color:var(--odyssey-orange);opacity:0;
+    animation:bangIn .6s cubic-bezier(.2,1.6,.4,1) 2.2s forwards;
+  }
+  @keyframes bangIn{from{opacity:0;transform:scale(2.4) rotate(14deg)}to{opacity:1;transform:none}}
+
+  .intro-sub{
+    font-size:clamp(14px,2.4vw,18px);color:rgba(255,255,255,.82);margin:16px auto 4px;max-width:520px;
+    opacity:0;animation:riseIn .8s ease 2.35s forwards;
+  }
+  .intro-unit{
+    display:inline-block;margin-top:14px;padding:6px 16px;border-radius:999px;
+    background:rgba(85,200,232,.14);border:1px solid rgba(85,200,232,.42);
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bitstream-blue);
+    opacity:0;animation:riseIn .7s ease 2.5s forwards;
+  }
+  @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  /* counting stats */
+  .intro-stats{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:30px auto 28px;max-width:640px;
+  }
+  .istat{
+    flex:1 1 128px;min-width:118px;padding:13px 10px;border-radius:12px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(6px);
+    opacity:0;transform:translateY(18px);animation:riseIn .7s ease forwards;
+  }
+  .istat:nth-child(1){animation-delay:2.7s}
+  .istat:nth-child(2){animation-delay:2.82s}
+  .istat:nth-child(3){animation-delay:2.94s}
+  .istat:nth-child(4){animation-delay:3.06s}
+  .istat b{display:block;font-family:var(--mono);font-size:24px;font-weight:700;color:var(--bitstream-blue);line-height:1.1}
+  .istat span{display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:5px}
+
+  .begin{
+    display:inline-flex;align-items:center;gap:11px;
+    background:linear-gradient(135deg,var(--gateway-gold),var(--odyssey-orange));
+    color:#fff;font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;
+    padding:16px 38px;border-radius:999px;box-shadow:0 10px 34px rgba(247,143,30,.42);
+    opacity:0;animation:riseIn .7s ease 3.2s forwards, breathe 2.6s ease-in-out 4s infinite;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .begin:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 42px rgba(247,143,30,.55)}
+  .begin:active{transform:translateY(0) scale(.99)}
+  @keyframes breathe{0%,100%{box-shadow:0 10px 34px rgba(247,143,30,.42)}50%{box-shadow:0 10px 44px rgba(247,143,30,.72)}}
+  .begin .chev{font-size:19px;animation:nudge 1.5s ease-in-out infinite}
+  @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+  .skip{
+    position:absolute;top:18px;right:20px;z-index:5;
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(255,255,255,.62);padding:9px 15px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.22);transition:.18s;
+  }
+  .skip:hover{color:#fff;border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.08)}
+
+  .resume-note{
+    margin-top:18px;font-size:12.5px;color:rgba(255,255,255,.6);
+    opacity:0;animation:riseIn .6s ease 3.4s forwards;
+  }
+
+  /* ==========================================================
+     2. APP SHELL — HUD + station rail + scrolling body
+     ========================================================== */
+  .app{height:100%;display:flex;flex-direction:column;opacity:0}
+  .app.is-live{animation:appIn .9s cubic-bezier(.2,.8,.3,1) forwards}
+  @keyframes appIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  .hud{
+    background:var(--binary-blue);color:#fff;flex:0 0 auto;
+    padding:9px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    box-shadow:0 2px 14px rgba(14,28,66,.3);z-index:30;
+  }
+  .hud-mark{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+  .hud-logo{
+    width:34px;height:34px;border-radius:9px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--bitstream-blue),var(--dark-bitstream));
+    display:grid;place-items:center;font-size:17px;
+  }
+  .hud-name{line-height:1.15}
+  .hud-name b{display:block;font-size:13.5px;font-weight:800;letter-spacing:-.01em}
+  .hud-name span{display:block;font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:1px}
+
+  .hud-prog{flex:1 1 180px;min-width:150px}
+  .hud-prog-top{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:5px}
+  .hud-prog-top b{font-family:var(--mono);font-size:12px;color:var(--bitstream-blue);letter-spacing:0}
+  .bar{height:7px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+  .bar i{
+    display:block;height:100%;width:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--bitstream-blue),var(--gamer-green));
+    transition:width .7s cubic-bezier(.3,.9,.3,1);
+  }
+
+  .hud-xp{
+    display:flex;align-items:center;gap:7px;flex:0 0 auto;
+    background:rgba(199,146,44,.18);border:1px solid rgba(199,146,44,.5);
+    padding:5px 13px;border-radius:999px;
+  }
+  .hud-xp b{font-family:var(--mono);font-size:14px;color:var(--gateway-gold)}
+  .hud-xp span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .hud-xp.pop{animation:xpPop .55s cubic-bezier(.2,1.5,.4,1)}
+  @keyframes xpPop{0%{transform:scale(1)}45%{transform:scale(1.22)}100%{transform:scale(1)}}
+
+  .hud-badges{display:flex;gap:5px;flex:0 0 auto}
+  .bslot{
+    width:27px;height:27px;border-radius:8px;display:grid;place-items:center;font-size:13px;
+    background:rgba(255,255,255,.07);border:1px dashed rgba(255,255,255,.22);
+    filter:grayscale(1);opacity:.4;transition:.4s;
+  }
+  .bslot.got{
+    filter:none;opacity:1;border:1px solid var(--gateway-gold);
+    background:rgba(199,146,44,.22);animation:badgeIn .6s cubic-bezier(.2,1.6,.4,1);
+  }
+  @keyframes badgeIn{0%{transform:scale(0) rotate(-140deg)}100%{transform:none}}
+
+  /* station rail */
+  .rail{
+    flex:0 0 auto;background:#fff;border-bottom:1px solid var(--line);
+    display:flex;gap:7px;padding:9px 18px;overflow-x:auto;scrollbar-width:thin;z-index:20;
+  }
+  .rail::-webkit-scrollbar{height:5px}
+  .rail::-webkit-scrollbar-thumb{background:#ccd3e0;border-radius:9px}
+  .chip{
+    flex:0 0 auto;display:flex;align-items:center;gap:7px;
+    padding:6px 13px 6px 7px;border-radius:999px;
+    background:var(--paper);border:1px solid var(--line);
+    font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    transition:.22s;white-space:nowrap;
+  }
+  .chip:hover{border-color:var(--bitstream-blue);color:var(--binary-blue);transform:translateY(-1px)}
+  .chip i{
+    width:21px;height:21px;border-radius:50%;display:grid;place-items:center;
+    font-style:normal;font-size:10.5px;font-weight:800;
+    background:#dfe4ec;color:#71809b;transition:.22s;flex-shrink:0;
+  }
+  .chip.active{background:var(--binary-blue);border-color:var(--binary-blue);color:#fff}
+  .chip.active i{background:var(--bitstream-blue);color:var(--binary-blue)}
+  .chip.done i{background:var(--gamer-green);color:#fff}
+  .chip.done i::after{content:'✓'}
+  .chip.done i em{display:none}
+
+  /* scrolling lesson body */
+  .body{flex:1 1 auto;overflow-y:auto;scroll-behavior:smooth;position:relative}
+  .wrap{max-width:860px;margin:0 auto;padding:30px 22px 110px}
+
+  /* ==========================================================
+     3. LESSON TYPOGRAPHY + CONTENT BLOCKS (unchanged prose)
+     ========================================================== */
+  .lead-card{
+    background:linear-gradient(135deg,var(--binary-blue),var(--dark-bitstream));
+    color:#fff;border-radius:16px;padding:30px 30px 26px;margin-bottom:26px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .lead-card::after{
+    content:'';position:absolute;width:260px;height:260px;right:-90px;top:-110px;border-radius:50%;
+    background:radial-gradient(circle,rgba(85,200,232,.35),transparent 70%);
+  }
+  .lead-card h1{font-size:clamp(26px,4.4vw,36px);line-height:1.1;letter-spacing:-.02em;margin-bottom:12px;position:relative}
+  .lead-card p{font-size:16px;color:rgba(255,255,255,.86);position:relative;max-width:640px}
+
+  .station{margin:38px 0;scroll-margin-top:12px}
+  .st-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .st-num{
+    width:46px;height:46px;min-width:46px;border-radius:11px;display:grid;place-items:center;
+    background:var(--bitstream-blue);color:var(--binary-blue);font-weight:800;font-size:21px;
+    box-shadow:0 5px 16px rgba(85,200,232,.42);transition:.4s;
+  }
+  .station.done .st-num{background:var(--gamer-green);color:#fff;box-shadow:0 5px 16px rgba(118,192,67,.45)}
+  .st-eyebrow{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dark-bitstream);font-weight:700}
+  .st-title{font-size:clamp(20px,3.3vw,25px);font-weight:700;color:var(--binary-blue);line-height:1.18}
+
+  .station p{margin:13px 0;color:#2c3148;font-size:15.5px}
+  .term{background:rgba(199,146,44,.18);padding:1px 6px;border-radius:4px;font-weight:600;cursor:help;border-bottom:1px dotted rgba(199,146,44,.8)}
+
+  .callout{border-left:5px solid;border-radius:9px;padding:15px 19px;margin:18px 0}
+  .callout .ctitle{font-weight:700;font-size:12.5px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  .callout p{margin:0;font-size:15px}
+  .c-science{border-color:var(--portal-purple);background:#f5edfb}
+  .c-science .ctitle{color:#4f2370}
+  .c-know{border-color:var(--odyssey-orange);background:#fff5ea}
+  .c-know .ctitle{color:#b15c00}
+  .c-real{border-color:var(--gamer-green);background:#f1faea}
+  .c-real .ctitle{color:#4d8a1f}
+  .c-lab{border-color:var(--dark-bitstream);background:#e8f4f8}
+  .c-lab .ctitle{color:var(--dark-bitstream)}
+  .c-reflect{border-color:var(--pixel-pink);background:#fdf0fa}
+  .c-reflect .ctitle{color:var(--pixel-pink)}
+  .c-next{border-color:var(--gateway-gold);background:#fff8e8}
+  .c-next .ctitle{color:#8a6418}
+
+  /* video */
+  .vid{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin:20px 0;background:#000}
+  .vid video{width:100%;display:block}
+  .vid-ph{
+    aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:24px;
+    background:linear-gradient(135deg,var(--binary-blue),var(--dark-bitstream));color:#fff;
+  }
+  .vid-ph b{display:block;font-size:17px;margin-bottom:6px}
+  .vid-ph span{font-size:13px;color:rgba(255,255,255,.65);max-width:380px;display:block}
+
+  /* ==========================================================
+     4. ACTIVITY FRAME — shared chrome for every activity type
+     ========================================================== */
+  .act{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    margin:22px 0;box-shadow:var(--shadow);overflow:hidden;position:relative;
+  }
+  .act::before{
+    content:'';position:absolute;left:0;right:0;top:0;height:4px;
+    background:linear-gradient(90deg,var(--bitstream-blue),var(--portal-purple),var(--gateway-gold));
+  }
+  .act-head{padding:17px 21px 0;display:flex;align-items:flex-start;gap:13px;flex-wrap:wrap}
+  .act-kind{
+    font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;
+    background:var(--binary-blue);color:var(--bitstream-blue);
+    padding:5px 10px;border-radius:6px;flex:0 0 auto;margin-top:2px;
+  }
+  .act-head h3{font-size:18px;color:var(--binary-blue);line-height:1.25;flex:1 1 220px}
+  .act-head p{font-size:13.5px;color:var(--ink-soft);flex:1 1 100%;margin:2px 0 0}
+  .act-body{padding:17px 21px 21px}
+  .act-done{
+    display:flex;align-items:center;gap:8px;margin-top:14px;padding:11px 15px;border-radius:10px;
+    background:#f1faea;border:1px solid rgba(118,192,67,.42);color:#3d6f18;font-weight:700;font-size:14px;
+  }
+  .act-done[hidden]{display:none}
+  .act-done .tick{
+    width:22px;height:22px;border-radius:50%;background:var(--gamer-green);color:#fff;
+    display:grid;place-items:center;font-size:12px;animation:badgeIn .5s cubic-bezier(.2,1.6,.4,1);
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:7px;padding:9px 17px;border-radius:9px;
+    background:var(--binary-blue);color:#fff;font-weight:700;font-size:13.5px;transition:.18s;
+  }
+  .btn:hover{background:var(--dark-bitstream);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--binary-blue);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--bitstream-blue);background:#f2fbfe;transform:translateY(-1px)}
+  .btn.gold{background:linear-gradient(135deg,var(--gateway-gold),var(--odyssey-orange))}
+  .btn.sm{padding:6px 12px;font-size:12.5px}
+
+  /* ==========================================================
+     5. TYPE A — DRAG / CLICK BUILDER  (Build Your 60-Minute Day)
+     ========================================================== */
+  .meter{margin-bottom:16px}
+  .meter-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .meter-top b{font-family:var(--mono);font-size:26px;color:var(--binary-blue);transition:color .3s}
+  .meter-top b.hit{color:var(--gamer-green)}
+  .meter-top span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .meter-bar{height:16px;border-radius:999px;background:#eceff4;overflow:hidden;position:relative;border:1px solid var(--line)}
+  .meter-bar i{
+    display:block;height:100%;width:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--odyssey-orange),var(--gateway-gold));
+    transition:width .5s cubic-bezier(.3,.9,.3,1),background .4s;
+  }
+  .meter-bar i.hit{background:linear-gradient(90deg,var(--gamer-green),#4e9e1f)}
+  .meter-note{font-size:13px;color:var(--ink-soft);margin-top:7px;min-height:20px}
+
+  .pool{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px;min-height:46px}
+  .tile{
+    display:flex;align-items:center;gap:8px;padding:8px 13px;border-radius:10px;
+    background:#fff;border:1.5px solid var(--line);font-size:13.5px;font-weight:600;color:var(--binary-blue);
+    cursor:grab;transition:.16s;user-select:none;
+  }
+  .tile:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(14,28,66,.13);border-color:var(--bitstream-blue)}
+  .tile.picked{border-color:var(--portal-purple);background:#f5edfb;box-shadow:0 0 0 3px rgba(103,48,143,.18);transform:translateY(-2px)}
+  .tile .min{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .tile .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .tile[data-i="vig"] .dot{background:var(--pixel-pink)}
+  .tile[data-i="mod"] .dot{background:var(--odyssey-orange)}
+  .tile[data-i="light"] .dot{background:var(--bitstream-blue)}
+  .tile[data-i="sed"] .dot{background:#aeb6c6}
+  .tile.placed{cursor:pointer}
+
+  .slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px}
+  .slot{
+    border:2px dashed #d3dae6;border-radius:12px;padding:11px;min-height:112px;
+    background:#fafbfd;transition:.2s;
+  }
+  .slot.over,.slot.armed{border-color:var(--portal-purple);background:#f7f1fc;transform:scale(1.015)}
+  .slot h5{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:9px}
+  .slot .drops{display:flex;flex-direction:column;gap:6px}
+
+  .legend{display:flex;flex-wrap:wrap;gap:13px;margin-top:13px;font-size:12px;color:var(--ink-soft)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:9px;height:9px;border-radius:50%;display:block}
+
+  /* ==========================================================
+     6. TYPE B — HOTSPOT EXPLORER  (Five Systems)
+     ========================================================== */
+  .explore{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:start}
+  @media(max-width:620px){.explore{grid-template-columns:1fr}}
+  .figure{
+    position:relative;aspect-ratio:220/380;background:
+      radial-gradient(circle at 50% 36%,rgba(85,200,232,.16),transparent 66%),#f3f6fa;
+    border-radius:14px;border:1px solid var(--line);overflow:hidden;
+  }
+  .figure svg{position:absolute;inset:0;width:100%;height:100%}
+  .hot{
+    position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
+    background:#fff;border:2.5px solid var(--bitstream-blue);display:grid;place-items:center;
+    font-size:15px;box-shadow:0 4px 12px rgba(14,28,66,.2);transition:.2s;z-index:2;
+  }
+  .hot::after{
+    content:'';position:absolute;inset:-5px;border-radius:50%;
+    border:2px solid var(--bitstream-blue);opacity:.55;animation:hotPing 2.2s ease-out infinite;
+  }
+  .hot.seen::after{display:none}
+  .hot.seen{border-color:var(--gamer-green)}
+  .hot.on{transform:scale(1.22);border-color:var(--portal-purple);box-shadow:0 0 0 5px rgba(103,48,143,.2),0 6px 16px rgba(14,28,66,.26);z-index:3}
+  @keyframes hotPing{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+
+  .detail{
+    background:#fafbfd;border:1px solid var(--line);border-radius:14px;padding:19px;min-height:214px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .detail .ph{text-align:center;color:var(--ink-soft);font-size:14px}
+  .detail .ph b{display:block;font-size:30px;margin-bottom:8px}
+  .detail .pane{animation:paneIn .45s cubic-bezier(.2,.9,.3,1)}
+  @keyframes paneIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+  .detail .pane h4{font-size:20px;color:var(--binary-blue);margin-bottom:4px;display:flex;align-items:center;gap:9px}
+  .detail .pane .role{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--portal-purple);font-weight:700;margin-bottom:9px}
+  .detail .pane p{font-size:14.5px;color:#2c3148;margin:0 0 11px}
+  .detail .pane .fact{
+    font-size:13px;color:var(--dark-bitstream);background:#e8f4f8;border-radius:8px;padding:9px 12px;
+    border-left:3px solid var(--dark-bitstream);
+  }
+  .tally{display:flex;align-items:center;gap:9px;margin-top:13px;font-size:13px;color:var(--ink-soft)}
+  .tally .pips{display:flex;gap:4px}
+  .tally .pips i{width:10px;height:10px;border-radius:50%;background:#dde3ec;transition:.3s}
+  .tally .pips i.on{background:var(--gamer-green);transform:scale(1.18)}
+
+  /* ==========================================================
+     7. TYPE C — LIVE SIMULATOR  (Heart-Rate Zone Lab)
+     ========================================================== */
+  .sim{display:grid;grid-template-columns:168px 1fr;gap:20px;align-items:center}
+  @media(max-width:620px){.sim{grid-template-columns:1fr}}
+  .heart-stage{display:grid;place-items:center;gap:9px}
+  .heart{font-size:72px;line-height:1;transform-origin:center;will-change:transform}
+  .heart.beat{animation:beat var(--bd,1s) ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.17)}28%{transform:scale(1)}42%{transform:scale(1.1)}}
+  .bpm{font-family:var(--mono);font-size:36px;font-weight:700;color:var(--binary-blue);line-height:1}
+  .bpm small{font-size:12px;color:var(--ink-soft);letter-spacing:.12em;display:block;margin-top:3px;font-family:var(--font)}
+
+  .zones{display:flex;height:40px;border-radius:9px;overflow:hidden;border:1px solid var(--line);margin:4px 0 7px}
+  .zone{flex:1;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff;letter-spacing:.04em;opacity:.34;transition:.3s;text-align:center;line-height:1.1;padding:0 3px}
+  .zone.on{opacity:1;transform:scaleY(1.1)}
+  .z1{background:#8fd4ea}.z2{background:var(--bitstream-blue)}.z3{background:var(--gamer-green)}
+  .z4{background:var(--odyssey-orange)}.z5{background:var(--pixel-pink)}
+  .zone-label{font-size:13px;color:var(--ink-soft);min-height:22px;margin-bottom:11px}
+  .zone-label b{color:var(--binary-blue)}
+
+  input[type=range]{width:100%;accent-color:var(--portal-purple);height:28px}
+  .sim-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:11px}
+  .mini{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-soft)}
+  .mini input{
+    width:62px;padding:6px 8px;border:1.5px solid var(--line);border-radius:7px;
+    font-family:var(--mono);font-size:14px;text-align:center;
+  }
+  .readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin-top:13px}
+  .ro{background:#fafbfd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .ro b{display:block;font-family:var(--mono);font-size:18px;color:var(--binary-blue)}
+  .ro span{display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px}
+  .scen{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+
+  /* ==========================================================
+     8. TYPE D — REVEAL / FLIP CARDS  (Brain Lab)
+     ========================================================== */
+  .flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:11px}
+  .flip{perspective:900px;aspect-ratio:1/1.08;cursor:pointer}
+  .flip-in{position:relative;width:100%;height:100%;transition:transform .62s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d}
+  .flip.on .flip-in{transform:rotateY(180deg)}
+  .face{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:13px;padding:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;border:1px solid var(--line);
+  }
+  .face.front{background:linear-gradient(145deg,#fff,#f4f7fb)}
+  .face.front .ic{font-size:30px;margin-bottom:9px}
+  .face.front b{font-size:14px;color:var(--binary-blue);line-height:1.25}
+  .face.front em{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--portal-purple);font-style:normal;font-weight:700;margin-top:9px}
+  .face.back{
+    transform:rotateY(180deg);background:linear-gradient(145deg,var(--portal-purple),#4a1f6b);
+    color:#fff;border-color:transparent;justify-content:center;
+  }
+  .face.back p{font-size:12.8px;line-height:1.45;color:rgba(255,255,255,.93);margin:0}
+  .face.back b{display:block;font-size:13px;color:var(--bitstream-blue);margin-bottom:6px}
+
+  /* ==========================================================
+     9. TYPE E — SORTER  (Character Skills)
+     ========================================================== */
+  .sorter-q{
+    background:#fafbfd;border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin-bottom:13px;
+  }
+  .sorter-q .count{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .sorter-q p{font-size:15.5px;color:#2c3148;margin:7px 0 0}
+  .buckets{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:9px}
+  .bucket{
+    border:2px solid var(--line);border-radius:11px;padding:13px 10px;text-align:center;transition:.18s;background:#fff;
+  }
+  .bucket:hover{border-color:var(--bitstream-blue);transform:translateY(-2px);box-shadow:0 6px 16px rgba(14,28,66,.11)}
+  .bucket .ic{font-size:22px;display:block;margin-bottom:5px}
+  .bucket b{font-size:13.5px;color:var(--binary-blue);display:block}
+  .bucket.right{border-color:var(--gamer-green);background:#f1faea;animation:badgeIn .45s}
+  .bucket.wrong{border-color:#e05252;background:#fdeeee;animation:shake .4s}
+  @keyframes shake{0%,100%{transform:translateX(0)}22%{transform:translateX(-7px)}48%{transform:translateX(7px)}74%{transform:translateX(-4px)}}
+  .fb{margin-top:12px;padding:12px 15px;border-radius:10px;font-size:14px;animation:paneIn .35s}
+  .fb.ok{background:#f1faea;border-left:4px solid var(--gamer-green);color:#3d6f18}
+  .fb.no{background:#fdeeee;border-left:4px solid #e05252;color:#9b2c2c}
+
+  /* ==========================================================
+     10. TYPE F — DATA LOGGER  (Coach's Lab: resting heart rate)
+     ========================================================== */
+  .pulse-pad{
+    width:100%;max-width:260px;aspect-ratio:1;margin:0 auto;border-radius:50%;
+    background:radial-gradient(circle at 50% 42%,var(--dark-bitstream),var(--binary-blue));
+    color:#fff;display:grid;place-items:center;text-align:center;
+    box-shadow:0 12px 36px rgba(14,28,66,.3);transition:transform .08s;user-select:none;
+  }
+  .pulse-pad:active{transform:scale(.965)}
+  .pulse-pad.live{animation:padGlow 1.1s ease-in-out infinite}
+  @keyframes padGlow{0%,100%{box-shadow:0 12px 36px rgba(14,28,66,.3)}50%{box-shadow:0 12px 46px rgba(85,200,232,.55)}}
+  .pulse-pad .big{font-family:var(--mono);font-size:50px;font-weight:700;line-height:1}
+  .pulse-pad .lbl{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:7px}
+  .pulse-pad .hint{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:9px;max-width:180px}
+  .tap-flash{animation:tapF .22s ease}
+  @keyframes tapF{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+
+  .log-table{width:100%;border-collapse:collapse;margin-top:15px;font-size:14px}
+  .log-table th{
+    text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);padding:7px 9px;border-bottom:2px solid var(--line);
+  }
+  .log-table td{padding:9px;border-bottom:1px solid var(--line)}
+  .log-table td.num{font-family:var(--mono);font-weight:700;color:var(--binary-blue)}
+  .log-table tr.empty td{color:#aeb6c6;font-style:italic}
+  .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px;margin-top:14px}
+
+  .scale{margin-top:16px}
+  .scale-bar{height:28px;border-radius:8px;display:flex;overflow:hidden;border:1px solid var(--line);position:relative}
+  .scale-bar div{flex:1;display:grid;place-items:center;font-size:9.5px;font-weight:800;color:#fff;letter-spacing:.05em}
+  .sc1{background:var(--gamer-green);flex:0 0 26%!important}
+  .sc2{background:var(--bitstream-blue);flex:0 0 38%!important}
+  .sc3{background:var(--odyssey-orange);flex:0 0 22%!important}
+  .sc4{background:var(--pixel-pink);flex:0 0 14%!important}
+  .needle{
+    position:absolute;top:-7px;width:3px;height:42px;background:var(--binary-blue);border-radius:2px;
+    transition:left .7s cubic-bezier(.3,.9,.3,1);transform:translateX(-50%);
+  }
+  .needle::after{
+    content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+    border:6px solid transparent;border-top-color:var(--binary-blue);
+  }
+  .scale-key{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-soft);margin-top:14px;font-family:var(--mono)}
+
+  /* ==========================================================
+     11. TYPE G — MATCHING GAME  (Words to Know)
+     ========================================================== */
+  .match{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  @media(max-width:560px){.match{grid-template-columns:1fr}}
+  .mcol h5{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:9px}
+  .mcol .stack{display:flex;flex-direction:column;gap:7px}
+  .mitem{
+    padding:10px 13px;border-radius:10px;border:1.5px solid var(--line);background:#fff;
+    font-size:13.5px;text-align:left;transition:.16s;line-height:1.35;
+  }
+  .mitem:hover:not(.locked){border-color:var(--bitstream-blue);transform:translateX(3px)}
+  .mitem.term-i{font-weight:700;color:var(--binary-blue)}
+  .mitem.sel{border-color:var(--portal-purple);background:#f5edfb;box-shadow:0 0 0 3px rgba(103,48,143,.16)}
+  .mitem.locked{border-color:var(--gamer-green);background:#f1faea;color:#3d6f18;cursor:default;opacity:.9}
+  .mitem.bad{animation:shake .4s;border-color:#e05252;background:#fdeeee}
+  .match-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;flex-wrap:wrap;gap:9px}
+  .match-top .score{font-family:var(--mono);font-size:15px;color:var(--binary-blue);font-weight:700}
+
+  /* ==========================================================
+     12. TYPE H — KNOWLEDGE CHECK  (Mission Check)
+     ========================================================== */
+  .quiz-prog{display:flex;gap:5px;margin-bottom:14px}
+  .quiz-prog i{flex:1;height:5px;border-radius:999px;background:#e2e7ef;transition:.35s}
+  .quiz-prog i.on{background:var(--bitstream-blue)}
+  .quiz-prog i.ok{background:var(--gamer-green)}
+  .quiz-prog i.no{background:var(--odyssey-orange)}
+  .qtext{font-size:17px;font-weight:700;color:var(--binary-blue);margin-bottom:14px;line-height:1.35}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{
+    padding:12px 15px;border-radius:11px;border:1.5px solid var(--line);background:#fff;
+    text-align:left;font-size:14.5px;transition:.16s;display:flex;gap:11px;align-items:flex-start;
+  }
+  .opt:hover:not(:disabled){border-color:var(--bitstream-blue);transform:translateX(3px)}
+  .opt .k{
+    width:23px;height:23px;border-radius:6px;background:var(--paper);color:var(--ink-soft);
+    display:grid;place-items:center;font-size:11.5px;font-weight:800;flex-shrink:0;margin-top:1px;
+  }
+  .opt.right{border-color:var(--gamer-green);background:#f1faea}
+  .opt.right .k{background:var(--gamer-green);color:#fff}
+  .opt.wrong{border-color:#e05252;background:#fdeeee}
+  .opt.wrong .k{background:#e05252;color:#fff}
+  .opt:disabled{cursor:default}
+
+  /* ==========================================================
+     13. DEBRIEF
+     ========================================================== */
+  textarea{
+    width:100%;min-height:118px;padding:13px 15px;border:1.5px solid var(--line);border-radius:11px;
+    font:inherit;font-size:14.5px;resize:vertical;line-height:1.55;
+  }
+  textarea:focus{border-color:var(--bitstream-blue);outline:none;box-shadow:0 0 0 3px rgba(85,200,232,.2)}
+  .saved-tag{font-size:12px;color:var(--gamer-green);font-weight:700;opacity:0;transition:.3s}
+  .saved-tag.on{opacity:1}
+
+  .debrief{
+    background:linear-gradient(145deg,var(--binary-blue),var(--dark-bitstream));
+    color:#fff;border-radius:18px;padding:28px;margin-top:26px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+  }
+  .debrief::after{
+    content:'';position:absolute;width:300px;height:300px;right:-110px;bottom:-140px;border-radius:50%;
+    background:radial-gradient(circle,rgba(199,146,44,.34),transparent 70%);
+  }
+  .debrief h3{font-size:24px;margin-bottom:6px;position:relative}
+  .debrief > p{color:rgba(255,255,255,.78);font-size:15px;position:relative;max-width:560px}
+  .dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:10px;margin:20px 0;position:relative}
+  .dstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:13px}
+  .dstat b{display:block;font-family:var(--mono);font-size:23px;color:var(--bitstream-blue)}
+  .dstat span{display:block;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:4px}
+  .debrief .acts{display:flex;flex-wrap:wrap;gap:9px;position:relative}
+  .debrief .btn.ghost{color:#fff;border-color:rgba(255,255,255,.34)}
+  .debrief .btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+  /* ==========================================================
+     14. TOASTS + CONFETTI
+     ========================================================== */
+  .toasts{position:fixed;right:16px;bottom:16px;z-index:150;display:flex;flex-direction:column;gap:9px;pointer-events:none}
+  .toast{
+    background:var(--binary-blue);color:#fff;border-radius:13px;padding:13px 19px;
+    box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:13px;max-width:330px;
+    border-left:4px solid var(--gateway-gold);animation:toastIn .5s cubic-bezier(.2,1.3,.4,1);
+  }
+  .toast.out{animation:toastOut .45s ease forwards}
+  @keyframes toastIn{from{opacity:0;transform:translateX(60px) scale(.9)}to{opacity:1;transform:none}}
+  @keyframes toastOut{to{opacity:0;transform:translateX(60px) scale(.92)}}
+  .toast .ic{font-size:24px;flex-shrink:0}
+  .toast b{display:block;font-size:14px}
+  .toast span{display:block;font-size:11.5px;color:rgba(255,255,255,.66);margin-top:1px}
+
+  .conf{position:fixed;inset:0;pointer-events:none;z-index:140;overflow:hidden}
+  .conf i{position:absolute;width:9px;height:14px;border-radius:2px;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(112vh) rotate(760deg);opacity:0}}
+
+  /* ==========================================================
+     15. PE THEME LAYER
+     Everything above is structure. This block is the look:
+     athletic type, the line-icon set, and a court/track surface
+     under the lesson instead of flat paper.
+     ========================================================== */
+
+  /* ---- 15a. icon set ---------------------------------------- */
+  .sprite{display:none}
+  .ic{
+    width:1em;height:1em;display:inline-block;flex:0 0 auto;vertical-align:-.14em;
+    fill:none;stroke:currentColor;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;
+  }
+  .ic.fill{fill:currentColor;stroke:none}
+
+  /* ---- 15b. type -------------------------------------------- */
+  .lead-card h1,.st-title,.act-head h3,.qtext,.debrief h3,.detail .pane h4,
+  .intro-title,.slot h5,.mcol h5,.log-table th,.bucket b,.face.front b,
+  .hud-name b,.dstat span,.ro span,.zone,.act-kind,.st-eyebrow,.chip,.btn,
+  .begin,.skip,.intro-eyebrow,.intro-unit,.istat span,.callout .ctitle,
+  .meter-top span,.hud-prog-top,.hud-xp span,.tally,.sorter-q .count,
+  .pulse-pad .lbl,.legend,.scale-bar div{
+    font-family:var(--display);
+  }
+  .st-title{font-size:clamp(23px,3.6vw,29px);letter-spacing:-.005em}
+  .lead-card h1{font-size:clamp(30px,5vw,42px);letter-spacing:.004em;text-transform:uppercase}
+  .act-head h3{font-size:21px;letter-spacing:.01em}
+  .qtext{font-size:20px}
+  .debrief h3{font-size:28px;text-transform:uppercase;letter-spacing:.02em}
+  .detail .pane h4{font-size:22px}
+  .st-eyebrow{font-size:11.5px;letter-spacing:.22em}
+
+  /* every number on the page is a scoreboard number */
+  .hud-prog-top b,.hud-xp b,.meter-top b,.bpm,.ro b,.pulse-pad .big,.istat b,
+  .log-table td.num,.scale-key,.match-top .score,.dstat b,.tile .min,
+  .mini input,.st-num,.chip i,.opt .k,.sorter-q .count{
+    font-family:var(--mono);font-variant-numeric:tabular-nums;
+  }
+  .hud-prog-top b{font-size:14px}
+  .hud-xp b{font-size:17px}
+  .meter-top b{font-size:30px}
+  .bpm{font-size:42px}
+  .ro b{font-size:21px}
+  .pulse-pad .big{font-size:58px}
+  .dstat b{font-size:27px}
+  .match-top .score{font-size:17px}
+
+  .btn,.act-kind,.chip{text-transform:uppercase;letter-spacing:.09em;font-weight:700}
+  .btn{font-size:14.5px;border-radius:7px;padding:10px 18px}
+  .btn.sm{font-size:13px;padding:7px 13px}
+  .act-kind{
+    font-size:11px;letter-spacing:.2em;border-radius:4px;padding:6px 10px;
+    background:linear-gradient(135deg,var(--gateway-gold),var(--odyssey-orange));color:#fff;
+  }
+
+  /* ---- 15c. the surface: track + court lines ----------------- */
+  body{background:#e9edf4}
+  .body{
+    background:
+      repeating-linear-gradient(118deg,rgba(14,28,66,.021) 0 2px,transparent 2px 11px),
+      radial-gradient(1000px 520px at 50% -4%,rgba(85,200,232,.13),transparent 64%),
+      radial-gradient(780px 460px at 104% 102%,rgba(199,146,44,.10),transparent 62%),
+      #eef1f6;
+  }
+  .court{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .court svg{width:100%;height:100%;display:block}
+  .wrap{position:relative;z-index:1}
+
+  /* ---- 15d. HUD as a scoreboard ----------------------------- */
+  .hud{
+    background:
+      repeating-linear-gradient(118deg,rgba(255,255,255,.035) 0 11px,transparent 11px 26px),
+      linear-gradient(180deg,#16295c 0%,var(--binary-blue) 100%);
+    border-bottom:3px solid var(--gateway-gold);padding:10px 18px;
+  }
+  .hud-logo{
+    background:linear-gradient(140deg,var(--gateway-gold),var(--odyssey-orange));
+    color:#fff;border-radius:8px;
+  }
+  .hud-logo .ic{width:21px;height:21px;stroke-width:1.9}
+  .hud-name b{font-size:16px;text-transform:uppercase;letter-spacing:.035em;font-weight:800}
+  .hud-name span{font-size:9.5px;letter-spacing:.2em}
+  .hud-prog-top{letter-spacing:.2em;font-size:10px}
+  .bar{height:8px;background:rgba(0,0,0,.26);box-shadow:inset 0 1px 2px rgba(0,0,0,.3)}
+  .hud-xp{border-radius:6px;padding:5px 12px}
+  .hud-xp span{letter-spacing:.2em}
+  .bslot{border-radius:6px}
+  .bslot .ic{width:15px;height:15px;color:rgba(255,255,255,.8)}
+  .bslot.got .ic{color:var(--gateway-gold)}
+
+  /* ---- 15e. rail as lane markers ---------------------------- */
+  .rail{
+    background:linear-gradient(180deg,#fff,#f4f7fb);
+    border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(199,146,44,.35);
+  }
+  .chip{
+    border-radius:6px;font-size:13.5px;padding:7px 14px 7px 7px;
+    background:#fff;border:1px solid var(--line);
+  }
+  .chip i{border-radius:5px;font-size:12px;font-weight:800}
+  .chip.active{box-shadow:0 4px 12px rgba(14,28,66,.26)}
+
+  /* ---- 15f. jersey numbers + court lines on the cards ------- */
+  .st-num{
+    border-radius:10px 10px 15px 15px;font-size:26px;font-weight:800;
+    background:linear-gradient(165deg,#1d3570,var(--binary-blue));color:#fff;
+    border:2px solid rgba(255,255,255,.92);
+    box-shadow:0 6px 18px rgba(14,28,66,.3);
+  }
+  .station.done .st-num{
+    background:linear-gradient(165deg,#86cf52,var(--gamer-green));color:#fff;
+    box-shadow:0 6px 18px rgba(118,192,67,.45);
+  }
+  .act::before{height:5px;background:linear-gradient(90deg,var(--gateway-gold),var(--bitstream-blue) 60%,var(--portal-purple))}
+  .act::after{
+    content:'';position:absolute;right:-42px;top:-42px;width:150px;height:150px;border-radius:50%;
+    border:15px solid rgba(85,200,232,.08);pointer-events:none;
+  }
+  .act-head,.act-body{position:relative;z-index:1}
+  .lead-card{background:linear-gradient(135deg,#0a1734,var(--binary-blue) 46%,var(--dark-bitstream))}
+  .lead-card::before{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(118deg,rgba(255,255,255,.05) 0 15px,transparent 15px 36px);
+  }
+  .callout{border-radius:4px 10px 10px 4px}
+  .callout .ctitle{font-size:13px;letter-spacing:.18em}
+  .callout .ctitle .ic{width:17px;height:17px}
+
+  /* ---- 15g. icons inside the activities --------------------- */
+  .hot .ic{width:17px;height:17px;color:var(--binary-blue);stroke-width:1.9}
+  .hot.on .ic{color:var(--portal-purple)}
+  .hot.seen .ic{color:#3d7a18}
+  .detail .ph .ic{width:34px;height:34px;color:#9aa6bd;display:block;margin:0 auto 9px}
+  .detail .pane h4 .ic{width:23px;height:23px;color:var(--dark-bitstream)}
+  .face.front .ic{width:31px;height:31px;margin-bottom:9px;color:var(--portal-purple)}
+  .bucket .ic{width:26px;height:26px;display:block;margin:0 auto 6px;color:var(--dark-bitstream)}
+  .bucket.right .ic{color:#3d6f18}
+  .bucket.wrong .ic{color:#c23b3b}
+  .toast .tico{display:flex;flex-shrink:0}
+  .toast .tico .ic{width:24px;height:24px;color:var(--gateway-gold)}
+  .face.front .ic{display:block;margin:0 auto 9px}
+  .heart{font-size:0;color:#e0394f;display:grid;place-items:center}
+  .heart .ic{width:88px;height:88px;filter:drop-shadow(0 8px 18px rgba(224,57,79,.3))}
+  @media(max-width:620px){.heart .ic{width:74px;height:74px}}
+
+  /* ---- 15h. anatomy layer under the hotspots ---------------- */
+  .figure{
+    background:
+      radial-gradient(circle at 50% 34%,rgba(85,200,232,.16),transparent 68%),
+      #f1f5fa;
+  }
+  .anat g{opacity:.45;transition:opacity .35s}
+  .anat g.seen{opacity:.72}
+  .anat g.lit,.anat g.seen.lit{opacity:1}
+  .anat .organ{fill:#fdfeff;stroke:#67748f;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+  .anat g.lit .organ{stroke-width:2.7}
+  /* markers are translucent so the organ underneath stays readable */
+  .hot{width:29px;height:29px;margin:-14.5px 0 0 -14.5px;background:rgba(255,255,255,.9)}
+  .hot.on{background:#fff}
+  .anat g.lit[data-an="cardio"] .organ{fill:#ffd9df;stroke:#d8445c}
+  .anat g.lit[data-an="resp"] .organ{fill:#d8eef9;stroke:#2f8fb5}
+  .anat g.lit[data-an="nervous"] .organ{fill:#ece0f7;stroke:#7a46a8}
+  .anat g.lit[data-an="muscular"] .organ{fill:#ffe6cf;stroke:#d2731f}
+  .anat g.lit[data-an="skeletal"] .organ{fill:#f1f3f7;stroke:#5a6880}
+
+  /* ---- 15i. assorted trims ---------------------------------- */
+  .zone{font-size:11px;letter-spacing:.07em}
+  .slot{border-radius:9px}
+  .slot h5{font-size:11.5px;letter-spacing:.17em}
+  .tile{border-radius:7px}
+  .pulse-pad .lbl{letter-spacing:.24em;font-size:12px}
+  .mitem,.opt,.bucket{border-radius:8px}
+  .log-table th{font-size:11.5px;letter-spacing:.17em}
+  .debrief{border-radius:16px}
+  .debrief::before{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(118deg,rgba(255,255,255,.045) 0 15px,transparent 15px 36px);
+  }
+  .debrief > *{position:relative}
+  .copy-out{font-family:var(--code)}
+
+  /* ==========================================================
+     16. REDUCED MOTION
+     ========================================================== */
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms!important;animation-iteration-count:1!important;
+      transition-duration:.01ms!important;scroll-behavior:auto!important;
+    }
+    .intro-grid,.ring{display:none}
+    .intro-eyebrow,.intro-sub,.intro-unit,.istat,.begin,.resume-note,
+    .intro-title .w,.bang,.ekg-dot{opacity:1;transform:none}
+    .ekg path{stroke-dashoffset:0}
+    .app{opacity:1}
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     ICON SET — line icons, PE themed, one sprite, no dependencies.
+     Referenced as <svg class="ic"><use href="#i-name"/></svg>
+     ============================================================ -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+
+  <symbol id="i-whistle" viewBox="0 0 24 24">
+    <circle cx="10" cy="13.2" r="6.8"/>
+    <circle cx="10" cy="13.2" r="2.2"/>
+    <path d="M15.6 8.5 20.2 6.2a1.4 1.4 0 0 1 2 1.3v1.2a1.4 1.4 0 0 1-1.4 1.4h-3.5"/>
+  </symbol>
+
+  <symbol id="i-stopwatch" viewBox="0 0 24 24">
+    <circle cx="12" cy="14" r="7"/>
+    <path d="M12 10.8V14l2.2 1.7"/>
+    <path d="M9.6 3.2h4.8M12 3.2V7M18.4 7.6 19.9 6.2"/>
+  </symbol>
+
+  <symbol id="i-clipboard" viewBox="0 0 24 24">
+    <rect x="4.8" y="4.6" width="14.4" height="16" rx="2.2"/>
+    <path d="M9.2 4.6V3.5A1.4 1.4 0 0 1 10.6 2.1h2.8a1.4 1.4 0 0 1 1.4 1.4v1.1Z"/>
+    <path d="M8.4 10.8h7.2M8.4 14.2h4.8"/>
+  </symbol>
+
+  <symbol id="i-chart" viewBox="0 0 24 24">
+    <path d="M4 19.4h16"/>
+    <path d="M4.4 15.6 9 10.6l3.3 2.9L19.4 6"/>
+    <path d="M15.6 6h3.8v3.8"/>
+  </symbol>
+
+  <symbol id="i-brain" viewBox="0 0 24 24">
+    <path d="M12 5.4a2.9 2.9 0 0 0-5.4 1.3A2.7 2.7 0 0 0 4.9 9.4a2.7 2.7 0 0 0 1 2.1 2.8 2.8 0 0 0 .7 3.5A2.9 2.9 0 0 0 12 18.8Z"/>
+    <path d="M12 5.4a2.9 2.9 0 0 1 5.4 1.3 2.7 2.7 0 0 1 1.7 2.7 2.7 2.7 0 0 1-1 2.1 2.8 2.8 0 0 1-.7 3.5A2.9 2.9 0 0 1 12 18.8Z"/>
+    <path d="M12 5.4v13.4"/>
+  </symbol>
+
+  <symbol id="i-lungs" viewBox="0 0 24 24">
+    <path d="M12 3.4v8.2"/><path d="M9.4 7h5.2"/>
+    <path d="M12 11.3c-2.1 0-3 1.2-3.5 2.8l-1.7 5.1a1.8 1.8 0 0 0 1.5 2.3l1.7.2A2.1 2.1 0 0 0 12 19.5Z"/>
+    <path d="M12 11.3c2.1 0 3 1.2 3.5 2.8l1.7 5.1a1.8 1.8 0 0 1-1.5 2.3l-1.7.2A2.1 2.1 0 0 1 12 19.5Z"/>
+  </symbol>
+
+  <symbol id="i-heart" viewBox="0 0 24 24">
+    <path d="M12 20.4C7 16.8 3.8 13.9 3.8 10.7A4 4 0 0 1 12 8.1a4 4 0 0 1 8.2 2.6c0 3.2-3.2 6.1-8.2 9.7Z"/>
+    <path d="M4.6 12.4h3.2l1.5-2.9 2 4.6 1.5-2.6h4.4"/>
+  </symbol>
+
+  <symbol id="i-heart-solid" viewBox="0 0 24 24">
+    <path class="hs-body" d="M12 21C6.4 17 3 13.9 3 10.4A4.6 4.6 0 0 1 12 7.6a4.6 4.6 0 0 1 9 2.8C21 13.9 17.6 17 12 21Z" fill="currentColor" stroke="none"/>
+    <path d="M3.9 12.6h3.4l1.6-3.1 2.2 4.9 1.6-2.8h4.7" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="i-dumbbell" viewBox="0 0 24 24">
+    <path d="M4.2 9.4v5.2M7 7.2v9.6M17 7.2v9.6M19.8 9.4v5.2M7 12h10"/>
+  </symbol>
+
+  <symbol id="i-bone" viewBox="0 0 24 24">
+    <path d="M9.3 14.7 14.7 9.3"/>
+    <circle cx="7" cy="15.3" r="2.2"/><circle cx="8.7" cy="17" r="2.2"/>
+    <circle cx="15.3" cy="7" r="2.2"/><circle cx="17" cy="8.7" r="2.2"/>
+  </symbol>
+
+  <symbol id="i-team" viewBox="0 0 24 24">
+    <circle cx="9" cy="8.2" r="2.7"/>
+    <path d="M3.8 19.2v-1.3A4.1 4.1 0 0 1 7.9 13.8h2.2a4.1 4.1 0 0 1 4.1 4.1v1.3"/>
+    <circle cx="17.2" cy="9.4" r="2.2"/>
+    <path d="M15.4 14.2h1.6a3.5 3.5 0 0 1 3.5 3.5v1.5"/>
+  </symbol>
+
+  <symbol id="i-book" viewBox="0 0 24 24">
+    <path d="M3.8 5.3A1.8 1.8 0 0 1 5.6 3.5h4.9a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1 1.5-1.5h4.9a1.8 1.8 0 0 1 1.8 1.8v12a1.3 1.3 0 0 1-1.3 1.3h-5.4a1.5 1.5 0 0 0-1.5 1.4 1.5 1.5 0 0 0-1.5-1.4H5.1a1.3 1.3 0 0 1-1.3-1.3Z"/>
+    <path d="M12 5v15"/>
+  </symbol>
+
+  <symbol id="i-target" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="4.4"/>
+    <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <symbol id="i-trophy" viewBox="0 0 24 24">
+    <path d="M8 3.6h8v4.8a4 4 0 0 1-8 0Z"/>
+    <path d="M8 5.2H5.5a.9.9 0 0 0-.9 1.1A3.7 3.7 0 0 0 8.2 9.6"/>
+    <path d="M16 5.2h2.5a.9.9 0 0 1 .9 1.1A3.7 3.7 0 0 1 15.8 9.6"/>
+    <path d="M12 12.4v3.4"/>
+    <path d="M8.6 20.4h6.8l-.6-2.8a1.3 1.3 0 0 0-1.3-1h-3a1.3 1.3 0 0 0-1.3 1Z"/>
+  </symbol>
+
+  <symbol id="i-flask" viewBox="0 0 24 24">
+    <path d="M10 3.2v6.2l-5 8.3a2 2 0 0 0 1.7 3.1h10.6a2 2 0 0 0 1.7-3.1l-5-8.3V3.2"/>
+    <path d="M8.8 3.2h6.4M7.4 14.8h9.2"/>
+  </symbol>
+
+  <symbol id="i-bulb" viewBox="0 0 24 24">
+    <path d="M12 3.4a5.7 5.7 0 0 1 3.4 10.2 2.2 2.2 0 0 0-.9 1.7v.4h-5v-.4a2.2 2.2 0 0 0-.9-1.7A5.7 5.7 0 0 1 12 3.4Z"/>
+    <path d="M9.3 18.2h5.4M10.4 20.8h3.2"/>
+  </symbol>
+
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21.2s6.4-5.7 6.4-10.3A6.4 6.4 0 0 0 5.6 10.9C5.6 15.5 12 21.2 12 21.2Z"/>
+    <circle cx="12" cy="10.8" r="2.4"/>
+  </symbol>
+
+  <symbol id="i-pencil" viewBox="0 0 24 24">
+    <path d="M4 20.2h4.2L19.9 8.5a2.1 2.1 0 0 0-3-3L5.2 17.2Z"/>
+    <path d="M14.9 6.6l3 3"/>
+  </symbol>
+
+  <symbol id="i-flag" viewBox="0 0 24 24">
+    <path d="M6 21V3.6"/>
+    <path d="M6 4.6h11l-2 3.9 2 3.9H6"/>
+  </symbol>
+
+  <symbol id="i-speech" viewBox="0 0 24 24">
+    <path d="M21 12.8a3.4 3.4 0 0 1-3.4 3.4H10l-4.4 3.3V16A3.4 3.4 0 0 1 3 12.6V7.5A3.4 3.4 0 0 1 6.4 4.1h11.2A3.4 3.4 0 0 1 21 7.5Z"/>
+  </symbol>
+
+  <symbol id="i-compass" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.4"/>
+    <path d="M15.4 8.6 13.4 13.4 8.6 15.4 10.6 10.6Z"/>
+  </symbol>
+
+  <symbol id="i-balance" viewBox="0 0 24 24">
+    <path d="M12 4.2v15.4M6.6 7h10.8M8.6 19.6h6.8"/>
+    <path d="M6.6 7 4 13.2h5.2ZM17.4 7l-2.6 6.2H20Z"/>
+  </symbol>
+
+  <symbol id="i-rebound" viewBox="0 0 24 24">
+    <path d="M20 12a8 8 0 1 1-2.7-6"/>
+    <path d="M20 4.2v4.6h-4.6"/>
+  </symbol>
+
+  <symbol id="i-spark" viewBox="0 0 24 24">
+    <path d="M12 3.4 14 8.4 19 10.4 14 12.4 12 17.4 10 12.4 5 10.4 10 8.4Z"/>
+    <path d="M18.4 16.2l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9Z"/>
+  </symbol>
+
+  <symbol id="i-sprout" viewBox="0 0 24 24">
+    <path d="M12 20.6v-7"/>
+    <path d="M12 13.6c0-3.1-2.5-5.5-5.7-5.5 0 3.1 2.5 5.5 5.7 5.5Z"/>
+    <path d="M12 13.6c0-3.5 2.5-6 5.7-6 0 3.5-2.5 6-5.7 6Z"/>
+  </symbol>
+
+  <symbol id="i-moon" viewBox="0 0 24 24">
+    <path d="M20.2 14.4A8.3 8.3 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+  </symbol>
+
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 3.2 19 5.8v5.5c0 4.2-2.9 7.7-7 9.7-4.1-2-7-5.5-7-9.7V5.8Z"/>
+    <path d="M9.2 12.1l2 2 3.6-3.8"/>
+  </symbol>
+
+  <symbol id="i-copy" viewBox="0 0 24 24">
+    <rect x="8.8" y="8.8" width="11.4" height="11.4" rx="2.1"/>
+    <path d="M5.6 15.2H5a1.2 1.2 0 0 1-1.2-1.2V5a1.2 1.2 0 0 1 1.2-1.2h9a1.2 1.2 0 0 1 1.2 1.2v.6"/>
+  </symbol>
+
+  <symbol id="i-info" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="M12 11.2v5.2"/>
+    <circle cx="12" cy="7.9" r="1" fill="currentColor" stroke="none"/>
+  </symbol>
+
+</defs></svg>
+
+
+<!-- ============================================================
+     ANIMATED INTRO — mission launch sequence
+     ============================================================ -->
+<div class="intro" id="intro" role="dialog" aria-label="Lesson intro">
+  <div class="intro-grid" aria-hidden="true"></div>
+  <div class="ring" aria-hidden="true"></div>
+  <div class="ring" aria-hidden="true"></div>
+  <div class="ring" aria-hidden="true"></div>
+
+  <button class="skip" id="skip">Skip intro</button>
+
+  <div class="intro-inner">
+    <svg class="ekg" viewBox="0 0 560 72" aria-hidden="true">
+      <path d="M0 36 H92 l13 -4 l11 10 l14 -30 l15 56 l14 -34 l12 2 H230 l13 -5 l10 11 l15 -31 l14 56 l13 -33 l12 2 H560"/>
+      <circle class="ekg-dot" cx="552" cy="36" r="4"/>
+    </svg>
+
+    <div class="intro-eyebrow">Optima Academy Online · Grade 6/7 Physical Education</div>
+
+    <h1 class="intro-title">
+      <span class="w">Mission:</span> <span class="w">Move</span><span class="bang">!</span>
+    </h1>
+
+    <p class="intro-sub">You have been running on instinct your whole life. Starting now, you measure it.</p>
+    <div class="intro-unit">Unit 1.1 · Week 1 · Intro to Physical Education</div>
+
+    <div class="intro-stats">
+      <div class="istat"><b data-to="60" data-suffix="">0</b><span>Min a day</span></div>
+      <div class="istat"><b data-to="100000" data-comma="1">0</b><span>Beats a day</span></div>
+      <div class="istat"><b data-to="600" data-suffix="+">0</b><span>Muscles</span></div>
+      <div class="istat"><b data-to="206">0</b><span>Bones</span></div>
+    </div>
+
+    <button class="begin" id="begin">Begin mission <span class="chev">›</span></button>
+    <div class="resume-note" id="resumeNote" hidden></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     APP
+     ============================================================ -->
+<div class="app" id="app" aria-hidden="true">
+
+  <!-- ---------- HUD ---------- -->
+  <header class="hud">
+    <div class="hud-mark">
+      <div class="hud-logo" aria-hidden="true"><svg class="ic"><use href="#i-whistle"/></svg></div>
+      <div class="hud-name"><b>Mission: Move!</b><span>Unit 1.1 · Week 1</span></div>
+    </div>
+
+    <div class="hud-prog">
+      <div class="hud-prog-top"><span>Mission progress</span><b id="progTxt">0 / 8</b></div>
+      <div class="bar"><i id="progBar"></i></div>
+    </div>
+
+    <div class="hud-xp" id="xpBox"><b id="xpTxt">0</b><span>XP</span></div>
+
+    <div class="hud-badges" id="badges" aria-label="Badges earned"></div>
+  </header>
+
+  <!-- ---------- STATION RAIL ---------- -->
+  <nav class="rail" id="rail" aria-label="Lesson stations">
+    <button class="chip" data-go="s1"><i><em>1</em></i>Why We Measure</button>
+    <button class="chip" data-go="s2"><i><em>2</em></i>Five Systems</button>
+    <button class="chip" data-go="s3"><i><em>3</em></i>Brain Lab</button>
+    <button class="chip" data-go="s4"><i><em>4</em></i>Invisible Skills</button>
+    <button class="chip" data-go="s5"><i><em>5</em></i>Coach's Lab</button>
+    <button class="chip" data-go="s6"><i><em>6</em></i>Words to Know</button>
+    <button class="chip" data-go="s7"><i><em>7</em></i>Mission Check</button>
+    <button class="chip" data-go="s8"><i><em>8</em></i>Debrief</button>
+  </nav>
+
+  <!-- ---------- LESSON BODY ---------- -->
+  <div class="body" id="scroller">
+
+  <!-- court markings under the lesson — fixed, decorative only -->
+  <div class="court" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="#0E1C42" stroke-opacity=".055" stroke-width="2.6">
+        <circle cx="600" cy="400" r="235"/>
+        <circle cx="600" cy="400" r="62"/>
+        <path d="M-200 400h1600"/>
+        <path d="M600 -200v1200"/>
+      </g>
+      <g fill="none" stroke="#C7922C" stroke-opacity=".085" stroke-width="2.2">
+        <path d="M-200 110h1600M-200 690h1600"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap">
+
+    <div class="lead-card">
+      <h1>Welcome, Sport Scientist in Training</h1>
+      <p>For most of your life, movement has been instinct: you ran because you wanted to run. In this course we shift the lens. This year you become a sport scientist — someone who measures, predicts, and analyzes the body. You will collect data on your own performance, test hypotheses about training, and use evidence to design plans that make you faster, stronger, and more durable.</p>
+    </div>
+
+    <div class="vid" id="vidBox"></div>
+
+
+    <!-- ===================== STATION 1 ===================== -->
+    <section class="station" id="s1" data-station="s1">
+      <div class="st-head">
+        <div class="st-num">1</div>
+        <div>
+          <div class="st-eyebrow">Lesson 1</div>
+          <div class="st-title">Why We Measure Movement</div>
+        </div>
+      </div>
+
+      <p><span class="term">Physical activity</span> is any movement that uses your muscles and burns energy, but for a sport scientist the more useful question is how much, how hard, and how often. Health researchers agree that kids your age should accumulate at least <strong>60 minutes of moderate-to-vigorous activity</strong> per day. That number is not a guess — it comes from decades of studies linking daily movement to stronger hearts, better mood, and sharper focus.</p>
+
+      <p>Why does this matter right now? Because middle school sits inside a major growth window. Bone density, heart size, and the neural wiring between brain and muscle are all being built right now. Your body treats movement as a signal: enough signal, and the hardware develops well; not enough, and the system underbuilds. The training you do this year literally shapes the body you'll carry into high school.</p>
+
+      <!-- ACTIVITY TYPE A — drag / click builder -->
+      <div class="act" id="actDay">
+        <div class="act-head">
+          <span class="act-kind">Build</span>
+          <h3>Build Your 60-Minute Day</h3>
+          <p>Drag blocks into your day — or tap a block, then tap where it goes. Only <strong>moderate</strong> and <strong>vigorous</strong> minutes count toward the 60. Reach the target to clear this station.</p>
+        </div>
+        <div class="act-body">
+          <div class="meter">
+            <div class="meter-top"><b id="mvpaNum">0 min</b><span>of 60 moderate-to-vigorous</span></div>
+            <div class="meter-bar"><i id="mvpaBar"></i></div>
+            <div class="meter-note" id="mvpaNote">Your day is empty. Start stacking movement.</div>
+          </div>
+
+          <div class="pool" id="pool"></div>
+
+          <div class="slots" id="slots">
+            <div class="slot" data-slot="morning" role="button" tabindex="0" aria-label="Morning — drop zone. Choose a block first, then activate this to place it here."><h5>Morning</h5><div class="drops"></div></div>
+            <div class="slot" data-slot="school" role="button" tabindex="0" aria-label="School day — drop zone. Choose a block first, then activate this to place it here."><h5>School day</h5><div class="drops"></div></div>
+            <div class="slot" data-slot="after" role="button" tabindex="0" aria-label="After school — drop zone. Choose a block first, then activate this to place it here."><h5>After school</h5><div class="drops"></div></div>
+            <div class="slot" data-slot="evening" role="button" tabindex="0" aria-label="Evening — drop zone. Choose a block first, then activate this to place it here."><h5>Evening</h5><div class="drops"></div></div>
+          </div>
+
+          <div class="legend">
+            <span><i style="background:var(--pixel-pink)"></i>Vigorous</span>
+            <span><i style="background:var(--odyssey-orange)"></i>Moderate</span>
+            <span><i style="background:var(--bitstream-blue)"></i>Light — good, but doesn't count</span>
+            <span><i style="background:#aeb6c6"></i>Sedentary — counts zero</span>
+          </div>
+
+          <div class="sim-row"><button class="btn ghost sm" id="dayReset">Clear my day</button></div>
+          <div class="act-done" id="doneDay" hidden><span class="tick">✓</span><span>Station cleared — you hit 60 minutes.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 2 ===================== -->
+    <section class="station" id="s2" data-station="s2">
+      <div class="st-head">
+        <div class="st-num">2</div>
+        <div>
+          <div class="st-eyebrow">Lesson 2</div>
+          <div class="st-title">Inside the Body When You Move</div>
+        </div>
+      </div>
+
+      <p>Open the hood on a working athlete and you see five systems running at once. Each one has a job, and a sport scientist learns to think about training as tuning each system on purpose.</p>
+
+      <!-- ACTIVITY TYPE B — hotspot explorer -->
+      <div class="act" id="actBody">
+        <div class="act-head">
+          <span class="act-kind">Explore</span>
+          <h3>Open the Hood: Five Systems</h3>
+          <p>Tap each pulsing point on the athlete to bring that system online. Find all five, then run the Zone Lab below — this station clears when both are done.</p>
+        </div>
+        <div class="act-body">
+          <div class="explore">
+            <div class="figure" id="figure">
+              <svg viewBox="0 0 220 380" aria-hidden="true">
+                <!-- body silhouette (front-facing, so the figure's LEFT is on
+                     the viewer's RIGHT — which is why the heart sits right of
+                     centre on screen) -->
+                <g fill="#c9d4e2">
+                  <circle cx="110" cy="40" r="25"/>
+                  <rect x="104" y="62" width="12" height="12"/>
+                  <rect x="76" y="70" width="68" height="104" rx="26"/>
+                  <rect x="82" y="168" width="56" height="34" rx="14"/>
+                  <rect x="56" y="80" width="19" height="86" rx="9.5" transform="rotate(8 65 123)"/>
+                  <rect x="145" y="80" width="19" height="86" rx="9.5" transform="rotate(-8 154 123)"/>
+                  <rect x="86" y="196" width="21" height="104" rx="10.5"/>
+                  <rect x="113" y="196" width="21" height="104" rx="10.5"/>
+                  <rect x="84" y="296" width="23" height="56" rx="11"/>
+                  <rect x="113" y="296" width="23" height="56" rx="11"/>
+                  <rect x="78" y="344" width="33" height="14" rx="7"/>
+                  <rect x="109" y="344" width="33" height="14" rx="7"/>
+                </g>
+
+                <!-- anatomy layer: each organ sits where it actually sits, and
+                     lights up when its system is selected -->
+                <g class="anat">
+
+                  <!-- brain, filling the skull, with the stem running into the neck -->
+                  <g data-an="nervous">
+                    <path class="organ" d="M110 21c-11.5 0-19 7-19 16.2 0 3.6 1.4 6.8 3.8 9.3 0 4.8 6.6 8.4 15.2 8.4s15.2-3.6 15.2-8.4c2.4-2.5 3.8-5.7 3.8-9.3C129 28 121.5 21 110 21Z"/>
+                    <path class="organ" fill="none" d="M110 22.5v30"/>
+                    <path class="organ" fill="none" d="M103.5 27c-4 2.2-4.6 7-1.4 10.2-3 2.6-3 7 0 9.6"/>
+                    <path class="organ" fill="none" d="M116.5 27c4 2.2 4.6 7 1.4 10.2 3 2.6 3 7 0 9.6"/>
+                    <path class="organ" fill="none" d="M110 53v12"/>
+                  </g>
+
+                  <!-- lungs flanking the midline, trachea branching into each.
+                       The body's left lung (viewer's right) is the smaller of
+                       the two — the heart takes that space. -->
+                  <g data-an="resp">
+                    <path class="organ" fill="none" d="M110 74v15M110 89l-7 6M110 89l7 6"/>
+                    <path class="organ" d="M105 93c-9 0-14 4.2-16 12l-5 23c-1.6 7.2 1.6 12 8 13l7 1c4.6.5 7-1.8 7-6.4V93Z"/>
+                    <path class="organ" d="M115 93c9 0 14 4.2 16 12l5 23c1.6 7.2-1.6 12-8 13l-7 1c-4.6.5-7-1.8-7-6.4V93Z"/>
+                  </g>
+
+                  <!-- heart: behind the sternum, roughly two thirds of it left
+                       of the body's midline. The figure faces us, so that is
+                       the RIGHT side of the screen, and the apex points down
+                       and out to that side. -->
+                  <g data-an="cardio">
+                    <path class="organ" d="M110.5 101c-6.8-1.5-11.6 3.4-10.8 10.8 1 9.2 6.8 18.2 16 24.2 1 .6 2 .4 2.8-.4 6.6-6.6 11.4-14.4 12.4-22.4 1-7.8-3.6-13.6-10.6-13.4-3.2.1-6 1.6-7.8 4-.6-1.4-1.4-2.4-2-2.8Z"/>
+                    <path class="organ" fill="none" d="M120.5 109c3.4 3.2 3.4 8.6 0 11.8"/>
+                    <path class="organ" fill="none" d="M116 101.5c0-4 1.5-6.5 4.5-7.5"/>
+                  </g>
+
+                  <!-- biceps on the figure's right arm (the viewer's left) -->
+                  <g data-an="muscular">
+                    <g transform="rotate(8 65 123)">
+                      <ellipse class="organ" cx="65.5" cy="112" rx="10.5" ry="18"/>
+                      <path class="organ" fill="none" d="M60.5 101c4 6.5 4 15.5 0 22M70.5 101c-4 6.5-4 15.5 0 22"/>
+                    </g>
+                  </g>
+
+                  <!-- femur: hip socket to knee, in the figure's right thigh -->
+                  <g data-an="skeletal">
+                    <circle class="organ" cx="95" cy="201" r="8"/>
+                    <path class="organ" d="M91 208h9c2 0 3.5 1.6 3.5 3.5v66c0 2-1.5 3.5-3.5 3.5h-9c-2 0-3.5-1.5-3.5-3.5v-66c0-1.9 1.5-3.5 3.5-3.5Z"/>
+                    <path class="organ" d="M87 278h17c2.2 0 4 1.8 4 4v5c0 2.2-1.8 4-4 4H87c-2.2 0-4-1.8-4-4v-5c0-2.2 1.8-4 4-4Z"/>
+                  </g>
+
+                </g>
+              </svg>
+              <!-- hotspots injected by script -->
+            </div>
+
+            <div class="detail" id="detail">
+              <div class="ph"><svg class="ic"><use href="#i-heart"/></svg>Tap a system on the athlete to bring it online.</div>
+            </div>
+          </div>
+
+          <div class="tally">
+            <div class="pips" id="pips"><i></i><i></i><i></i><i></i><i></i></div>
+            <span id="pipTxt">0 of 5 systems online</span>
+          </div>
+          <div class="act-done" id="doneBody" hidden><span class="tick">✓</span><span>All five systems online.</span></div>
+        </div>
+      </div>
+
+      <div class="callout c-science">
+        <div class="ctitle"><svg class="ic"><use href="#i-flask"/></svg>Sport Science</div>
+        <p>Your heart beats roughly <strong>100,000 times each day</strong>, moving about <strong>2,000 gallons of blood</strong> through a closed loop of vessels. During hard exercise, that rate can climb from a resting baseline of 60–90 beats per minute to over 180. The blood it pumps carries oxygen to your muscles, where it becomes the chemical fuel that powers movement. The efficiency of that whole delivery system is called your <span class="term">VO₂ max</span>, and it is one of the most important numbers in sport science.</p>
+      </div>
+
+      <!-- ACTIVITY TYPE C — live simulator -->
+      <div class="act" id="actSim">
+        <div class="act-head">
+          <span class="act-kind">Simulate</span>
+          <h3>Heart-Rate Zone Lab</h3>
+          <p>Drive the effort slider and watch your heart respond. Max heart rate = 220 − your age, the same formula you'll use in Unit 1.4. Visit all five zones to clear this station.</p>
+        </div>
+        <div class="act-body">
+          <div class="sim">
+            <div class="heart-stage">
+              <div class="heart beat" id="heart" aria-hidden="true"><svg class="ic"><use href="#i-heart-solid"/></svg></div>
+              <div class="bpm"><span id="bpmNum">72</span><small>beats / min</small></div>
+            </div>
+
+            <div>
+              <div class="zones" id="zoneBar">
+                <div class="zone z1" data-z="1">Z1<br>50–60%</div>
+                <div class="zone z2" data-z="2">Z2<br>60–70%</div>
+                <div class="zone z3" data-z="3">Z3<br>70–80%</div>
+                <div class="zone z4" data-z="4">Z4<br>80–90%</div>
+                <div class="zone z5" data-z="5">Z5<br>90–100%</div>
+              </div>
+              <div class="zone-label" id="zoneLabel">Below Zone 1 — you're at rest.</div>
+
+              <label for="effort" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700">Effort</label>
+              <input type="range" id="effort" min="0" max="100" value="0" aria-describedby="zoneLabel"/>
+
+              <div class="sim-row">
+                <span class="mini"><label for="age">Age</label><input id="age" type="number" min="9" max="18" value="12"/></span>
+                <span class="mini"><label for="rhrIn">Resting HR</label><input id="rhrIn" type="number" min="40" max="120" value="72"/></span>
+                <span class="mini" style="color:var(--portal-purple);font-weight:700">Max HR: <span id="maxHr" class="mono">208</span></span>
+              </div>
+
+              <div class="readouts">
+                <div class="ro"><b id="roPct">35%</b><span>of max HR</span></div>
+                <div class="ro"><b id="roBreath">18</b><span>breaths / min</span></div>
+                <div class="ro"><b id="roBlood">5.0 L</b><span>blood / min</span></div>
+                <div class="ro"><b id="roFeel">Easy</b><span>feels like</span></div>
+              </div>
+
+              <div class="scen" id="scen"></div>
+            </div>
+          </div>
+          <div class="tally">
+            <div class="pips" id="zpips"><i></i><i></i><i></i><i></i><i></i></div>
+            <span id="zpipTxt">0 of 5 zones visited</span>
+          </div>
+          <div class="act-done" id="doneSim" hidden><span class="tick">✓</span><span>You've steered through all five zones.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 3 ===================== -->
+    <section class="station" id="s3" data-station="s3">
+      <div class="st-head">
+        <div class="st-num">3</div>
+        <div>
+          <div class="st-eyebrow">Lesson 3</div>
+          <div class="st-title">How Movement Reshapes the Brain</div>
+        </div>
+      </div>
+
+      <p>Exercise is not just a body event. When you move, the brain releases chemicals called <span class="term">endorphins</span> that elevate mood and reduce the perception of pain. Activity also boosts <span class="term">BDNF</span> (brain-derived neurotrophic factor) — a protein that helps brain cells grow and form new connections. In short: movement is one of the strongest known signals for brain development at your age.</p>
+
+      <p>Kids who are active most days of the week tend to focus better in class, retain more of what they read, fall asleep faster, and recover from stress more quickly. None of that is opinion — it shows up in studies that track thousands of students over many years.</p>
+
+      <!-- ACTIVITY TYPE D — flip / reveal cards -->
+      <div class="act" id="actBrain">
+        <div class="act-head">
+          <span class="act-kind">Reveal</span>
+          <h3>Brain Lab: What One Workout Does Upstairs</h3>
+          <p>Five effects, five cards. Flip each one to see what the research actually found.</p>
+        </div>
+        <div class="act-body">
+          <div class="flips" id="flips"></div>
+          <div class="tally">
+            <div class="pips" id="fpips"><i></i><i></i><i></i><i></i><i></i></div>
+            <span id="fpipTxt">0 of 5 cards revealed</span>
+          </div>
+          <div class="act-done" id="doneBrain" hidden><span class="tick">✓</span><span>Brain Lab complete.</span></div>
+        </div>
+      </div>
+
+      <div class="callout c-know">
+        <div class="ctitle"><svg class="ic"><use href="#i-bulb"/></svg>Did You Know?</div>
+        <p>Researchers have run brain scans on students immediately after exercise and found increased activity in the <em>prefrontal cortex</em> — the region you use for attention, planning, and decision-making. This is one reason a five-minute movement break can pull you out of a math slump. The effect is measurable for up to two hours after exercise.</p>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 4 ===================== -->
+    <section class="station" id="s4" data-station="s4">
+      <div class="st-head">
+        <div class="st-num">4</div>
+        <div>
+          <div class="st-eyebrow">Lesson 4</div>
+          <div class="st-title">The Skills That Don't Show on a Stopwatch</div>
+        </div>
+      </div>
+
+      <p>PE also trains a different category of skill — sometimes called <em>character skills</em> or non-cognitive skills. These include communication, leadership, sportsmanship, and resilience. They cannot be measured with a stopwatch, but they predict success in sport, school, and work just as strongly as physical performance does.</p>
+
+      <p>Every game you join is a rep on these skills: cooperating with teammates, accepting an honest call against you, calling for the ball, refusing to quit after a setback. Sport scientists who study elite athletes consistently find that the mental game separates the good from the great.</p>
+
+      <!-- ACTIVITY TYPE E — sorter -->
+      <div class="act" id="actSort">
+        <div class="act-head">
+          <span class="act-kind">Sort</span>
+          <h3>Name That Rep</h3>
+          <p>Each moment below is a rep on one of the four character skills. Call it.</p>
+        </div>
+        <div class="act-body">
+          <div class="sorter-q" id="sortQ">
+            <div class="count" id="sortCount">Scenario 1 of 8</div>
+            <p id="sortText">—</p>
+          </div>
+          <div class="buckets" id="buckets"></div>
+          <div id="sortFb"></div>
+          <div class="act-done" id="doneSort" hidden><span class="tick">✓</span><span>All eight reps named.</span></div>
+        </div>
+      </div>
+
+      <div class="callout c-real">
+        <div class="ctitle"><svg class="ic"><use href="#i-pin"/></svg>Real-World Connection</div>
+        <p>Top performers across sports — Simone Biles, LeBron James, Lionel Messi — credit their mental training as much as their physical training. Professional teams now employ <em>performance psychologists</em> who work alongside strength coaches and nutritionists. The reps you put in during a 6th-grade game build the same neural pathways an elite athlete uses to handle a championship moment.</p>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 5 ===================== -->
+    <section class="station" id="s5" data-station="s5">
+      <div class="st-head">
+        <div class="st-num">5</div>
+        <div>
+          <div class="st-eyebrow">Coach's Lab</div>
+          <div class="st-title">Measure Your Baseline</div>
+        </div>
+      </div>
+
+      <div class="callout c-lab">
+        <div class="ctitle"><svg class="ic"><use href="#i-whistle"/></svg>Coach&#39;s Lab</div>
+        <p><strong>Baseline test — your resting heart rate.</strong> Sit quietly for two minutes. Then place two fingers on the side of your neck or the inside of your wrist. Count beats for 30 seconds and multiply by 2. Record that number. We'll come back to it throughout the year and watch it change as you train. Lower resting heart rate over time is one of the clearest signs your cardiovascular system is getting stronger.</p>
+      </div>
+
+      <!-- ACTIVITY TYPE F — data logger -->
+      <div class="act" id="actLab">
+        <div class="act-head">
+          <span class="act-kind">Measure</span>
+          <h3>Pulse Pad — 30-Second Count</h3>
+          <p>Sit still for two minutes first. Find your pulse, press start, then tap the pad once per beat for 30 seconds. Log three mornings to build the average you'll use all year.</p>
+        </div>
+        <div class="act-body">
+          <div class="pulse-pad" id="pad" role="button" tabindex="0" aria-label="Pulse pad: press to start, then tap once per heartbeat">
+            <div>
+              <div class="big" id="padBig">30</div>
+              <div class="lbl" id="padLbl">Seconds</div>
+              <div class="hint" id="padHint">Press to start the 30-second count</div>
+            </div>
+          </div>
+
+          <div class="sim-row" style="justify-content:center;margin-top:15px">
+            <button class="btn ghost sm" id="padManual">Enter a number instead</button>
+            <button class="btn ghost sm" id="padClear">Clear log</button>
+          </div>
+
+          <table class="log-table">
+            <thead><tr><th>Reading</th><th>Resting HR</th><th>Notes</th></tr></thead>
+            <tbody id="logBody"></tbody>
+          </table>
+
+          <div class="stats-row">
+            <div class="ro"><b id="rhrAvg">—</b><span>3-day average</span></div>
+            <div class="ro"><b id="rhrRange">—</b><span>Range (high − low)</span></div>
+            <div class="ro"><b id="rhrN">0 / 3</b><span>Mornings logged</span></div>
+          </div>
+
+          <div class="scale">
+            <div class="scale-bar">
+              <div class="sc1">Athletic</div><div class="sc2">Typical</div><div class="sc3">High</div><div class="sc4">Very high</div>
+              <div class="needle" id="needle" style="left:-99px"></div>
+            </div>
+            <div class="scale-key"><span>40</span><span>60</span><span>85</span><span>100</span><span>120</span></div>
+          </div>
+
+          <div class="act-done" id="doneLab" hidden><span class="tick">✓</span><span>Baseline logged. Your simulator now runs on your real numbers.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 6 ===================== -->
+    <section class="station" id="s6" data-station="s6">
+      <div class="st-head">
+        <div class="st-num">6</div>
+        <div>
+          <div class="st-eyebrow">Vocabulary</div>
+          <div class="st-title">Words to Know</div>
+        </div>
+      </div>
+
+      <!-- ACTIVITY TYPE G — matching game -->
+      <div class="act" id="actMatch">
+        <div class="act-head">
+          <span class="act-kind">Match</span>
+          <h3>Lock the Lexicon</h3>
+          <p>Tap a term, then tap its definition. Seven pairs. Wrong guesses cost nothing but your pride.</p>
+        </div>
+        <div class="act-body">
+          <div class="match-top">
+            <div class="score"><span id="matchScore">0</span> / 7 locked</div>
+            <button class="btn ghost sm" id="matchReset">Shuffle &amp; restart</button>
+          </div>
+          <div class="match">
+            <div class="mcol"><h5>Term</h5><div class="stack" id="colA"></div></div>
+            <div class="mcol"><h5>Definition</h5><div class="stack" id="colB"></div></div>
+          </div>
+          <div class="act-done" id="doneMatch" hidden><span class="tick">✓</span><span>All seven terms locked.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 7 ===================== -->
+    <section class="station" id="s7" data-station="s7">
+      <div class="st-head">
+        <div class="st-num">7</div>
+        <div>
+          <div class="st-eyebrow">Mission Check</div>
+          <div class="st-title">Prove It</div>
+        </div>
+      </div>
+
+      <!-- ACTIVITY TYPE H — knowledge check -->
+      <div class="act" id="actQuiz">
+        <div class="act-head">
+          <span class="act-kind">Check</span>
+          <h3>Five Questions, Instant Feedback</h3>
+          <p>Not graded. Nothing here reaches the gradebook — it's a self-check before the Flight Club challenge.</p>
+        </div>
+        <div class="act-body">
+          <div class="quiz-prog" id="quizProg"></div>
+          <div id="quizStage"></div>
+          <div class="act-done" id="doneQuiz" hidden><span class="tick">✓</span><span>Mission Check complete.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== STATION 8 ===================== -->
+    <section class="station" id="s8" data-station="s8">
+      <div class="st-head">
+        <div class="st-num">8</div>
+        <div>
+          <div class="st-eyebrow">Debrief</div>
+          <div class="st-title">Mission Log</div>
+        </div>
+      </div>
+
+      <div class="callout c-reflect">
+        <div class="ctitle"><svg class="ic"><use href="#i-pencil"/></svg>Weekly Reflection</div>
+        <p><strong>Data prompt:</strong> Record your resting heart rate three mornings in a row before getting out of bed. Write down all three numbers and the range (highest minus lowest). What might explain the variation between mornings — sleep, hydration, stress, what you ate the night before? Use specific evidence from your day-before to support your guess.</p>
+      </div>
+
+      <div class="act" id="actReflect">
+        <div class="act-head">
+          <span class="act-kind">Reflect</span>
+          <h3>Write Your Analysis</h3>
+          <p>Draft it here — it saves as you type, on this device only. When you're happy with it, copy it into the Canvas assignment.</p>
+        </div>
+        <div class="act-body">
+          <textarea id="reflect" placeholder="My three readings were ___, ___ and ___. The range was ___ bpm. I think the variation came from…"></textarea>
+          <div class="sim-row">
+            <button class="btn sm" id="copyLog">Copy my mission log</button>
+            <span class="saved-tag" id="savedTag">Saved</span>
+          </div>
+          <div class="act-done" id="doneReflect" hidden><span class="tick">✓</span><span>Analysis drafted.</span></div>
+        </div>
+      </div>
+
+      <div class="debrief">
+        <h3 id="debriefTitle">Mission in progress</h3>
+        <p id="debriefMsg">Clear all eight stations to unlock your debrief.</p>
+        <div class="dstats">
+          <div class="dstat"><b id="dStations">0/8</b><span>Stations</span></div>
+          <div class="dstat"><b id="dXp">0</b><span>XP earned</span></div>
+          <div class="dstat"><b id="dBadges">0/8</b><span>Badges</span></div>
+          <div class="dstat"><b id="dRhr">—</b><span>Your baseline</span></div>
+        </div>
+        <div class="acts">
+          <button class="btn gold" id="replay">Replay the intro</button>
+          <button class="btn ghost" id="resetAll">Reset my mission</button>
+        </div>
+      </div>
+
+      <div class="callout c-next">
+        <div class="ctitle"><svg class="ic"><use href="#i-flag"/></svg>What&#39;s Next</div>
+        <p>Next: launch your first VR Fitness Park assignment, then kick off Flight Club with a movement challenge that tests your new baseline.</p>
+      </div>
+    </section>
+
+  </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+
+<script>
+/* ==================================================================
+   CONFIG — edit this before publishing
+   ================================================================== */
+const CONFIG = {
+  // Canvas URL for 6th_Grade_PE_Intro.mp4. Leave '' to show a placeholder.
+  VIDEO_URL: '../Videos/6th_Grade_PE_Intro-1.mp4',
+  STORE_KEY: 'mm.s1.w1.v1'
+};
+
+/* ==================================================================
+   STATE  —  all progress is local to this browser, nothing is graded
+   ================================================================== */
+const STATIONS = ['s1','s2','s3','s4','s5','s6','s7','s8'];
+
+const BADGES = [
+  {id:'day',     icon:'clipboard', label:'Day Architect',  note:'Built a 60-minute day',      xp:60},
+  {id:'systems', icon:'heart', label:'Systems Online', note:'Found all five systems',     xp:50},
+  {id:'zones',   icon:'chart', label:'Zone Pilot',     note:'Steered through five zones', xp:60},
+  {id:'brain',   icon:'brain', label:'Neuro Scout',    note:'Revealed the Brain Lab',     xp:40},
+  {id:'skills',  icon:'team', label:'Team Player',    note:'Named all eight reps',       xp:50},
+  {id:'base',    icon:'stopwatch', label:'Baseline Set',   note:'Logged your resting HR',     xp:70},
+  {id:'vocab',   icon:'book', label:'Lexicon Locked', note:'Matched all seven terms',    xp:50},
+  {id:'check',   icon:'target', label:'Mission Check',  note:'Finished the self-check',    xp:60}
+];
+
+let S = { done:{}, badges:[], xp:0, rhr:[], day:{}, quiz:null, reflect:'', started:false };
+let STORAGE_OK = true;
+
+function load(){
+  try{
+    const raw = localStorage.getItem(CONFIG.STORE_KEY);
+    if(raw) S = Object.assign(S, JSON.parse(raw));
+  }catch(e){ STORAGE_OK = false; }
+}
+function save(){
+  if(!STORAGE_OK) return;
+  try{ localStorage.setItem(CONFIG.STORE_KEY, JSON.stringify(S)); }
+  catch(e){ STORAGE_OK = false; }
+}
+load();
+
+const $  = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Icons come from the inline sprite at the top of the body, so there is
+   no font or network dependency and they inherit colour from CSS. */
+function ico(name){
+  return '<svg class="ic" aria-hidden="true"><use href="#i-' + name + '"/></svg>';
+}
+
+/* ==================================================================
+   HUD / PROGRESS / BADGES / TOASTS
+   ================================================================== */
+function renderBadgeTray(){
+  const tray = $('#badges');
+  tray.innerHTML = '';
+  BADGES.forEach(b=>{
+    const el = document.createElement('div');
+    el.className = 'bslot' + (S.badges.includes(b.id) ? ' got' : '');
+    el.id = 'bslot-' + b.id;
+    el.innerHTML = ico(b.icon);
+    el.title = b.label;
+    tray.appendChild(el);
+  });
+}
+
+function toast(icon, title, sub){
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = '<div class="tico">'+ico(icon)+'</div><div><b></b><span></span></div>';
+  t.querySelector('b').textContent = title;
+  t.querySelector('span').textContent = sub;
+  $('#toasts').appendChild(t);
+  setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(), 460); }, 3600);
+}
+
+function award(id){
+  const b = BADGES.find(x=>x.id===id);
+  if(!b || S.badges.includes(id)) return;
+  S.badges.push(id);
+  S.xp += b.xp;
+  save();
+  const slot = $('#bslot-'+id);
+  if(slot) slot.classList.add('got');
+  const box = $('#xpBox');
+  box.classList.remove('pop'); void box.offsetWidth; box.classList.add('pop');
+  $('#xpTxt').textContent = S.xp;
+  toast(b.icon, b.label + ' earned', '+' + b.xp + ' XP · ' + b.note);
+  confetti(28);
+}
+
+function clearStation(id){
+  if(S.done[id]) return;
+  S.done[id] = true;
+  save();
+  const sec = $('#'+id);
+  if(sec) sec.classList.add('done');
+  const chip = $('.chip[data-go="'+id+'"]');
+  if(chip) chip.classList.add('done');
+  updateProgress();
+  if(STATIONS.every(x=>S.done[x])) finishMission();
+}
+
+function updateProgress(){
+  const n = STATIONS.filter(x=>S.done[x]).length;
+  $('#progTxt').textContent = n + ' / ' + STATIONS.length;
+  $('#progBar').style.width = (n/STATIONS.length*100) + '%';
+  $('#xpTxt').textContent = S.xp;
+  $('#dStations').textContent = n + '/8';
+  $('#dXp').textContent = S.xp;
+  $('#dBadges').textContent = S.badges.length + '/8';
+  $('#dRhr').textContent = S.rhr.length ? avg(S.rhr) + ' bpm' : '—';
+}
+
+function finishMission(){
+  $('#debriefTitle').textContent = 'Mission complete, Sport Scientist';
+  $('#debriefMsg').textContent =
+    'Eight stations cleared. You have a baseline, a working model of your own heart, and the vocabulary to describe both. ' +
+    'Take that baseline into the VR Fitness Park assignment and the first Flight Club challenge — they both build on the number you measured here.';
+  confetti(90);
+  toast('trophy','Mission complete','All eight stations cleared');
+}
+
+function confetti(n){
+  if(REDUCED) return;
+  const colors = ['#55C8E8','#C7922C','#76C043','#F78F1E','#A53E97','#67308F'];
+  const box = document.createElement('div');
+  box.className = 'conf';
+  for(let i=0;i<n;i++){
+    const p = document.createElement('i');
+    p.style.left = Math.random()*100 + '%';
+    p.style.top = '-20px';
+    p.style.background = colors[i % colors.length];
+    p.style.animationDuration = (1.7 + Math.random()*1.5) + 's';
+    p.style.animationDelay = (Math.random()*.35) + 's';
+    box.appendChild(p);
+  }
+  document.body.appendChild(box);
+  setTimeout(()=>box.remove(), 3800);
+}
+
+/* ==================================================================
+   ANIMATED INTRO
+   ================================================================== */
+function countUp(el){
+  const to = +el.dataset.to;
+  const comma = el.dataset.comma === '1';
+  const suffix = el.dataset.suffix || '';
+  if(REDUCED){ el.textContent = (comma ? to.toLocaleString() : to) + suffix; return; }
+  const dur = 1100, t0 = performance.now();
+  (function step(t){
+    const k = Math.min(1,(t-t0)/dur);
+    const e = 1 - Math.pow(1-k,3);
+    const v = Math.round(to*e);
+    el.textContent = (comma ? v.toLocaleString() : v) + suffix;
+    if(k<1) requestAnimationFrame(step);
+  })(t0);
+}
+
+function enterApp(){
+  const intro = $('#intro');
+  intro.classList.add('is-out');
+  setTimeout(()=>{
+    intro.style.display = 'none';
+    const app = $('#app');
+    app.setAttribute('aria-hidden','false');
+    app.classList.add('is-live');
+    const first = $('.chip');
+    if(first) first.focus({preventScroll:true});
+  }, REDUCED ? 0 : 780);
+  S.started = true; save();
+}
+
+function startIntro(){
+  const intro = $('#intro');
+  intro.style.display = '';
+  intro.classList.remove('is-out');
+  $('#app').classList.remove('is-live');
+  $('#app').setAttribute('aria-hidden','true');
+  $$('.istat b').forEach(el=>el.textContent='0');
+  setTimeout(()=>$$('.istat b').forEach(countUp), REDUCED ? 0 : 2750);
+  const n = STATIONS.filter(x=>S.done[x]).length;
+  const note = $('#resumeNote');
+  if(n>0){ note.hidden = false; note.textContent = 'Resuming — ' + n + ' of 8 stations already cleared.'; }
+  else note.hidden = true;
+}
+
+$('#begin').addEventListener('click', enterApp);
+$('#skip').addEventListener('click', enterApp);
+$('#replay').addEventListener('click', ()=>{ startIntro(); $('#scroller').scrollTop = 0; });
+
+/* ==================================================================
+   VIDEO
+   ================================================================== */
+(function video(){
+  const box = $('#vidBox');
+  if(CONFIG.VIDEO_URL){
+    const v = document.createElement('video');
+    v.controls = true; v.preload = 'metadata'; v.setAttribute('playsinline','');
+    v.src = CONFIG.VIDEO_URL;
+    box.appendChild(v);
+  }else{
+    box.innerHTML =
+      '<div class="vid-ph"><div><b>'+ico('flag')+' Course intro video</b>' +
+      '<span>Set <code>CONFIG.VIDEO_URL</code> at the top of this file to the Canvas link for ' +
+      '<em>6th_Grade_PE_Intro.mp4</em> and the player replaces this card.</span></div></div>';
+  }
+})();
+
+/* ==================================================================
+   STATION RAIL + SCROLL SPY
+   ================================================================== */
+$$('.chip').forEach(c=>{
+  c.addEventListener('click', ()=>{
+    const el = $('#'+c.dataset.go);
+    if(el) el.scrollIntoView({behavior: REDUCED ? 'auto':'smooth', block:'start'});
+  });
+});
+
+(function spy(){
+  const root = $('#scroller');
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const id = e.target.dataset.station;
+      $$('.chip').forEach(c=>c.classList.toggle('active', c.dataset.go===id));
+    });
+  }, {root, rootMargin:'-15% 0px -70% 0px', threshold:0});
+  $$('.station').forEach(s=>io.observe(s));
+})();
+
+/* ==================================================================
+   SHARED — click-to-select + HTML5 drag, used by builder & sorter
+   ================================================================== */
+let picked = null;
+function setPicked(el){
+  if(picked) picked.classList.remove('picked');
+  picked = (picked===el) ? null : el;
+  if(picked) picked.classList.add('picked');
+  $$('.slot').forEach(s=>s.classList.toggle('armed', !!picked));
+}
+
+/* ==================================================================
+   TYPE A — BUILD YOUR 60-MINUTE DAY
+   ================================================================== */
+const BLOCKS = [
+  {id:'bike',  t:'Bike to school',      m:15, i:'mod'},
+  {id:'dog',   t:'Walk the dog',        m:20, i:'light'},
+  {id:'pe',    t:'PE class game',       m:30, i:'vig'},
+  {id:'stretch',t:'Stretch routine',    m:10, i:'light'},
+  {id:'ball',  t:'Hoops with friends',  m:25, i:'vig'},
+  {id:'chores',t:'Carry in groceries',  m:10, i:'light'},
+  {id:'dance', t:'Dance practice',      m:20, i:'mod'},
+  {id:'stairs',t:'Stair sprints',       m:5,  i:'vig'},
+  {id:'scoot', t:'Scooter to the park', m:15, i:'mod'},
+  {id:'swim',  t:'Swim laps',           m:25, i:'vig'},
+  {id:'game',  t:'Video games (sitting)',m:30,i:'sed'},
+  {id:'bus',   t:'Ride the bus',        m:20, i:'sed'}
+];
+const I_LABEL = {vig:'Vigorous', mod:'Moderate', light:'Light', sed:'Sedentary'};
+
+function tileEl(b){
+  const el = document.createElement('div');
+  el.className = 'tile';
+  el.dataset.id = b.id; el.dataset.i = b.i;
+  el.draggable = true;
+  el.tabIndex = 0;
+  el.setAttribute('role','button');
+  el.setAttribute('aria-label', b.t + ', ' + b.m + ' minutes, ' + I_LABEL[b.i]);
+  el.innerHTML = '<span class="dot"></span><span>'+b.t+'</span><span class="min">'+b.m+'m</span>';
+  el.addEventListener('dragstart', e=>{ e.dataTransfer.setData('text/plain', b.id); setPicked(el); });
+  el.addEventListener('dragend', ()=>{ if(picked) setPicked(picked); });
+  el.addEventListener('click', ()=>{
+    if(el.classList.contains('placed')){ placeBlock(b.id, null); return; }
+    setPicked(el);
+  });
+  el.addEventListener('keydown', e=>{
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); }
+  });
+  return el;
+}
+
+function placeBlock(id, slot){
+  if(slot) S.day[id] = slot; else delete S.day[id];
+  save(); renderDay();
+}
+
+function renderDay(){
+  const pool = $('#pool'); pool.innerHTML = '';
+  $$('.slot .drops').forEach(d=>d.innerHTML='');
+  BLOCKS.forEach(b=>{
+    const where = S.day[b.id];
+    const el = tileEl(b);
+    if(where){
+      el.classList.add('placed');
+      el.setAttribute('aria-label', el.getAttribute('aria-label') + ', placed in ' + where + ' — activate to remove');
+      const host = $('.slot[data-slot="'+where+'"] .drops');
+      if(host) host.appendChild(el); else { delete S.day[b.id]; pool.appendChild(el); }
+    } else pool.appendChild(el);
+  });
+  if(!pool.children.length) pool.innerHTML = '<span style="font-size:13px;color:#aeb6c6;font-style:italic">Every block is placed.</span>';
+  picked = null;
+  $$('.slot').forEach(s=>s.classList.remove('armed'));
+  scoreDay();
+}
+
+function scoreDay(){
+  let mvpa=0, light=0, sed=0;
+  Object.keys(S.day).forEach(id=>{
+    const b = BLOCKS.find(x=>x.id===id); if(!b) return;
+    if(b.i==='vig'||b.i==='mod') mvpa += b.m;
+    else if(b.i==='light') light += b.m;
+    else sed += b.m;
+  });
+  const hit = mvpa>=60;
+  $('#mvpaNum').textContent = mvpa + ' min';
+  $('#mvpaNum').classList.toggle('hit', hit);
+  const bar = $('#mvpaBar');
+  bar.style.width = Math.min(100, mvpa/60*100) + '%';
+  bar.classList.toggle('hit', hit);
+
+  let note;
+  if(mvpa===0 && light===0 && sed===0) note = 'Your day is empty. Start stacking movement.';
+  else if(hit) note = 'Target met — ' + mvpa + ' moderate-to-vigorous minutes'
+      + (light? ', plus ' + light + ' light minutes on top':'')
+      + (sed? '. The ' + sed + ' sedentary minutes contributed nothing to the 60.':'.');
+  else note = (60-mvpa) + ' minutes short.' + (light? ' Your ' + light + ' light minutes are healthy, but the guideline counts moderate and vigorous only.':'') + (sed? ' Sedentary blocks count zero.':'');
+  $('#mvpaNote').textContent = note;
+
+  $('#doneDay').hidden = !hit;
+  if(hit){ award('day'); clearStation('s1'); }
+}
+
+$$('.slot').forEach(slot=>{
+  slot.addEventListener('dragover', e=>{ e.preventDefault(); slot.classList.add('over'); });
+  slot.addEventListener('dragleave', ()=> slot.classList.remove('over'));
+  slot.addEventListener('drop', e=>{
+    e.preventDefault(); slot.classList.remove('over');
+    const id = e.dataTransfer.getData('text/plain');
+    if(id) placeBlock(id, slot.dataset.slot);
+  });
+  slot.addEventListener('click', ()=>{
+    if(picked && !picked.classList.contains('placed')) placeBlock(picked.dataset.id, slot.dataset.slot);
+  });
+  slot.addEventListener('keydown', e=>{
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); slot.click(); }
+  });
+});
+$('#dayReset').addEventListener('click', ()=>{ S.day={}; save(); renderDay(); });
+
+/* ==================================================================
+   TYPE B — FIVE SYSTEMS HOTSPOT EXPLORER
+   ================================================================== */
+const SYSTEMS = [
+/* x and y are percentages of the figure box. The box is aspect-ratio 220/380
+   and the SVG viewBox is 0 0 220 380, so a percentage maps 1:1 onto the
+   drawing: x% -> x*2.2 user units, y% -> y*3.8. Each marker is parked on the
+   organ it names in the anatomy layer. The figure faces the viewer, so the
+   heart — which sits left of the body's midline — reads right of centre on
+   screen, and the lung marker sits over the viewer's-left lobe. */
+  {id:'nervous', icon:'brain', name:'Nervous', role:'The control system', x:50, y:9.6,
+   text:'Brain and nerves sending electrical signals to coordinate every movement, from a blink to a sprint.',
+   fact:'A signal from your brain reaches your calf muscle in about 20 milliseconds — faster than you can decide to notice it.'},
+  {id:'resp', icon:'lungs', name:'Respiratory', role:'The fuel intake', x:41, y:27,
+   text:'Lungs trading oxygen in and carbon dioxide out. Faster breathing means more available fuel.',
+   fact:'At rest you move about 6 litres of air a minute. Sprinting, that can climb past 100.'},
+  {id:'cardio', icon:'heart', name:'Cardiovascular', role:'The delivery network', x:57, y:30.5,
+   text:'Heart, blood, and vessels delivering oxygen and nutrients to working muscles and clearing waste.',
+   fact:'Roughly 100,000 beats a day, moving about 2,000 gallons of blood. Its efficiency is your VO₂ max.'},
+  {id:'muscular', icon:'dumbbell', name:'Muscular', role:'The engine', x:28, y:31,
+   text:'More than 600 muscles producing the forces that move bones through joints.',
+   fact:'Muscles only pull, never push. Every push you make is some other muscle pulling.'},
+  {id:'skeletal', icon:'bone', name:'Skeletal', role:'The frame', x:44, y:64,
+   text:'206 bones forming the frame that muscles pull against — the structural lever system of the body.',
+   fact:'Bone is living tissue. Impact from running tells it to lay down more density — right now, in your growth window.'}
+];
+
+(function buildFigure(){
+  const fig = $('#figure');
+  SYSTEMS.forEach((sy,ix)=>{
+    const b = document.createElement('button');
+    b.className = 'hot'; b.dataset.sys = sy.id;
+    b.style.left = sy.x + '%'; b.style.top = sy.y + '%';
+    b.innerHTML = ico(sy.icon);
+    b.setAttribute('aria-label', 'Show the ' + sy.name + ' system');
+    b.addEventListener('click', ()=> showSystem(sy.id));
+    fig.appendChild(b);
+  });
+})();
+
+function showSystem(id){
+  const sy = SYSTEMS.find(s=>s.id===id);
+  $$('.hot').forEach(h=>h.classList.toggle('on', h.dataset.sys===id));
+  /* light the organ itself, not just the marker */
+  $$('.anat g[data-an]').forEach(g=>g.classList.toggle('lit', g.dataset.an===id));
+  const host = $('#detail');
+  host.innerHTML = '';
+  const pane = document.createElement('div');
+  pane.className = 'pane';
+  pane.innerHTML =
+    '<h4>'+ico(sy.icon)+sy.name+'</h4>' +
+    '<div class="role">'+sy.role+'</div>' +
+    '<p>'+sy.text+'</p>' +
+    '<div class="fact"><strong>Sport science:</strong> '+sy.fact+'</div>';
+  host.appendChild(pane);
+
+  S.sysSeen = S.sysSeen || [];
+  if(!S.sysSeen.includes(id)){ S.sysSeen.push(id); save(); }
+  paintSystems();
+}
+
+function paintSystems(){
+  const seen = S.sysSeen || [];
+  $$('.hot').forEach(h=>h.classList.toggle('seen', seen.includes(h.dataset.sys)));
+  $$('.anat g[data-an]').forEach(g=>g.classList.toggle('seen', seen.includes(g.dataset.an)));
+  $$('#pips i').forEach((p,i)=>p.classList.toggle('on', i < seen.length));
+  $('#pipTxt').textContent = seen.length + ' of 5 systems online';
+  if(seen.length===5){ $('#doneBody').hidden = false; award('systems'); }
+  maybeClearS2();
+}
+
+/* Station 2 carries two activities — it clears only when both are done, so
+   every badge in the tray maps onto progress in the bar. */
+function maybeClearS2(){
+  if((S.sysSeen||[]).length===5 && (S.zones||[]).length===5) clearStation('s2');
+}
+
+/* ==================================================================
+   TYPE C — HEART-RATE ZONE SIMULATOR
+   ================================================================== */
+/* Scenarios target a % of MAX heart rate, not a raw slider position, so the
+   five zones stay reachable whatever age and resting HR the student enters. */
+const SCENARIOS = [
+  {t:'Sitting in class',  pct:0},
+  {t:'Walking the hall',  pct:55},
+  {t:'Jogging the track', pct:65},
+  {t:'Steady run',        pct:75},
+  {t:'Full-court press',  pct:85},
+  {t:'All-out sprint',    pct:96}
+];
+const ZONE_NAME = {
+  1:['Zone 1 · Very light','Warm-up and cool-down pace. You can sing.'],
+  2:['Zone 2 · Light','Easy aerobic work. You can hold a conversation.'],
+  3:['Zone 3 · Moderate','The endurance zone. Talking gets choppy.'],
+  4:['Zone 4 · Hard','Breathing hard, short phrases only. Builds speed.'],
+  5:['Zone 5 · Maximum','All out. You can hold this for seconds, not minutes.']
+};
+
+(function buildScen(){
+  const host = $('#scen');
+  SCENARIOS.forEach(s=>{
+    const b = document.createElement('button');
+    b.className = 'btn ghost sm';
+    b.textContent = s.t;
+    b.addEventListener('click', ()=> rampTo(effortForPct(s.pct)));
+    host.appendChild(b);
+  });
+})();
+
+/* Convert "x% of max HR" into a slider position for this student's numbers. */
+function effortForPct(pct){
+  if(pct<=0) return 0;
+  const age  = clamp(+$('#age').value || 12, 9, 18);
+  const rest = clamp(+$('#rhrIn').value || 72, 40, 120);
+  const max  = 220 - age;
+  return clamp(Math.round((max*pct/100 - rest) / (max - rest) * 100), 0, 100);
+}
+
+let rampGuard = null;
+function rampTo(target){
+  const sl = $('#effort');
+  const from = +sl.value;
+  if(REDUCED){ sl.value = target; simUpdate(); return; }
+  const t0 = performance.now(), dur = 850;
+  /* requestAnimationFrame pauses in a backgrounded tab. If a student clicks a
+     scenario and switches away, this guarantees the slider still lands. */
+  clearTimeout(rampGuard);
+  rampGuard = setTimeout(()=>{ sl.value = target; simUpdate(); }, dur + 150);
+  (function step(t){
+    const k = Math.min(1,(t-t0)/dur);
+    const e = k<.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;
+    sl.value = Math.round(from + (target-from)*e);
+    simUpdate();
+    if(k<1) requestAnimationFrame(step);
+  })(t0);
+}
+
+function simUpdate(){
+  const age  = clamp(+$('#age').value || 12, 9, 18);
+  const rest = clamp(+$('#rhrIn').value || 72, 40, 120);
+  const max  = 220 - age;
+  const eff  = +$('#effort').value;
+  const hr   = Math.round(rest + (max - rest) * (eff/100));
+  const pct  = hr / max * 100;
+
+  $('#maxHr').textContent = max;
+  $('#bpmNum').textContent = hr;
+  $('#roPct').textContent = Math.round(pct) + '%';
+  $('#roBreath').textContent = Math.round(16 + (hr-rest)*0.25);
+  $('#roBlood').textContent = (hr * 0.075).toFixed(1) + ' L';
+
+  let z = 0;
+  if(pct>=90) z=5; else if(pct>=80) z=4; else if(pct>=70) z=3;
+  else if(pct>=60) z=2; else if(pct>=50) z=1;
+
+  $$('.zone').forEach(el=> el.classList.toggle('on', +el.dataset.z === z));
+  if(z===0){
+    $('#zoneLabel').innerHTML = '<b>Below Zone 1</b> — resting or barely moving.';
+    $('#roFeel').textContent = 'Resting';
+  }else{
+    $('#zoneLabel').innerHTML = '<b>'+ZONE_NAME[z][0]+'</b> — '+ZONE_NAME[z][1];
+    $('#roFeel').textContent = ZONE_NAME[z][0].split('· ')[1];
+    S.zones = S.zones || [];
+    if(!S.zones.includes(z)){ S.zones.push(z); save(); paintZones(); }
+  }
+
+  const heart = $('#heart');
+  heart.style.setProperty('--bd', (60/hr).toFixed(3) + 's');
+  if(REDUCED) heart.classList.remove('beat');
+}
+
+function paintZones(){
+  const z = S.zones || [];
+  $$('#zpips i').forEach((p,i)=>p.classList.toggle('on', i < z.length));
+  $('#zpipTxt').textContent = z.length + ' of 5 zones visited';
+  if(z.length===5){ $('#doneSim').hidden = false; award('zones'); }
+  maybeClearS2();
+}
+
+$('#effort').addEventListener('input', simUpdate);
+$('#age').addEventListener('input', simUpdate);
+$('#rhrIn').addEventListener('input', simUpdate);
+
+function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+/* ==================================================================
+   TYPE D — BRAIN LAB FLIP CARDS
+   ================================================================== */
+const BRAIN = [
+  {icon:'spark', t:'Endorphins',        b:'Mood chemistry',   p:'Released during exercise, endorphins lift mood and blunt the perception of pain. This is the "I felt terrible before PE and fine after" effect, and it is chemical, not imaginary.'},
+  {icon:'sprout', t:'BDNF',              b:'Brain fertiliser', p:'Brain-derived neurotrophic factor helps brain cells grow and form new connections. Researchers sometimes call it fertiliser for the brain — and exercise is one of the strongest known ways to raise it.'},
+  {icon:'target', t:'Prefrontal cortex', b:'Focus and planning',p:'Brain scans taken right after exercise show increased activity in the prefrontal cortex — attention, planning and decision-making. The effect is measurable for up to two hours.'},
+  {icon:'moon', t:'Sleep onset',       b:'Falling asleep',   p:'Students who are active most days of the week fall asleep faster. Better sleep then improves the next day’s focus and recovery, which makes the next workout better. The loop runs both directions.'},
+  {icon:'shield', t:'Stress recovery',   b:'Bouncing back',    p:'Active students recover from stress more quickly. This is not opinion — it shows up in studies that track thousands of students across many years.'}
+];
+
+(function buildFlips(){
+  const host = $('#flips');
+  BRAIN.forEach((c,i)=>{
+    const el = document.createElement('div');
+    el.className = 'flip'; el.tabIndex = 0; el.dataset.ix = i;
+    el.setAttribute('role','button');
+    el.setAttribute('aria-label','Reveal: ' + c.t);
+    el.innerHTML =
+      '<div class="flip-in">' +
+        '<div class="face front">'+ico(c.icon)+'<b>'+c.t+'</b><em>Tap to reveal</em></div>' +
+        '<div class="face back"><b>'+c.b+'</b><p>'+c.p+'</p></div>' +
+      '</div>';
+    const flip = ()=>{
+      el.classList.add('on');
+      S.flips = S.flips || [];
+      if(!S.flips.includes(i)){ S.flips.push(i); save(); paintFlips(); }
+    };
+    el.addEventListener('click', flip);
+    el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flip(); } });
+    host.appendChild(el);
+  });
+})();
+
+function paintFlips(){
+  const f = S.flips || [];
+  f.forEach(i=>{ const el = $('.flip[data-ix="'+i+'"]'); if(el) el.classList.add('on'); });
+  $$('#fpips i').forEach((p,i)=>p.classList.toggle('on', i < f.length));
+  $('#fpipTxt').textContent = f.length + ' of 5 cards revealed';
+  if(f.length===5){ $('#doneBrain').hidden = false; award('brain'); clearStation('s3'); }
+}
+
+/* ==================================================================
+   TYPE E — CHARACTER SKILLS SORTER
+   ================================================================== */
+const SKILL_BUCKETS = [
+  {id:'comm',   icon:'speech', label:'Communication'},
+  {id:'lead',   icon:'compass', label:'Leadership'},
+  {id:'sport',  icon:'balance', label:'Sportsmanship'},
+  {id:'resil',  icon:'rebound', label:'Resilience'}
+];
+const SCEN_ITEMS = [
+  {t:'You call "ball!" loudly so your teammate knows you are taking the catch.', a:'comm',  why:'Calling for the ball is information, delivered out loud, so the team can act on it.'},
+  {t:'The ref calls you out on a close play. You nod and jog back to the line without arguing.', a:'sport', why:'Accepting an honest call against you is the definition of sportsmanship.'},
+  {t:'You miss six shots in a row, then set up for a seventh with the same focus.', a:'resil', why:'Resilience is continuing to perform after a setback, not avoiding setbacks.'},
+  {t:'Your group is arguing, so you suggest a rotation that gives everyone a turn.', a:'lead', why:'Leadership is organising a group toward a goal — not being the loudest or the best.'},
+  {t:'You explain the new rule to a classmate who joined late.', a:'comm', why:'Transferring what you know so a teammate can succeed is communication.'},
+  {t:'You shake hands with the team that just beat you and mean it.', a:'sport', why:'How you behave in defeat is the clearest test of sportsmanship.'},
+  {t:'You pull up with a cramp in the first minute, stretch it out, and finish the session.', a:'resil', why:'Adapting and continuing rather than quitting is a rep on resilience.'},
+  {t:'You notice a classmate sitting out and invite them into your drill group.', a:'lead', why:'Leadership includes making sure nobody on your team is left outside the activity.'}
+];
+
+(function buildBuckets(){
+  const host = $('#buckets');
+  SKILL_BUCKETS.forEach(b=>{
+    const el = document.createElement('button');
+    el.className = 'bucket'; el.dataset.b = b.id;
+    el.innerHTML = ico(b.icon)+'<b>'+b.label+'</b>';
+    el.addEventListener('click', ()=> answerSort(b.id, el));
+    host.appendChild(el);
+  });
+})();
+
+function sortIx(){ return (S.sortIx || 0); }
+
+function renderSort(){
+  const i = sortIx();
+  if(i >= SCEN_ITEMS.length){
+    $('#sortQ').innerHTML = '<div class="count">Complete</div><p>Eight for eight. These are the reps that never show up on a stopwatch.</p>';
+    $('#buckets').style.display = 'none';
+    $('#sortFb').innerHTML = '';
+    $('#doneSort').hidden = false;
+    award('skills'); clearStation('s4');
+    return;
+  }
+  $('#sortCount').textContent = 'Scenario ' + (i+1) + ' of ' + SCEN_ITEMS.length;
+  $('#sortText').textContent = SCEN_ITEMS[i].t;
+  $('#sortFb').innerHTML = '';
+  $$('.bucket').forEach(b=>{ b.classList.remove('right','wrong'); b.disabled = false; });
+}
+
+function answerSort(id, el){
+  const i = sortIx();
+  const item = SCEN_ITEMS[i];
+  if(!item) return;
+  const ok = id === item.a;
+  el.classList.add(ok ? 'right' : 'wrong');
+  if(!ok){
+    const right = $('.bucket[data-b="'+item.a+'"]');
+    if(right) right.classList.add('right');
+  }
+  $$('.bucket').forEach(b=> b.disabled = true);
+  const fb = document.createElement('div');
+  fb.className = 'fb ' + (ok ? 'ok' : 'no');
+  fb.innerHTML = '<strong>' + (ok ? 'Correct — ' : 'Not quite — ') + '</strong>' + item.why;
+  $('#sortFb').appendChild(fb);
+  setTimeout(()=>{ S.sortIx = i + 1; save(); renderSort(); }, ok ? 1500 : 2600);
+}
+
+/* ==================================================================
+   TYPE F — COACH'S LAB PULSE PAD
+   ================================================================== */
+let padState = 'idle', padTimer = null, padLeft = 30, padBeats = 0;
+
+function padRender(){
+  if(padState==='idle'){
+    $('#padBig').textContent = '30';
+    $('#padLbl').textContent = 'Seconds';
+    $('#padHint').textContent = 'Press to start the 30-second count';
+    $('#pad').classList.remove('live');
+  }else if(padState==='run'){
+    $('#padBig').textContent = padBeats;
+    $('#padLbl').textContent = padLeft + 's left';
+    $('#padHint').textContent = 'Tap once per beat';
+    $('#pad').classList.add('live');
+  }
+}
+
+function padStart(){
+  padState='run'; padLeft=30; padBeats=0; padRender();
+  padTimer = setInterval(()=>{
+    padLeft--; padRender();
+    if(padLeft<=0){ clearInterval(padTimer); padFinish(); }
+  }, 1000);
+}
+
+function padFinish(){
+  padState='idle';
+  $('#pad').classList.remove('live');
+  const bpm = padBeats * 2;
+  if(bpm < 30 || bpm > 160){
+    $('#padHint').textContent = 'That came out at ' + bpm + ' bpm — outside the believable range. Sit still and try again.';
+    $('#padBig').textContent = bpm;
+    $('#padLbl').textContent = 'bpm';
+    return;
+  }
+  addReading(bpm);
+  padRender();
+}
+
+$('#pad').addEventListener('click', ()=>{
+  if(padState==='idle'){ padStart(); return; }
+  padBeats++;
+  const p = $('#pad');
+  p.classList.remove('tap-flash'); void p.offsetWidth; p.classList.add('tap-flash');
+  padRender();
+});
+$('#pad').addEventListener('keydown', e=>{
+  if(e.key==='Enter'||e.key===' '){ e.preventDefault(); $('#pad').click(); }
+});
+
+$('#padManual').addEventListener('click', ()=>{
+  const v = prompt('Enter your resting heart rate in beats per minute (count for 30 seconds, then double it):');
+  if(v===null) return;
+  const n = parseInt(v,10);
+  if(isNaN(n) || n<30 || n>160){ alert('Please enter a number between 30 and 160.'); return; }
+  addReading(n);
+});
+$('#padClear').addEventListener('click', ()=>{ S.rhr = []; save(); renderLog(); });
+
+function addReading(bpm){
+  S.rhr = S.rhr || [];
+  if(S.rhr.length >= 3) S.rhr.shift();
+  S.rhr.push(bpm);
+  save();
+  renderLog();
+  toast('stopwatch','Reading logged', bpm + ' bpm recorded');
+}
+
+function avg(a){ return Math.round(a.reduce((x,y)=>x+y,0) / a.length); }
+
+function renderLog(){
+  const rows = $('#logBody');
+  rows.innerHTML = '';
+  const notes = ['Morning 1 · baseline','Morning 2','Morning 3'];
+  for(let i=0;i<3;i++){
+    const tr = document.createElement('tr');
+    if(S.rhr[i]!==undefined){
+      tr.innerHTML = '<td>'+notes[i]+'</td><td class="num">'+S.rhr[i]+' bpm</td><td>'+
+        (i===0?'Your reference point for the year':'Compare against morning 1')+'</td>';
+    }else{
+      tr.className = 'empty';
+      tr.innerHTML = '<td>'+notes[i]+'</td><td>—</td><td>Not logged yet</td>';
+    }
+    rows.appendChild(tr);
+  }
+
+  if(S.rhr.length){
+    const a = avg(S.rhr);
+    $('#rhrAvg').textContent = a + ' bpm';
+    $('#rhrRange').textContent = (S.rhr.length>1 ? (Math.max.apply(null,S.rhr) - Math.min.apply(null,S.rhr)) + ' bpm' : '—');
+    $('#rhrN').textContent = S.rhr.length + ' / 3';
+    const pos = clamp((a-40)/80, 0, 1) * 100;
+    $('#needle').style.left = pos + '%';
+    $('#rhrIn').value = a;
+    simUpdate();
+    $('#doneLab').hidden = false;
+    award('base'); clearStation('s5');
+  }else{
+    $('#rhrAvg').textContent='—'; $('#rhrRange').textContent='—'; $('#rhrN').textContent='0 / 3';
+    $('#needle').style.left='-99px';
+    $('#doneLab').hidden = true;
+  }
+  updateProgress();
+}
+
+/* ==================================================================
+   TYPE G — VOCABULARY MATCHING
+   ================================================================== */
+const VOCAB = [
+  {t:'Physical activity',     d:'Any movement that uses muscles and burns energy.'},
+  {t:'Cardiovascular system', d:"Heart, blood, and vessels — the body's oxygen delivery network."},
+  {t:'Resting heart rate',    d:'How many times your heart beats per minute at rest. Lower usually means a fitter heart.'},
+  {t:'Endorphins',            d:'Brain chemicals released during exercise that improve mood and dull pain.'},
+  {t:'BDNF',                  d:'A protein released by exercise that helps brain cells grow.'},
+  {t:'VO₂ max',               d:'Maximum amount of oxygen your body can use during all-out exercise.'},
+  {t:'Baseline',              d:'A starting measurement used to compare future results.'}
+];
+let mSel = null, mLocked = [];
+
+function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function buildMatch(){
+  mSel = null; mLocked = [];
+  const A = $('#colA'), B = $('#colB');
+  A.innerHTML = ''; B.innerHTML = '';
+  shuffle(VOCAB.map((v,i)=>i)).forEach(i=>{
+    const b = document.createElement('button');
+    b.className = 'mitem term-i'; b.dataset.ix = i; b.textContent = VOCAB[i].t;
+    b.addEventListener('click', ()=> pickTerm(b));
+    A.appendChild(b);
+  });
+  shuffle(VOCAB.map((v,i)=>i)).forEach(i=>{
+    const b = document.createElement('button');
+    b.className = 'mitem'; b.dataset.ix = i; b.textContent = VOCAB[i].d;
+    b.addEventListener('click', ()=> pickDef(b));
+    B.appendChild(b);
+  });
+  $('#matchScore').textContent = '0';
+  $('#doneMatch').hidden = true;
+}
+
+function pickTerm(el){
+  if(el.classList.contains('locked')) return;
+  $$('#colA .mitem').forEach(x=>x.classList.remove('sel'));
+  if(mSel && mSel.dataset.ix === el.dataset.ix){ mSel = null; return; }
+  el.classList.add('sel'); mSel = el;
+}
+
+function pickDef(el){
+  if(el.classList.contains('locked')) return;
+  if(!mSel){ el.classList.add('bad'); setTimeout(()=>el.classList.remove('bad'),420); return; }
+  if(mSel.dataset.ix === el.dataset.ix){
+    mSel.classList.remove('sel'); mSel.classList.add('locked');
+    el.classList.add('locked');
+    mLocked.push(el.dataset.ix);
+    mSel = null;
+    $('#matchScore').textContent = mLocked.length;
+    if(mLocked.length === VOCAB.length){
+      $('#doneMatch').hidden = false;
+      award('vocab'); clearStation('s6');
+    }
+  }else{
+    el.classList.add('bad'); mSel.classList.add('bad');
+    const s = mSel;
+    setTimeout(()=>{ el.classList.remove('bad'); s.classList.remove('bad','sel'); }, 440);
+    mSel = null;
+  }
+}
+$('#matchReset').addEventListener('click', buildMatch);
+
+/* ==================================================================
+   TYPE H — MISSION CHECK
+   ================================================================== */
+const QUIZ = [
+  {q:'A sport scientist asks "how much, how hard, how often." Which daily number does the research point to for students your age?',
+   o:['30 minutes of any movement','60 minutes of moderate-to-vigorous activity','90 minutes of light activity','Two hours of vigorous activity'],
+   a:1, why:'At least 60 minutes of moderate-to-vigorous activity per day — a figure drawn from decades of studies, not a guess.'},
+  {q:'Your heart, blood and vessels form which system?',
+   o:['Respiratory','Muscular','Cardiovascular','Skeletal'],
+   a:2, why:'The cardiovascular system delivers oxygen and nutrients to working muscles and clears waste.'},
+  {q:'BDNF matters because it…',
+   o:['stores energy in muscle','helps brain cells grow and form new connections','increases bone density','slows your resting heart rate'],
+   a:1, why:'Brain-derived neurotrophic factor helps brain cells grow and connect. Exercise is one of the strongest known ways to raise it.'},
+  {q:'Over a year of training, what would you expect to happen to your resting heart rate?',
+   o:['It rises','It drops','It stays identical','It becomes impossible to measure'],
+   a:1, why:'A falling resting heart rate is one of the clearest signs the cardiovascular system is getting stronger.'},
+  {q:'A teammate makes a bad pass and the other team scores. You say "my fault, I was behind you — I’ve got the next one." Which character skill is that a rep on?',
+   o:['VO₂ max','Sportsmanship','Flexibility','Reaction time'],
+   a:1, why:'Taking the sting out of a mistake rather than assigning blame is sportsmanship — and it is a trainable skill, not a personality trait.'}
+];
+
+function quizIx(){ return (S.quizIx || 0); }
+
+function renderQuizProg(){
+  const host = $('#quizProg'); host.innerHTML = '';
+  QUIZ.forEach((_,i)=>{
+    const b = document.createElement('i');
+    const r = (S.quizRes||[])[i];
+    if(r==='ok') b.className='ok'; else if(r==='no') b.className='no';
+    else if(i===quizIx()) b.className='on';
+    host.appendChild(b);
+  });
+}
+
+function renderQuiz(){
+  renderQuizProg();
+  const i = quizIx();
+  const stage = $('#quizStage');
+  stage.innerHTML = '';
+  if(i >= QUIZ.length){
+    const res = S.quizRes || [];
+    const right = res.filter(x=>x==='ok').length;
+    stage.innerHTML =
+      '<div class="qtext">' + right + ' of ' + QUIZ.length + ' first-try correct</div>' +
+      '<p style="font-size:14.5px;color:var(--ink-soft);margin-bottom:14px">Nothing here was graded. If any of these felt shaky, scroll back to that station — the answer is in the lesson.</p>';
+    const again = document.createElement('button');
+    again.className = 'btn ghost sm'; again.textContent = 'Run it again';
+    again.addEventListener('click', ()=>{ S.quizIx=0; S.quizRes=[]; save(); renderQuiz(); });
+    stage.appendChild(again);
+    $('#doneQuiz').hidden = false;
+    award('check'); clearStation('s7');
+    return;
+  }
+
+  const item = QUIZ[i];
+  const q = document.createElement('div');
+  q.className = 'qtext';
+  q.innerHTML = '<span style="color:var(--dark-bitstream);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:5px">Question '+(i+1)+' of '+QUIZ.length+'</span>' + item.q;
+  stage.appendChild(q);
+
+  const opts = document.createElement('div');
+  opts.className = 'opts';
+  item.o.forEach((text,ix)=>{
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = '<span class="k">'+String.fromCharCode(65+ix)+'</span><span>'+text+'</span>';
+    b.addEventListener('click', ()=> answerQuiz(ix, b, opts, item, i));
+    opts.appendChild(b);
+  });
+  stage.appendChild(opts);
+}
+
+function answerQuiz(ix, btn, opts, item, i){
+  const ok = ix === item.a;
+  $$('.opt', opts).forEach(o=>o.disabled = true);
+  btn.classList.add(ok ? 'right' : 'wrong');
+  if(!ok) $$('.opt', opts)[item.a].classList.add('right');
+  S.quizRes = S.quizRes || [];
+  if(S.quizRes[i] === undefined) S.quizRes[i] = ok ? 'ok' : 'no';
+  save();
+  renderQuizProg();
+
+  const fb = document.createElement('div');
+  fb.className = 'fb ' + (ok ? 'ok' : 'no');
+  fb.innerHTML = '<strong>' + (ok ? 'Correct. ' : 'Not quite. ') + '</strong>' + item.why;
+  $('#quizStage').appendChild(fb);
+
+  const next = document.createElement('button');
+  next.className = 'btn sm'; next.style.marginTop = '12px';
+  next.textContent = (i === QUIZ.length-1) ? 'See results' : 'Next question';
+  next.addEventListener('click', ()=>{ S.quizIx = i+1; save(); renderQuiz(); });
+  $('#quizStage').appendChild(next);
+  next.focus({preventScroll:true});
+}
+
+/* ==================================================================
+   DEBRIEF — reflection, copy-out, reset
+   ================================================================== */
+const ref = $('#reflect');
+ref.value = S.reflect || '';
+let refTimer = null;
+ref.addEventListener('input', ()=>{
+  S.reflect = ref.value; save();
+  const tag = $('#savedTag'); tag.classList.add('on');
+  clearTimeout(refTimer);
+  refTimer = setTimeout(()=>tag.classList.remove('on'), 1400);
+  const ok = ref.value.trim().length > 80;
+  $('#doneReflect').hidden = !ok;
+  if(ok) clearStation('s8');
+});
+
+$('#copyLog').addEventListener('click', ()=>{
+  const res = S.quizRes || [];
+  const right = res.filter(x=>x==='ok').length;
+  const mvpa = Object.keys(S.day).reduce((n,id)=>{
+    const b = BLOCKS.find(x=>x.id===id);
+    return n + (b && (b.i==='vig'||b.i==='mod') ? b.m : 0);
+  },0);
+  const txt =
+    'MISSION LOG — Week 1: Intro on Physical Activity\n' +
+    '================================================\n' +
+    'Stations cleared: ' + STATIONS.filter(x=>S.done[x]).length + ' of 8\n' +
+    'Badges earned: ' + S.badges.length + ' of 8    XP: ' + S.xp + '\n\n' +
+    'RESTING HEART RATE\n' +
+    (S.rhr.length ? S.rhr.map((v,i)=>'  Morning '+(i+1)+': '+v+' bpm').join('\n') : '  (not logged)') + '\n' +
+    (S.rhr.length ? '  Average: ' + avg(S.rhr) + ' bpm\n  Range:   ' + (Math.max.apply(null,S.rhr)-Math.min.apply(null,S.rhr)) + ' bpm\n' : '') +
+    '\n60-MINUTE DAY\n  Moderate-to-vigorous minutes planned: ' + mvpa + '\n' +
+    '\nMISSION CHECK\n  First-try correct: ' + right + ' of ' + QUIZ.length + '\n' +
+    '\nMY ANALYSIS\n' + (S.reflect || '(not written yet)') + '\n';
+
+  navigator.clipboard.writeText(txt).then(
+    ()=> toast('copy','Mission log copied','Paste it into the Canvas assignment'),
+    ()=> { window.prompt('Copy your mission log:', txt); }
+  );
+});
+
+$('#resetAll').addEventListener('click', ()=>{
+  if(!confirm('Reset this lesson? Your progress, badges and logged heart-rate readings on this device will be cleared.')) return;
+  try{ localStorage.removeItem(CONFIG.STORE_KEY); }catch(e){}
+  location.reload();
+});
+
+/* ==================================================================
+   BOOT
+   ================================================================== */
+function boot(){
+  renderBadgeTray();
+  STATIONS.forEach(id=>{
+    if(S.done[id]){
+      const sec = $('#'+id); if(sec) sec.classList.add('done');
+      const chip = $('.chip[data-go="'+id+'"]'); if(chip) chip.classList.add('done');
+    }
+  });
+  renderDay();
+  paintSystems();
+  if((S.sysSeen||[]).length) showSystem(S.sysSeen[S.sysSeen.length-1]);
+  paintZones();
+  simUpdate();
+  paintFlips();
+  renderSort();
+  renderLog();
+  buildMatch();
+  renderQuiz();
+  if((S.reflect||'').trim().length > 80) $('#doneReflect').hidden = false;
+  updateProgress();
+  if(STATIONS.every(x=>S.done[x])) {
+    $('#debriefTitle').textContent = 'Mission complete, Sport Scientist';
+    $('#debriefMsg').textContent = 'Eight stations cleared. Take your baseline into the VR Fitness Park assignment and the first Flight Club challenge.';
+  }
+  if(!STORAGE_OK){
+    toast('info','Progress won’t be saved','This browser is blocking storage in an embedded frame.');
+  }
+  startIntro();
+}
+boot();
+</script>
+</body>
+</html>
