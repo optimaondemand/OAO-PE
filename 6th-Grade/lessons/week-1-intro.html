@@ -43,12 +43,15 @@
   ----------------------------------------------------------------
   VIDEO
   ----------------------------------------------------------------
-  CONFIG.VIDEO_URL is intentionally blank on the public pilot copy.
-  GitHub Pages times out syncing this repo when another video is
-  added to the tree, so the film is not served from here. In Canvas,
-  set it to the Canvas URL of 6th_Grade_PE_Intro.mp4 (Files ->
-  Uploaded Media -> copy link). Blank shows a labelled card instead
-  of breaking.
+  The intro film is served from the repo's "course-media" release,
+  not from the Pages tree. GitHub Pages fails to deploy this repo
+  when three course videos sit in the published files -- it times out
+  at syncing_files -- so CONFIG.VIDEO_URL points at the release
+  download instead. Release assets cost the deployment nothing and
+  stream with range requests, so seeking works.
+
+  To swap the film: upload the new file to that release and update
+  CONFIG.VIDEO_URL. Blank shows a labelled card instead of breaking.
   ----------------------------------------------------------------
 
   NOTES FOR REVIEW
@@ -1682,7 +1685,7 @@
    ================================================================== */
 const CONFIG = {
   // Canvas URL for 6th_Grade_PE_Intro.mp4. Leave '' to show a placeholder.
-  VIDEO_URL: '',
+  VIDEO_URL: 'https://github.com/optimaondemand/OAO-PE/releases/download/course-media/6th_Grade_PE_Intro-1.mp4',
   STORE_KEY: 'mm.s1.w1.v1'
 };
 
