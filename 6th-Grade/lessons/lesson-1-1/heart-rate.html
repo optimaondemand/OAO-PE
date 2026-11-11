@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Resting Heart Rate · Mission: Move!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--binary:#0E1C42;--bitstream:#55C8E8;--pink:#A53E97;--green:#76C043;--teal:#0E5568;
+    --ink:#1b2440;--muted:#5b668a;--line:#e3e8f2;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);background:#e8f4f8;padding:16px}
+  .wrap{max-width:900px;margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--teal);
+    font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid #cfe6ee}
+  h2{font-family:'Archivo',sans-serif;font-size:clamp(21px,3.6vw,27px);color:var(--binary);margin:9px 0 4px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:14px;line-height:1.5;max-width:620px}
+  .hr{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:18px;
+    display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+  @media(max-width:540px){.hr{grid-template-columns:1fr;text-align:center}}
+  .tapbtn{width:128px;height:128px;border-radius:50%;border:none;cursor:pointer;justify-self:center;
+    background:radial-gradient(circle at 35% 30%, #ff9ad6, #A53E97 62%, #7a2a70);
+    color:#fff;font-weight:900;font-family:'Archivo',sans-serif;font-size:15px;
+    box-shadow:0 10px 28px rgba(165,62,151,.4);transition:transform .08s;line-height:1.1}
+  .tapbtn:active{transform:scale(.92)}
+  .tapbtn .beat{font-size:32px;display:block;animation:hb 1s ease-in-out infinite}
+  @keyframes hb{0%,100%{transform:scale(1)}14%{transform:scale(1.2)}28%{transform:scale(1)}42%{transform:scale(1.12)}}
+  .read{min-width:0}
+  .read h3{font-family:'Archivo',sans-serif;font-size:17px;color:var(--binary);margin-bottom:3px}
+  .read p{font-size:13px;color:var(--muted);line-height:1.45}
+  .bpm{font-family:'Archivo',sans-serif;font-weight:900;font-size:44px;color:var(--pink);line-height:1;margin-top:4px}
+  .bpm .u{font-size:14px;color:var(--muted);font-weight:700;margin-left:4px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .btn{font:inherit;font-weight:700;font-size:13px;cursor:pointer;border-radius:10px;padding:9px 14px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+  .btn.go{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .btn.save{background:var(--green);color:#fff;border-color:var(--green)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .saved{font-size:12.5px;color:var(--green);font-weight:800;margin-top:8px;min-height:16px}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">🔬 Coach's Lab · Baseline Test</span>
+  <h2>Measure Your Resting Heart Rate</h2>
+  <p class="sub">This is your first baseline number of the year. Sit still a moment, press <b>Start</b>, then tap the heart in time with your pulse (neck or wrist). The lab turns 15 seconds of taps into your beats per minute.</p>
+  <div class="hr">
+    <button class="tapbtn" id="tap"><span class="beat">❤️</span>TAP<br>EACH BEAT</button>
+    <div class="read">
+      <h3>Beats per minute</h3>
+      <div class="bpm" id="bpm">—<span class="u">bpm</span></div>
+      <div class="row">
+        <button class="btn go" id="start">▶ Start 15-sec count</button>
+        <button class="btn save" id="save" disabled>💾 Save my baseline</button>
+        <button class="btn" id="reset">↺ Reset</button>
+      </div>
+      <div class="saved" id="savedmsg"></div>
+      <div class="hint">A lower resting heart rate over the year is one of the clearest signs your heart is getting stronger.</div>
+    </div>
+  </div>
+</div>
+<script>
+  var taps=0,timing=false,remain=15,tid=null;
+  var bpmEl=document.getElementById('bpm'),tap=document.getElementById('tap'),
+      startB=document.getElementById('start'),saveB=document.getElementById('save'),
+      resetB=document.getElementById('reset'),msg=document.getElementById('savedmsg');
+  tap.addEventListener('click',function(){if(timing){taps++;bpmEl.innerHTML=taps+'<span class="u">taps</span>';}});
+  startB.addEventListener('click',function(){
+    taps=0;timing=true;remain=15;saveB.disabled=true;msg.textContent='';
+    startB.disabled=true;startB.textContent='Counting… tap!';
+    tid=setInterval(function(){
+      remain--;startB.textContent='Counting… '+remain+'s';
+      if(remain<=0){clearInterval(tid);timing=false;var bpm=taps*4;
+        bpmEl.innerHTML=(bpm||'—')+'<span class="u">bpm</span>';
+        startB.disabled=false;startB.textContent='▶ Start 15-sec count';
+        saveB.disabled=!bpm;window.__bpm=bpm;}
+    },1000);
+  });
+  saveB.addEventListener('click',function(){
+    try{localStorage.setItem('mission_move_baseline_6th_v1',JSON.stringify({restingHR:window.__bpm,date:new Date().toISOString()}));}catch(e){}
+    msg.textContent='✓ Baseline saved: '+window.__bpm+' bpm. We’ll compare it all year.';
+  });
+  resetB.addEventListener('click',function(){
+    clearInterval(tid);timing=false;taps=0;remain=15;
+    bpmEl.innerHTML='—<span class="u">bpm</span>';startB.disabled=false;
+    startB.textContent='▶ Start 15-sec count';saveB.disabled=true;msg.textContent='';
+  });
+  try{var prev=JSON.parse(localStorage.getItem('mission_move_baseline_6th_v1')||'null');
+    if(prev&&prev.restingHR){msg.textContent='Last saved baseline: '+prev.restingHR+' bpm.';}}catch(e){}
+</script>
+</body>
+</html>

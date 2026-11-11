@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Skill Sort · Mission: Move!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--binary:#0E1C42;--bitstream:#55C8E8;--gold:#C7922C;--pink:#A53E97;
+    --green:#76C043;--orange:#F78F1E;--teal:#0E5568;--ink:#1b2440;--muted:#5b668a;--line:#e3e8f2;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);background:#f4f8fd;padding:16px}
+  .wrap{max-width:900px;margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;background:#f1faea;color:#4d8a1f;
+    font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  h2{font-family:'Archivo',sans-serif;font-size:clamp(22px,4vw,30px);color:var(--binary);margin:10px 0 4px}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:14px;line-height:1.5}
+
+  .bank{display:flex;flex-wrap:wrap;gap:9px;min-height:56px;padding:12px;border:2px dashed var(--line);
+    border-radius:14px;background:#fff;margin-bottom:14px;align-content:flex-start}
+  .bank .lbl{width:100%;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800}
+  .tok{cursor:grab;user-select:none;background:#fff;border:1.5px solid var(--line);border-radius:999px;
+    padding:9px 15px;font-weight:700;font-size:13.5px;color:var(--ink);box-shadow:0 2px 6px rgba(14,28,66,.06);
+    transition:transform .12s, box-shadow .12s;touch-action:none}
+  .tok:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(14,28,66,.12)}
+  .tok.drag{opacity:.5}
+  .tok .e{margin-right:6px}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.cols{grid-template-columns:1fr}}
+  .col{border-radius:16px;padding:14px;min-height:170px;border:2px solid transparent;transition:.18s}
+  .col.stop{background:#f0fbff;border-color:#cdeefb}
+  .col.char{background:#fdf0fa;border-color:#f5d4eb}
+  .col.over{transform:scale(1.015);box-shadow:0 8px 24px rgba(14,28,66,.12)}
+  .col h3{font-family:'Archivo',sans-serif;font-size:16px;display:flex;align-items:center;gap:8px;margin-bottom:3px}
+  .col.stop h3{color:var(--teal)} .col.char h3{color:var(--pink)}
+  .col .cap{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .drop{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;min-height:70px}
+  .tok.ok{border-color:var(--green);box-shadow:0 0 0 2px rgba(118,192,67,.25)}
+  .tok.no{border-color:var(--orange);animation:shake .3s}
+  @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+  .foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:16px}
+  .btn{font:inherit;font-weight:800;font-size:14px;cursor:pointer;border-radius:12px;padding:10px 18px;border:none}
+  .btn.check{background:var(--binary);color:#fff}
+  .btn.reset{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .score{font-family:'Archivo',sans-serif;font-weight:900;font-size:16px;color:var(--binary)}
+  .msg{font-size:13.5px;font-weight:700;margin-left:auto}
+  .msg.win{color:var(--green)} .msg.try{color:var(--orange)}
+  .conf{position:fixed;top:-10px;width:9px;height:14px;z-index:30;pointer-events:none;border-radius:2px}
+  @keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">🏃 Flight Club · Skill Lab</span>
+  <h2>Stopwatch Skills vs. Character Skills</h2>
+  <p class="sub">Some skills show up on a stopwatch. Others — the ones that separate good from great — never do. Drag each card into the right lab bin. Then hit <b>Check</b>.</p>
+
+  <div class="bank" id="bank"><span class="lbl">Drag from here ↓</span></div>
+
+  <div class="cols">
+    <div class="col stop" data-bin="stop">
+      <h3>⏱️ Stopwatch Skills</h3>
+      <div class="cap">Physical performance you can measure with a number.</div>
+      <div class="drop" data-bin="stop"></div>
+    </div>
+    <div class="col char" data-bin="char">
+      <h3>🧠 Character Skills</h3>
+      <div class="cap">Can't be timed — but predict success just as strongly.</div>
+      <div class="drop" data-bin="char"></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <button class="btn check" id="check">Check my sort</button>
+    <button class="btn reset" id="reset">↺ Reset</button>
+    <span class="score" id="score"></span>
+    <span class="msg" id="msg"></span>
+  </div>
+</div>
+
+<script>
+  var ITEMS=[
+    {t:'Sprint speed',e:'💨',bin:'stop'},
+    {t:'Push-up count',e:'💪',bin:'stop'},
+    {t:'Recovery heart rate',e:'❤️',bin:'stop'},
+    {t:'How far you can jump',e:'🦵',bin:'stop'},
+    {t:'Leadership',e:'📣',bin:'char'},
+    {t:'Sportsmanship',e:'🤝',bin:'char'},
+    {t:'Not quitting after a setback',e:'🔁',bin:'char'},
+    {t:'Communication',e:'💬',bin:'char'}
+  ];
+  var bank=document.getElementById('bank');
+  // shuffle
+  ITEMS.sort(function(){return Math.random()-.5});
+  ITEMS.forEach(function(it,i){
+    var el=document.createElement('div');
+    el.className='tok';el.draggable=true;el.id='t'+i;el.dataset.bin=it.bin;
+    el.innerHTML='<span class="e">'+it.e+'</span>'+it.t;
+    bank.appendChild(el);
+    el.addEventListener('dragstart',function(e){el.classList.add('drag');e.dataTransfer.setData('text',el.id)});
+    el.addEventListener('dragend',function(){el.classList.remove('drag')});
+    // touch / click fallback: tap to cycle bank -> stop -> char
+    el.addEventListener('click',function(){
+      var order=[bank,document.querySelector('.drop[data-bin="stop"]'),document.querySelector('.drop[data-bin="char"]')];
+      var cur=order.indexOf(el.parentNode);move(el,order[(cur+1)%3]);clearMark(el);
+    });
+  });
+
+  function move(el,target){target.appendChild(el);}
+  function clearMark(el){el.classList.remove('ok','no');document.getElementById('msg').textContent='';document.getElementById('score').textContent='';}
+
+  [bank].concat([].slice.call(document.querySelectorAll('.drop'))).forEach(function(z){
+    z.addEventListener('dragover',function(e){e.preventDefault();var c=z.closest('.col');if(c)c.classList.add('over')});
+    z.addEventListener('dragleave',function(){var c=z.closest('.col');if(c)c.classList.remove('over')});
+    z.addEventListener('drop',function(e){e.preventDefault();var c=z.closest('.col');if(c)c.classList.remove('over');
+      var el=document.getElementById(e.dataTransfer.getData('text'));if(el){move(el,z);clearMark(el);}});
+  });
+
+  document.getElementById('check').addEventListener('click',function(){
+    var right=0,placed=0,total=ITEMS.length;
+    document.querySelectorAll('.drop').forEach(function(d){
+      [].slice.call(d.children).forEach(function(el){
+        placed++;
+        if(el.dataset.bin===d.dataset.bin){el.classList.add('ok');el.classList.remove('no');right++;}
+        else{el.classList.add('no');el.classList.remove('ok');}
+      });
+    });
+    document.getElementById('score').textContent=right+' / '+total+' correct';
+    var m=document.getElementById('msg');
+    if(right===total&&placed===total){m.textContent='🚀 Perfect sort! +10 Flight Club points';m.className='msg win';boom();}
+    else if(placed<total){m.textContent='Sort all '+total+' cards first.';m.className='msg try';}
+    else{m.textContent='Close — fix the orange ones and check again.';m.className='msg try';}
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    document.querySelectorAll('.drop .tok').forEach(function(el){bank.appendChild(el);clearMark(el)});
+  });
+  function boom(){var cs=['#55C8E8','#A53E97','#76C043','#C7922C','#F78F1E'];
+    for(var i=0;i<60;i++){(function(){var c=document.createElement('div');c.className='conf';
+      c.style.left=Math.random()*100+'vw';c.style.background=cs[i%cs.length];
+      c.style.animation='fall '+(1.6+Math.random()*1.4)+'s '+(Math.random()*.4)+'s linear forwards';
+      document.body.appendChild(c);setTimeout(function(){c.remove()},3600)})();}}
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission Checkpoint · Mission: Move!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--binary:#0E1C42;--bitstream:#55C8E8;--gold:#C7922C;--pink:#A53E97;
+    --green:#76C043;--orange:#F78F1E;--teal:#0E5568;--ink:#1b2440;--muted:#5b668a;--line:#e3e8f2;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);background:#f4f8fd;padding:16px}
+  .wrap{max-width:900px;margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;background:#e8f4f8;color:var(--teal);
+    font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  h2{font-family:'Archivo',sans-serif;font-size:clamp(22px,4vw,30px);color:var(--binary);margin:10px 0 4px}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:8px;line-height:1.5}
+  .pts{display:flex;align-items:center;gap:10px;margin:12px 0 18px}
+  .pts .bar{flex:1;height:10px;border-radius:999px;background:#dde8f3;overflow:hidden}
+  .pts .fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--bitstream),var(--green));transition:.5s}
+  .pts .lab{font-family:'Archivo',sans-serif;font-weight:900;color:var(--binary);font-size:15px;white-space:nowrap}
+
+  .q{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:13px}
+  .q .qn{font-weight:800;font-size:15px;color:var(--binary);margin-bottom:11px;display:flex;gap:9px}
+  .q .qn .n{background:var(--bitstream);color:var(--binary);font-family:'Archivo',sans-serif;font-weight:900;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;font-size:14px}
+  .opt{display:block;width:100%;text-align:left;font:inherit;font-size:14px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fbfdff;border-radius:11px;padding:11px 13px;margin:7px 0;transition:.14s}
+  .opt:hover{border-color:var(--bitstream)}
+  .opt.correct{border-color:var(--green);background:#f1faea;font-weight:700}
+  .opt.wrong{border-color:var(--orange);background:#fff5ea}
+  .opt .mk{float:right;font-weight:900}
+  .fb{font-size:13px;margin-top:8px;padding:10px 12px;border-radius:10px;display:none;line-height:1.45}
+  .fb.show{display:block}
+  .fb.good{background:#f1faea;color:#3f7a16}
+  .fb.bad{background:#fff5ea;color:#b15c00}
+  .done{display:none;text-align:center;background:linear-gradient(155deg,#0E1C42,#15295c);color:#eaf2ff;
+    border-radius:18px;padding:26px 20px;margin-top:6px}
+  .done.show{display:block;animation:pop .4s}
+  @keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+  .done h3{font-family:'Archivo',sans-serif;font-size:26px;color:#fff;margin-bottom:6px}
+  .done .big{font-family:'Archivo',sans-serif;font-size:46px;font-weight:900;color:var(--bitstream);line-height:1}
+  .done p{color:#bcd3f1;font-size:14px;margin-top:8px}
+  .btn{font:inherit;font-weight:800;font-size:14px;cursor:pointer;border-radius:12px;padding:10px 20px;
+    border:none;background:var(--pink);color:#fff;margin-top:14px}
+  .conf{position:fixed;top:-10px;width:9px;height:14px;z-index:30;pointer-events:none;border-radius:2px}
+  @keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">🚀 Flight Club · Mission Checkpoint</span>
+  <h2>Did the data stick?</h2>
+  <p class="sub">Three quick questions from this week's briefing. Pick an answer to see instant feedback — and earn your Flight Club points.</p>
+  <div class="pts"><div class="bar"><div class="fill" id="fill"></div></div><div class="lab" id="lab">0 pts</div></div>
+
+  <div id="quiz"></div>
+
+  <div class="done" id="done">
+    <h3>Mission Checkpoint Complete</h3>
+    <div class="big" id="finalpts">0</div>
+    <p>Flight Club points earned</p>
+    <p id="verdict"></p>
+    <button class="btn" id="again">↺ Try again</button>
+  </div>
+</div>
+<script>
+  var Q=[
+    {q:'How many minutes of moderate-to-vigorous activity should kids your age get each day?',
+     o:['About 15 minutes','At least 60 minutes','Only on game days','As much as a pro athlete'],a:1,
+     good:'Right — 60 minutes a day, and that number comes from decades of research.',
+     bad:'Not quite. The research-backed target is at least 60 minutes a day.'},
+    {q:'Which of these is a "stopwatch" (measurable) skill rather than a character skill?',
+     o:['Leadership','Sportsmanship','Recovery heart rate','Communication'],a:2,
+     good:'Exactly — recovery heart rate is a number you can measure. The others are character skills.',
+     bad:'Those others can’t be timed. Recovery heart rate is the measurable one.'},
+    {q:'Why is a LOWER resting heart rate over the year a good sign?',
+     o:['It means you slept in','It’s a sign your cardiovascular system is getting stronger','It means you skipped warm-up','It has nothing to do with fitness'],a:1,
+     good:'Correct — a stronger heart pumps more per beat, so it needs fewer beats at rest.',
+     bad:'Think back to the Coach’s Lab: a falling resting heart rate signals a stronger heart.'}
+  ];
+  var quiz=document.getElementById('quiz'),answered={},pts=0;
+  Q.forEach(function(item,i){
+    var box=document.createElement('div');box.className='q';
+    var opts=item.o.map(function(o,j){return '<button class="opt" data-q="'+i+'" data-o="'+j+'">'+o+'<span class="mk"></span></button>';}).join('');
+    box.innerHTML='<div class="qn"><span class="n">'+(i+1)+'</span><span>'+item.q+'</span></div>'+opts+
+      '<div class="fb" id="fb'+i+'"></div>';
+    quiz.appendChild(box);
+  });
+  quiz.addEventListener('click',function(e){
+    var b=e.target.closest('.opt');if(!b)return;
+    var i=+b.dataset.q,j=+b.dataset.o;if(answered[i])return;answered[i]=1;
+    var item=Q[i],correct=j===item.a;
+    var btns=quiz.querySelectorAll('.opt[data-q="'+i+'"]');
+    btns.forEach(function(x){x.disabled=true;
+      if(+x.dataset.o===item.a){x.classList.add('correct');x.querySelector('.mk').textContent='✓';}
+    });
+    if(!correct){b.classList.add('wrong');b.querySelector('.mk').textContent='✗';}
+    var fb=document.getElementById('fb'+i);
+    fb.className='fb show '+(correct?'good':'bad');fb.textContent=correct?item.good:item.bad;
+    if(correct)pts+=5;
+    document.getElementById('fill').style.width=(Object.keys(answered).length/Q.length*100)+'%';
+    document.getElementById('lab').textContent=pts+' pts';
+    if(Object.keys(answered).length===Q.length)finish();
+  });
+  function finish(){
+    setTimeout(function(){
+      document.getElementById('done').classList.add('show');
+      document.getElementById('finalpts').textContent=pts;
+      var v=document.getElementById('verdict');
+      if(pts===15){v.textContent='Perfect run, Sport Scientist. Mission 1 cleared! 🚀';boom();}
+      else if(pts>=10){v.textContent='Strong work — review the reading and you’ll ace the retry.';}
+      else{v.textContent='Good start. Re-read the briefing and run the checkpoint again.';}
+    },500);
+  }
+  document.getElementById('again').addEventListener('click',function(){
+    answered={};pts=0;quiz.innerHTML='';document.getElementById('done').classList.remove('show');
+    document.getElementById('fill').style.width='0';document.getElementById('lab').textContent='0 pts';
+    Q.forEach(function(item,i){var box=document.createElement('div');box.className='q';
+      var opts=item.o.map(function(o,j){return '<button class="opt" data-q="'+i+'" data-o="'+j+'">'+o+'<span class="mk"></span></button>';}).join('');
+      box.innerHTML='<div class="qn"><span class="n">'+(i+1)+'</span><span>'+item.q+'</span></div>'+opts+'<div class="fb" id="fb'+i+'"></div>';
+      quiz.appendChild(box);});
+  });
+  function boom(){var cs=['#55C8E8','#A53E97','#76C043','#C7922C','#F78F1E'];
+    for(var i=0;i<70;i++){(function(){var c=document.createElement('div');c.className='conf';
+      c.style.left=Math.random()*100+'vw';c.style.background=cs[i%cs.length];
+      c.style.animation='fall '+(1.6+Math.random()*1.4)+'s '+(Math.random()*.4)+'s linear forwards';
+      document.body.appendChild(c);setTimeout(function(){c.remove()},3600)})();}}
+</script>
+</body>
+</html>
