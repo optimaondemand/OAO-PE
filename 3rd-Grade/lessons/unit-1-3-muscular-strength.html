@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.3 · Muscular Strength and Endurance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 5",
+  unit: "Unit 1.3",
+  title: "Muscular Strength and Endurance",
+  launch: {
+    h1: "Grow Your Super Muscles! 💪",
+    leadHTML: "Have you ever lifted your backpack and thought, \"Wow, that's heavy!\" or climbed up the jungle gym at recess? All of those things use strength! This week you'll discover how strong muscles help you move, play, and feel great."
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "Strength — Why It Helps Your Body",
+      html: "<p>Have you ever lifted your backpack and thought, \"Wow, that's heavy!\" or climbed up the jungle gym at recess? All of those things use strength—but strength doesn't just mean having big muscles like a superhero.</p>"+
+            "<p>Strength means your muscles are powerful enough to help you move, run, play, and carry things without getting tired too fast. When your muscles are strong, you can do more fun things—like ride your bike longer, throw a ball farther, or play tag without needing lots of breaks. Strong muscles also help protect you from getting hurt.</p>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>You don't have to be the strongest to have strong muscles — you just need to keep moving and taking care of your body!</p></div>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What does it mean to have <strong>strength</strong>?",
+        options:[
+          "Your muscles are powerful enough to help you move, run, play, and carry things without getting tired too fast",
+          "You have the biggest muscles of anyone you know",
+          "You never have to move your body at all"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "Why Do You Need Strength?",
+      html: "<p>Your body uses strength every single day! You use strength when you:</p>"+
+            "<ul><li>🎒 Carry your school bag or lunch box</li>"+
+            "<li>🤸 Play outside with your friends</li>"+
+            "<li>🪜 Climb stairs or run during recess</li>"+
+            "<li>🪑 Sit up straight in class</li>"+
+            "<li>🧹 Do chores like sweeping or lifting a laundry basket</li></ul>"+
+            "<p>Strong muscles help your body move the right way and keep you from getting too tired too fast. They also support your bones and help keep your body safe while you play.</p>",
+      activity: { type:"sort", title:"🕹️ Spot the Strength Jobs", tag:"Tap to play",
+        sub:"Tap every card that is a way your body uses <strong>strength</strong>. Find all 4!",
+        wrongMsg:"That one doesn't really use your muscles — try again!",
+        items:[
+          {t:"Carry your school bag", e:"🎒", correct:true},
+          {t:"Climb stairs or run at recess", e:"🪜", correct:true},
+          {t:"Sit up straight in class", e:"🪑", correct:true},
+          {t:"Lift a laundry basket", e:"🧺", correct:true},
+          {t:"Watch TV on the couch", e:"📺", correct:false},
+          {t:"Take a long nap", e:"😴", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "How Do You Build Strength?",
+      html: "<p>You don't need to go to a gym or lift heavy weights to get stronger. You already have the best tool—your own body! Here are some fun ways to build strength:</p>"+
+            "<ul><li>🙌 <strong>Push-ups</strong> make your arms, shoulders, and chest strong.</li>"+
+            "<li>🦵 <strong>Squats</strong> help your legs stay powerful for running and jumping.</li>"+
+            "<li>🧘 <strong>Planks</strong> build strong tummy (core) muscles that help with balance and posture.</li>"+
+            "<li>📚 <strong>Carrying books</strong> or helping with chores at home builds strength too!</li>"+
+            "<li>🏰 <strong>Playing on the playground</strong> (like monkey bars or climbing) builds your muscles while having fun!</li></ul>"+
+            "<p>Just like brushing your teeth or getting enough sleep, moving your body every day helps your muscles grow strong and healthy.</p>",
+      activity: { type:"snack", title:"⏱️ Strength Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second strength break. When you tap <strong>Start</strong>, the owl calls out a new strength move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Push-ups — arms strong! 🙌","Squats — down and up! 🦵","Hold a plank! 🧘","March with high knees! 🦵","Reach and lift! 📚","Climb like the monkey bars! 🏰"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Strong Body, Happy Life",
+      html: "<p>When your muscles are strong, you feel better. You have more energy, fewer aches, and you're ready for all the fun things in your day—PE class, recess, sports, or just being able to move with confidence.</p>"+
+            "<p>So remember: you don't have to be the fastest or the strongest—you just need to keep moving and taking care of your body. Little by little, you'll get stronger, feel better, and have more fun doing the things you love!</p>"+
+            "<p><strong>Tap each card</strong> to reveal how strong muscles help you. (Reveal all 4!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🔋", t:"More Energy", p:"Strong muscles give you more energy for all the fun things in your day."},
+        {e:"😌", t:"Fewer Aches", p:"When your muscles are strong, you feel better and have fewer aches."},
+        {e:"🤸", t:"Ready for Fun", p:"You're ready for PE class, recess, and sports."},
+        {e:"💪", t:"Move with Confidence", p:"You can move with confidence and do the things you love."}
+      ]}
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Strength", d:"How powerful your muscles are; helps you move and carry things."},
+        {w:"Muscles", d:"Part of your body that helps you move, lift and play."},
+        {w:"Exercise", d:"Movement that helps your body stay healthy and strong."},
+        {w:"Balance", d:"Being able to stay steady while standing or moving."},
+        {w:"Core", d:"The muscles in your belly and back that help you sit, stand, and move well."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about all the things you do every day that use your strength. Which strength-building move — push-ups, squats, planks, or playing on the playground — do you want to try this week to grow your super muscles?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 5 Discussion</strong>.",
+    placeholder: "One strength move I want to try is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 5 Discussion</strong> — share your favorite way to build strong muscles with your classmates. Then get ready for <strong>Week 6: Physical Activity</strong>, where you'll keep your body moving!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

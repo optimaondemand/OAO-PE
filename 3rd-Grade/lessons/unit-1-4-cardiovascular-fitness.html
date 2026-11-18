@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.4 · Cardiovascular Fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 7",
+  unit: "Unit 1.4",
+  title: "Cardiovascular Fitness",
+  launch: {
+    h1: "Get Your Heart Pumping! ❤️",
+    leadHTML: "Have you ever played tag, jumped rope, or run across the playground and noticed your heart beating fast? That's your cardiovascular system at work! This week you'll discover how your heart and lungs team up to help you move."
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "Why Is Cardiovascular Fitness Important?",
+      html: "<p>Have you ever played tag, jumped rope, or run across the playground and noticed your heart beating fast? That's your cardiovascular system at work! Cardiovascular fitness is how well your heart and lungs work together to give your body the energy it needs to move.</p>"+
+            "<p>When you do activities that make you breathe faster and get your heart pumping, like running, skipping, or dancing, you're doing cardio exercise—short for cardiovascular! These kinds of movements are great for your health and help your body stay strong and energized.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What is <strong>cardiovascular fitness</strong>?",
+        options:[
+          "How well your heart and lungs work together to give your body the energy it needs to move",
+          "How big your arm muscles can grow",
+          "How long you can sit still without moving"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "What Happens to Your Body During Cardio?",
+      html: "<p>When you get moving, amazing things happen inside your body:</p>"+
+            "<ul><li>❤️ Your heart gets stronger, just like a muscle.</li>"+
+            "<li>🫁 Your lungs take in more oxygen, which helps you move and play longer.</li>"+
+            "<li>🩸 Your blood flows better, giving your brain and muscles the fuel they need.</li>"+
+            "<li>⚡ Your body learns how to keep going without getting tired too fast.</li>"+
+            "<li>🏃 It helps you build endurance—so you can run farther and play longer!</li></ul>",
+      activities: [
+        { type:"sort", title:"🕹️ What Happens During Cardio?", tag:"Tap to play",
+          sub:"Tap every card that happens to your body during <strong>cardio</strong>. Find all 4!",
+          wrongMsg:"That's not what cardio does — try again!",
+          items:[
+            {t:"Your heart gets stronger", e:"❤️", correct:true},
+            {t:"Your lungs take in more oxygen", e:"🫁", correct:true},
+            {t:"Your blood flows better", e:"🩸", correct:true},
+            {t:"You build endurance", e:"🏃", correct:true},
+            {t:"Your muscles get weaker", e:"👎", correct:false},
+            {t:"You get tired right away", e:"😮‍💨", correct:false}
+          ], points:20 },
+        { type:"heartbeat", title:"❤️ Feel the Beat", tag:"Try it",
+          sub:"Tap the button to see how your heart speeds up when you move — then rests when you stop!" }
+      ]
+    },
+    {
+      label: "Station 3",
+      title: "How Does Cardio Help You Feel?",
+      html: "<p>When you move your body through cardio exercise, you feel great! <strong>Tap each card</strong> to reveal how cardio helps you feel. (Reveal all 4!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"⚡", t:"More Energy", p:"You'll have more energy for playing and learning."},
+        {e:"😄", t:"Happy & Confident", p:"It can make you feel happy and confident."},
+        {e:"🎯", t:"Less Stressed", p:"You'll feel less stressed and more focused in class."},
+        {e:"😴", t:"Better Sleep", p:"It can even help you sleep better at night."}
+      ]}
+    },
+    {
+      label: "Station 4",
+      title: "Why Is It Fun?",
+      html: "<p>Cardio isn't just good for your body—it's also lots of fun! You can:</p>"+
+            "<ul><li>🎮 Play active games with friends</li>"+
+            "<li>🎵 Dance to music</li>"+
+            "<li>🏁 Run obstacle courses</li>"+
+            "<li>🏀 Try sports like basketball or soccer</li></ul>"+
+            "<div class=\"callout real\"><div class=\"ctag\">🌎 Real-World Connection</div><p>When you play with others, you also practice teamwork, sharing, and communication!</p></div>",
+      activity: { type:"snack", title:"⏱️ Cardio Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second cardio break. When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Jog in place! 🏃","Jump rope — jump, jump! 🤸","Dance to the beat! 🎵","Play tag — run fast! 🏁","Dribble a basketball! 🏀","Kick like soccer! ⚽"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Cardiovascular", d:"How your heart and lungs work together to keep your body moving and strong."},
+        {w:"Heart Rate", d:"How fast your heart beats."},
+        {w:"Endurance", d:"How long your body can keep moving without getting tired."},
+        {w:"Oxygen", d:"The air you breathe that helps your body work."},
+        {w:"Energy", d:"What your body uses to move, play, and think."},
+        {w:"Exercise", d:"Movement that helps your body become stronger and healthier."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Cardio makes your heart stronger AND it's fun! Which cardio activity — playing active games, dancing, running an obstacle course, or trying a sport — do you most want to do this week to get your heart pumping?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 7 Discussion</strong>.",
+    placeholder: "My favorite way to get my heart pumping is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 7 Discussion</strong> — share your favorite heart-pumping cardio activity with your classmates. Then get ready for <strong>Week 8: My Cardio Plan</strong>, where you'll build your very own cardio routine!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

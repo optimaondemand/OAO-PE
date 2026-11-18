@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.12 · Fitness Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 23",
+  unit: "Unit 1.12",
+  title: "Fitness Components",
+  launch: {
+    h1: "Unlock Your Fitness Powers! 💪",
+    leadHTML: "Fitness means being strong, healthy, and ready to move. In PE class, we learn about <strong>fitness components</strong> — the different ways our bodies stay active and strong. Get ready to explore each one and discover how your body works its best!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Are the Fitness Components?",
+      html: "<p>Fitness means being <strong>strong, healthy, and ready to move</strong>. In PE class, we learn about <strong>fitness components</strong>, which are different ways our bodies stay active and strong. Each component helps your body in a special way.</p>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>There are five fitness components, and together they help your whole body move, play, and grow! 🌱</p></div>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What does it mean to be <strong>fit</strong>?",
+        options:[
+          "Being strong, healthy, and ready to move",
+          "Being the fastest runner in the whole school",
+          "Never needing to rest or sleep"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "❤️ Cardiorespiratory Endurance (Heart & Lungs)",
+      html: "<p>Cardiorespiratory endurance means how well your <strong>heart and lungs</strong> work when you move for a long time.</p>"+
+            "<p>You use this fitness component when you:</p>"+
+            "<ul><li>🏃 Run or jog</li>"+
+            "<li>🏃‍♀️ Play tag</li>"+
+            "<li>🚲 Ride a bike</li>"+
+            "<li>🪢 Jump rope</li></ul>"+
+            "<p>When your heart and lungs are strong, you can play longer without getting tired.</p>",
+      activity: { type:"snack", title:"⏱️ Heart & Lungs Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second heart-pumping break. When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl to wake up your heart and lungs!</p>",
+        moves:["Jog in place! 🏃","Jump rope — swing and hop! 🪢","Play tag — quick feet! 🏃‍♀️","Ride the bike — pump those legs! 🚲","Big breaths in and out! ❤️","Keep going — feel that endurance! 💨"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "💪 Muscular Strength & 🔁 Muscular Endurance",
+      html: "<p><strong>Muscular strength</strong> is how strong your <strong>muscles</strong> are. You use muscular strength when you:</p>"+
+            "<ul><li>🏋️ Lift or carry something</li>"+
+            "<li>↔️ Push or pull</li>"+
+            "<li>🧱 Hold a strong position like a plank</li></ul>"+
+            "<p>Strong muscles help you move safely and protect your body.</p>"+
+            "<p><strong>Muscular endurance</strong> means how long your muscles can <strong>keep working</strong> without stopping. You use muscular endurance when you:</p>"+
+            "<ul><li>🤸 Do many jumping jacks</li>"+
+            "<li>🪑 Hold a wall sit</li>"+
+            "<li>🚲 Keep pedaling a bike</li></ul>"+
+            "<p>Muscles with endurance help you finish activities without giving up.</p>",
+      activity: { type:"flip", points:15, title:"🃏 Strength or Endurance?", sub:"Tap each card to reveal which muscle power it uses. (Reveal all 4!)", cards:[
+        {e:"🏋️", t:"Lift or carry something", p:"That's Muscular Strength — how strong your muscles are!"},
+        {e:"🧱", t:"Hold a plank", p:"Muscular Strength holds a strong position steady."},
+        {e:"🤸", t:"Do many jumping jacks", p:"That's Muscular Endurance — muscles that keep working!"},
+        {e:"🚲", t:"Keep pedaling a bike", p:"Muscular Endurance helps you finish without giving up."}
+      ]}
+    },
+    {
+      label: "Station 4",
+      title: "🤸 Flexibility & ⚖️ Body Composition",
+      html: "<p><strong>Flexibility</strong> is how well your body can <strong>stretch and bend</strong>. You use flexibility when you:</p>"+
+            "<ul><li>🙇 Reach for your toes</li>"+
+            "<li>🙆 Stretch your arms</li>"+
+            "<li>🌀 Bend and twist your body</li></ul>"+
+            "<p>Good flexibility helps you move easily and helps prevent injuries.</p>"+
+            "<p><strong>Body composition</strong> means having a <strong>healthy balance</strong> of muscles, bones, and body fat.</p>"+
+            "<div class=\"callout real\"><div class=\"ctag\">🌎 Real-World Connection</div><p>Being active and eating healthy foods helps your body stay strong and balanced. 🍎</p></div>"
+    },
+    {
+      label: "Station 5",
+      title: "🧠 Why Are Fitness Components Important?",
+      html: "<p>Fitness components help you:</p>"+
+            "<ul><li>💚 Stay healthy and strong</li>"+
+            "<li>🎮 Play games better</li>"+
+            "<li>⚡ Have more energy</li>"+
+            "<li>🛡️ Keep your body safe while moving</li></ul>"+
+            "<p>When you practice all the fitness components, your body works its best!</p>"+
+            "<p class=\"mbox-sub\" style=\"margin-top:6px;\"><strong>Fitness Components in PE:</strong></p>"+
+            "<ul><li><strong>Cardiorespiratory Endurance</strong> — Running, jumping rope</li>"+
+            "<li><strong>Muscular Strength</strong> — Push-ups, carrying equipment</li>"+
+            "<li><strong>Muscular Endurance</strong> — Sit-ups, wall sits</li>"+
+            "<li><strong>Flexibility</strong> — Stretching, yoga</li>"+
+            "<li><strong>Body Composition</strong> — Staying active and eating healthy</li></ul>",
+      activity: { type:"sort", title:"🕹️ How Do Fitness Components Help You?", tag:"Tap to play",
+        sub:"Tap every card that is a way fitness components <strong>help you</strong>. Find all 4!",
+        wrongMsg:"That's not something fitness can do — try again!",
+        items:[
+          {t:"Stay healthy and strong", e:"💚", correct:true},
+          {t:"Play games better", e:"🎮", correct:true},
+          {t:"Have more energy", e:"⚡", correct:true},
+          {t:"Keep your body safe while moving", e:"🛡️", correct:true},
+          {t:"Make you grow taller overnight", e:"🌙", correct:false},
+          {t:"Let you skip sleep forever", e:"😴", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Fitness", d:"Being strong, healthy, and ready to move."},
+        {w:"Cardiorespiratory Endurance", d:"How well your heart and lungs work when you move for a long time."},
+        {w:"Muscular Strength", d:"How strong your muscles are."},
+        {w:"Muscular Endurance", d:"How long your muscles can keep working without stopping."},
+        {w:"Flexibility", d:"How well your body can stretch and bend."},
+        {w:"Body Composition", d:"Having a healthy balance of muscles, bones, and body fat."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Which fitness component do you think you use the most when you play? Which one would you like to get stronger at, and what is one activity you could do to practice it?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Fitness Components Discussion</strong>.",
+    placeholder: "The fitness component I use most is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Fitness Components Discussion</strong> — tell your classmates which fitness component is your favorite and why. Then show off your healthy habits in the <strong>Fitness Components Reflection</strong>, where you'll share how you keep your whole body fit!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

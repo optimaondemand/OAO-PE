@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.6 · Nutrition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 11",
+  unit: "Unit 1.6",
+  title: "Nutrition",
+  launch: {
+    h1: "We Are What We Eat! 🍎",
+    leadHTML: "Have you ever wondered how your body gets the energy to run, jump, and play? That energy comes from the food you eat! This week you'll discover how to fuel your body like a superhero. 🚀"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "We Are What We Eat",
+      html: "<p>Have you ever wondered how your body gets the energy to run, jump, and play? That energy comes from the food you eat! Nutrition means choosing the right foods and drinks to help your body grow strong, stay healthy, and feel great every day.</p>"+
+            "<div class=\"callout real\"><div class=\"ctag\">🌎 Real-World Connection</div><p>Just like a car needs fuel to go, your body needs fuel too—and food is that fuel!</p></div>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"Where does your body get the <strong>energy</strong> to run, jump, and play?",
+        options:[
+          "From the food you eat",
+          "From watching TV",
+          "From staying very still all day"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "What Happens to Your Body When You Eat Healthy?",
+      html: "<p>When you eat a balanced meal with fruits, vegetables, grains, protein, and dairy:</p>"+
+            "<ul><li>🧠 Your brain stays focused and ready to learn</li>"+
+            "<li>💪 Your muscles get stronger for moving and playing</li>"+
+            "<li>❤️ Your heart stays healthy</li>"+
+            "<li>⚡ You have more energy to play and learn</li>"+
+            "<li>😴 You sleep better and feel less tired</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>Healthy foods help your whole body—from your head to your toes!</p></div>"+
+            "<p>Tap each card to see how healthy food helps a part of your body. Reveal all 5!</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🧠", t:"Your Brain", p:"Stays focused and ready to learn."},
+        {e:"💪", t:"Your Muscles", p:"Get stronger for moving and playing."},
+        {e:"❤️", t:"Your Heart", p:"Stays healthy."},
+        {e:"⚡", t:"Your Energy", p:"You have more energy to play and learn."},
+        {e:"😴", t:"Your Sleep", p:"You sleep better and feel less tired."}
+      ]}
+    },
+    {
+      label: "Station 3",
+      title: "How Does It Help You Feel?",
+      html: "<p>Eating healthy can help you feel:</p>"+
+            "<ul><li>😊 Happy and full of energy</li>"+
+            "<li>🏃 Ready to run and play</li>"+
+            "<li>🎯 Focused in class</li>"+
+            "<li>🏆 Stronger during games and sports</li>"+
+            "<li>🛡️ Less likely to get sick</li></ul>"+
+            "<p class=\"mbox-sub\">When you eat well, you feel well!</p>",
+      activity: { type:"sort", title:"🕹️ How Healthy Food Makes You Feel", tag:"Tap to play",
+        sub:"Tap every card that shows how <strong>healthy eating</strong> helps you feel. Find all 5!",
+        wrongMsg:"That's not what healthy food does 🍎",
+        items:[
+          {t:"Happy and full of energy", e:"😊", correct:true},
+          {t:"Ready to run and play", e:"🏃", correct:true},
+          {t:"Focused in class", e:"🎯", correct:true},
+          {t:"Stronger during games and sports", e:"🏆", correct:true},
+          {t:"Less likely to get sick", e:"🛡️", correct:true},
+          {t:"Tired and sleepy all day", e:"😴", correct:false},
+          {t:"Grumpy and out of energy", e:"😣", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Why Is Nutrition Fun and Helpful?",
+      html: "<p>Learning about food can be fun! You get to:</p>"+
+            "<ul><li>🍓 Try new fruits and vegetables</li>"+
+            "<li>🍽️ Learn how to build a healthy plate</li>"+
+            "<li>👨‍🍳 Help your family make meals</li>"+
+            "<li>😄 Feel good after eating foods that fuel your body</li>"+
+            "<li>✅ Make smart choices that keep your body healthy</li></ul>"+
+            "<div class=\"callout think\"><div class=\"ctag\">💭 Think About It</div><p>You don't need to be perfect—just make small healthy choices every day!</p></div>"+
+            "<p>Food is fuel—so let's show how it powers your body to move! 💥</p>",
+      activity: { type:"snack", title:"⏱️ Fuel-Up Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break to show off your food-powered energy. When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["March for fuel! 🚶","Reach up for an apple! 🍎","Power squats! 💪","Jog in place! 🏃","Big arm circles! 🔄","Jump for energy! ⚡"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Nutrition", d:"The food and drinks your body needs to stay healthy and grow."},
+        {w:"Energy", d:"What your body uses to move, play, and think."},
+        {w:"Balanced Meal", d:"A meal with foods from different groups to help your body work its best."},
+        {w:"Protein", d:"A food group that builds and repairs muscles (like meat, beans, eggs)."},
+        {w:"Fruits & Veggies", d:"Foods that give your body vitamins and help you stay strong and healthy."},
+        {w:"Hydration", d:"Drinking enough water to help your body work properly."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about the foods that fuel your body. What is one healthy food you want to try this week, and how do you think it will help you run, jump, and play?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 11 Discussion</strong>.",
+    placeholder: "One healthy food I want to try is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 11 Discussion</strong> — share your favorite healthy food with your classmates. Then get ready for <strong>Week 12: Build a Healthy Plate!</strong>, where you'll put your nutrition know-how to work!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

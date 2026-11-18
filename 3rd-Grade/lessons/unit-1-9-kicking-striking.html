@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.9 · Manipulative Skills: Kicking and Striking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 17",
+  unit: "Unit 1.9",
+  title: "Manipulative Skills: Kicking and Striking",
+  launch: {
+    h1: "Kick It, Strike It, Move It! ⚽🏏",
+    leadHTML: "Have you ever kicked a soccer ball, hit a balloon with your hand, or swung a bat to hit a ball? This week you'll become a master of <strong>kicking</strong> and <strong>striking</strong> — two super-useful skills that help you move and control objects in games and sports!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Are Kicking and Striking?",
+      html: "<p>Have you ever kicked a soccer ball, hit a balloon with your hand, or swung a bat to hit a ball? These are all examples of kicking and striking, which are important manipulative skills—skills that involve using your body to move and control objects like balls, paddles, or bats.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"Kicking and striking are examples of what kind of skills?",
+        options:[
+          "Important manipulative skills that help you move and control objects",
+          "Skills only for resting and sitting still",
+          "Skills that have nothing to do with sports"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "Kicking vs. Striking",
+      html: "<p>When you kick a ball, you use your legs and feet to send it toward a target. When you strike, you use your hands or an object (like a paddle or bat) to hit something, often aiming at a target or making it move in a certain direction.</p>",
+      activity: { type:"sort", title:"🕹️ Which Ones Are KICKING?", tag:"Tap to play",
+        sub:"Tap every card that shows <strong>KICKING</strong>. Find all 3!",
+        wrongMsg:"That's striking, not kicking! Try another 😊",
+        items:[
+          {t:"Using your legs and feet", e:"🦵", correct:true},
+          {t:"Sending a ball toward a target with your foot", e:"⚽", correct:true},
+          {t:"Kicking a soccer ball to a teammate", e:"🥅", correct:true},
+          {t:"Using your hands or a paddle to hit", e:"✋", correct:false},
+          {t:"Swinging a bat to hit a ball", e:"🏏", correct:false},
+          {t:"Hitting a balloon with your hand", e:"🎈", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "Skills for Games and Sports",
+      html: "<p>These skills are super useful in lots of games and sports! In soccer, you kick the ball to your teammates. In baseball or tennis, you use striking to hit the ball with a bat or racket. These actions help your muscles grow stronger, especially in your legs, arms, and core. They also make your body and brain work together by improving your coordination and timing.</p>"+
+            "<div class=\"callout real\"><div class=\"ctag\">🌎 Real-World Connection</div><p>Soccer players kick, and baseball and tennis players strike — the same skills you're practicing are used by real athletes all over the world!</p></div>",
+      activity: { type:"snack", title:"⏱️ Kick & Strike Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break. When you tap <strong>Start</strong>, the owl calls out a new kicking or striking move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Pretend-kick a soccer ball! ⚽","Swing an imaginary bat! 🏏","Tap a balloon up high! 🎈","Jog in place! 🏃","Big arm swings — strike! 💪","Kick, aim, and score! 🥅"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Teamwork, Focus, and Fun",
+      html: "<p>Kicking and striking also help with teamwork and focus. You learn how to control your body, aim carefully, and play fairly with others. Whether you're playing a team sport or practicing on your own, these skills help you stay active, build confidence, and have fun while moving!</p>"+
+            "<p><strong>Tap each card</strong> to reveal a skill these moves help you build. (Reveal all 5!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🧠", t:"Control", p:"You learn how to control your body as you move and play."},
+        {e:"🎯", t:"Aim", p:"You learn how to aim carefully at your target."},
+        {e:"🤝", t:"Play Fair", p:"You learn how to play fairly with others."},
+        {e:"⚡", t:"Stay Active", p:"These skills help you stay active, whether on a team or practicing on your own."},
+        {e:"🌟", t:"Confidence", p:"These skills help you build confidence and have fun while moving!"}
+      ]}
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Manipulative", d:"Using hands, feet, or tools to move or control an object."},
+        {w:"Kick", d:"To strike something with your foot."},
+        {w:"Strike", d:"To hit an object using your hand or an item like a bat or paddle."},
+        {w:"Coordination", d:"When your brain and body work together to move smoothly."},
+        {w:"Target", d:"The place or object you're aiming for."},
+        {w:"Control", d:"Moving your body or an object in the way you want it to go."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about a sport or game where you kick or strike. What is one way you could aim more carefully or control the ball better next time you play?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 17 Discussion</strong>.",
+    placeholder: "One way I can aim or control better is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 17 Discussion</strong> — share your favorite kicking or striking sport with your classmates. Then get ready for the <strong>Week 18: Kicking & Striking Challenge</strong>, where you'll put these skills into action!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

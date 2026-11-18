@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.11 · Sportsmanship and Respect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 21",
+  unit: "Unit 1.11",
+  title: "Sportsmanship and Respect",
+  launch: {
+    h1: "Play Fair, Play Kind! 🤝",
+    leadHTML: "Sportsmanship is how we act and treat others during games and activities. This week you'll learn how playing fair, being kind, and showing respect make PE a fun and safe place for everyone — whether you win or lose!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Are Sportsmanship and Respect?",
+      html: "<p>Sportsmanship is how we act and treat others during games and activities. Good sportsmanship means playing fair, following the rules, and being kind—whether you win or lose.</p>"+
+            "<p>Respect means showing care for people, rules, and equipment. When students show respect in PE class, everyone feels safe and included.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What does <strong>good sportsmanship</strong> mean?",
+        options:[
+          "Playing fair, following the rules, and being kind—whether you win or lose",
+          "Only being kind when your team wins",
+          "Breaking the rules to win the game"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "What Does Good Sportsmanship Look Like?",
+      html: "<p>Good sportsmanship includes:</p>"+
+            "<ul><li>🤝 Saying \"good game\" after playing</li>"+
+            "<li>🔁 Taking turns and following rules</li>"+
+            "<li>🙌 Helping others when they need support</li>"+
+            "<li>😌 Accepting wins and losses calmly</li>"+
+            "<li>💬 Using kind words and a positive attitude</li></ul>"+
+            "<p>When we show good sportsmanship, we help make PE a fun place for everyone.</p>",
+      activity: { type:"sort", title:"🕹️ Spot Good Sportsmanship!", tag:"Tap to play",
+        sub:"Tap every card that shows <strong>GOOD SPORTSMANSHIP</strong>. Find all 4!",
+        wrongMsg:"That's not good sportsmanship — try another! 😊",
+        items:[
+          {t:"Saying \"good game\" after playing", e:"🤝", correct:true},
+          {t:"Taking turns and following rules", e:"🔁", correct:true},
+          {t:"Helping others when they need support", e:"🙌", correct:true},
+          {t:"Accepting wins and losses calmly", e:"😌", correct:true},
+          {t:"Bragging when you win", e:"😤", correct:false},
+          {t:"Arguing about the rules", e:"😠", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "Sportsmanship in Action",
+      html: "<p>Imagine playing a basketball game. Your team tries hard, but the other team wins. Showing sportsmanship means:</p>"+
+            "<ul><li>🤝 Shaking hands or giving a thumbs-up</li>"+
+            "<li>👍 Saying \"nice job\" to the other team</li>"+
+            "<li>🙂 Not arguing or blaming teammates</li></ul>"+
+            "<p>Good sportsmanship shows that trying your best matters more than winning.</p>",
+      activity: { type:"snack", title:"⏱️ Good Game Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break. When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Dribble in place! 🏀","Shoot a basket! 🙌","Shake hands — good game! 🤝","Give a thumbs-up! 👍","Cheer \"nice job!\" 📣","Jog it out, play fair! 🏃"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Why Are Sportsmanship and Respect Important?",
+      html: "<p>Sportsmanship and respect help us:</p>"+
+            "<ul><li>🛡️ Stay safe by following rules and listening</li>"+
+            "<li>⚖️ Play fair so everyone gets a chance</li>"+
+            "<li>😊 Build friendships by being kind and supportive</li>"+
+            "<li>🌟 Feel proud of how we act, not just how we play</li></ul>"+
+            "<p>Respect also means:</p>"+
+            "<ul><li>👂 Listening to the teacher</li>"+
+            "<li>🧺 Taking care of equipment</li>"+
+            "<li>↔️ Respecting personal space</li></ul>"+
+            "<p><strong>Tap each card</strong> to reveal a brain or body benefit. (Reveal all 5!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🧘", t:"Control Emotions", p:"Helps control emotions."},
+        {e:"⏳", t:"Self-Control", p:"Teaches patience and self-control."},
+        {e:"🌟", t:"Confidence", p:"Builds confidence and responsibility."},
+        {e:"🛟", t:"Safe Space", p:"Creates a safe space to move and play."},
+        {e:"🏃", t:"Stay Active", p:"Allows everyone to stay active and involved."}
+      ]}
+    },
+    {
+      label: "Station 5",
+      title: "Sportsmanship in Sports & Games",
+      html: "<p>You can show sportsmanship and respect in every kind of game:</p>"+
+            "<ul><li>🏃 <strong>Tag Games</strong> — Playing by the rules</li>"+
+            "<li>⚽ <strong>Team Sports</strong> — Encouraging teammates</li>"+
+            "<li>🏁 <strong>Races</strong> — Congratulating others</li>"+
+            "<li>🎲 <strong>Group Games</strong> — Taking turns and sharing</li>"+
+            "<li>🤸 <strong>Free Play</strong> — Respecting space and equipment</li></ul>"+
+            "<p>When students show sportsmanship and respect, PE becomes a place where everyone can learn, grow, and have fun.</p>"+
+            "<div class=\"callout think\"><div class=\"ctag\">💭 Think About It</div><p>Sportsmanship and respect are important in PE, at school, and at home. How you act matters just as much as how you play!</p></div>"
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great sports know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Sportsmanship", d:"Being kind, fair, and respectful during games and activities"},
+        {w:"Respect", d:"Showing care for others' feelings, space, and effort"},
+        {w:"Encouragement", d:"Using kind words to cheer for teammates and help them do their best"},
+        {w:"Cooperation", d:"Helping, listening, and sharing with teammates"},
+        {w:"Teamwork", d:"Working together with others to reach a goal"}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about a game where your team lost or a teammate made a mistake. What is one way you can show good sportsmanship and respect next time you play?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Sportsmanship Discussion</strong>.",
+    placeholder: "One way I can show good sportsmanship is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Sportsmanship Discussion</strong> — share how you show good sportsmanship with your classmates. Then get ready for the <strong>Sportsmanship Reflection</strong>, where you'll think about how you play and treat others!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

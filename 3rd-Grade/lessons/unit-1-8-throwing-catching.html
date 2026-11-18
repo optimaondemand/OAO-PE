@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.8 · Manipulative Skills: Throwing and Catching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 15",
+  unit: "Unit 1.8",
+  title: "Manipulative Skills: Throwing and Catching",
+  launch: {
+    h1: "Throwing and Catching! 🤾",
+    leadHTML: "Have you ever tossed a ball to a friend, played a game of basketball, or tried to throw a beanbag into a target? All of these are examples of throwing and catching! This week you'll learn how your hands, eyes, and brain team up to move and control an object. 🚀"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "Why Are Throwing and Catching Important?",
+      html: "<p>Have you ever tossed a ball to a friend, played a game of basketball, or tried to throw a beanbag into a target? All of these are examples of throwing and catching, which are part of something called manipulative skills. That means you're using your hands (or sometimes feet) to move and control an object—like a ball, beanbag, or even a frisbee!</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"Throwing and catching are examples of <strong>manipulative skills</strong>. What does that mean?",
+        options:[
+          "Using your hands (or sometimes feet) to move and control an object",
+          "Sitting quietly without moving at all",
+          "Only something grown-ups can do"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "How Throwing and Catching Work Together",
+      html: "<p>Throwing and catching are a team! <strong>Tap each card</strong> to reveal how your body does each one. (Reveal both!)</p>"+
+            "<p>These two skills work together—and practicing them helps you play better in many games and sports.</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🤾", t:"Throwing", p:"When you throw something, you're using your muscles to send the object through the air to a target."},
+        {e:"🙌", t:"Catching", p:"When you catch, you're using your eyes, hands, and brain to track the object and grab it gently so it doesn't fall."}
+      ]}
+    },
+    {
+      label: "Station 3",
+      title: "Great Exercise!",
+      html: "<p>Throwing and catching are also good exercise! They help your arms, shoulders, and core muscles grow stronger. You also improve your hand-eye coordination, which means your body and brain are learning how to work together. This makes it easier to react quickly, aim better, and stay in control.</p>"+
+            "<p>Let's practice some throwing and catching moves with the owl! 💥</p>",
+      activity: { type:"snack", title:"⏱️ Throw &amp; Catch Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break to practice throwing and catching moves. When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Big overhand throw! 🤾","Catch down low! 🙌","Reach up and catch! 🙆","Aim at your target! 🎯","Toss and catch! 🤹","Side throw! ➡️"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Fun Games and Teamwork",
+      html: "<p>These skills are used in so many fun games—like dodgeball, four square, baseball, football, and more. Plus, they help you learn teamwork because you're passing and receiving from other people. You can even play target games on your own to practice and build confidence.</p>"+
+            "<div class=\"callout think\"><div class=\"ctag\">💭 Think About It</div><p>Whether you're throwing for distance, aiming for a goal, or just trying to catch without dropping the ball, you're helping your body learn balance, timing, and control—all while having fun!</p></div>",
+      activity: { type:"sort", title:"🕹️ Which Games Use Throwing and Catching?", tag:"Tap to play",
+        sub:"Tap every game that uses <strong>throwing and catching</strong>. Find all 4!",
+        wrongMsg:"That one doesn't use throwing and catching 🏐",
+        items:[
+          {t:"Dodgeball", e:"🏐", correct:true},
+          {t:"Four square", e:"🟦", correct:true},
+          {t:"Baseball", e:"⚾", correct:true},
+          {t:"Football", e:"🏈", correct:true},
+          {t:"Taking a nap", e:"😴", correct:false},
+          {t:"Reading quietly", e:"📖", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Manipulative Skills", d:"Movements that use hands or feet to control an object (like a ball)."},
+        {w:"Throw", d:"Using your hand to send an object through the air"},
+        {w:"Catch", d:"Using your hands to grab something coming toward you"},
+        {w:"Hand-eye Coordination", d:"When your eyes and hands work together to move and react."},
+        {w:"Target", d:"The place you want the object to go (like a partner or basket)"}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about a game where you throw and catch. What is one thing you want to practice—throwing for distance, aiming at a target, or catching without dropping the ball? How will practicing help you play better?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 15 Discussion</strong>.",
+    placeholder: "One thing I want to practice is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 15 Discussion</strong> — share your favorite throwing-and-catching game with your classmates. Then get ready for <strong>Week 16: Catch Me If You Can!</strong>, where you'll put your new skills to the test!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

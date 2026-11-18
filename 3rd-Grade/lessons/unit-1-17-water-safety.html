@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.17 · Water Safety</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 33",
+  unit: "Unit 1.17",
+  title: "Water Safety",
+  launch: {
+    h1: "Water Safety: Reach or Throw, Don't Go! 🌊",
+    leadHTML: "Living in Florida means water is EVERYWHERE — pools, beaches, lakes, even canals in your neighborhood. Water is awesome fun, but it's also powerful. Today you'll learn the smart-swimmer rules AND what to do if someone ever needs help in the water. This might be the most important lesson all year!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "The Golden Rule: Reach or Throw, Don't Go!",
+      html: "<p>If you EVER see someone struggling in the water, here's the number one rule — say it out loud:</p>"+
+            "<p style=\"font-weight:700;\">REACH or THROW — DON'T GO!</p>"+
+            "<ul><li>📣 <strong>FIRST: Yell for an adult!</strong> Shout \"HELP!\" as loud as you can. If there's a lifeguard, get them. If a phone is nearby, an adult can call 911.</li>"+
+            "<li>🤝 <strong>REACH</strong> — Lie down low, hold onto something steady, and stretch an object (NOT your hand) out to the person.</li>"+
+            "<li>🛟 <strong>THROW</strong> — Toss something that floats so the person can grab it and hold on.</li>"+
+            "<li>🚫 <strong>DON'T GO</strong> — NEVER jump in to save someone. A scared swimmer can pull even a grown-up underwater. Helpers help from LAND.</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>Lifeguards — the BEST swimmers in the world at rescues — still grab a rescue tube or ring buoy before they help someone. If the pros never go in empty-handed, neither should you! 🛟</p></div>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"Someone needs help in the water. What should you do?",
+        options:[
+          "Yell for an adult, then REACH or THROW — don't go in",
+          "Jump in right away to pull them out",
+          "Wait quietly and hope they are okay"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "Rescue Helpers All Around You",
+      html: "<p>A <strong>reach assist</strong> uses something long. A <strong>throw assist</strong> uses something that floats. Look how many everyday things can save a life! <strong>Tap each card</strong> to reveal how it helps. (Reveal all 6!)</p>"+
+            "<div class=\"callout think\"><div class=\"ctag\">🔍 Activity Cue</div><p><strong>Scavenger hunt:</strong> Right now, walk around your home (or think hard!) and find TWO things that could help in a water emergency — one for REACHING and one for THROWING. You'll use them in this week's assignment! 🔍</p></div>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🛟", t:"Ring Buoy — THROW", p:"The classic lifesaver ring you see at pools. Toss it close to the person."},
+        {e:"🦺", t:"Life Jacket — THROW", p:"It floats! Throw it so the person can hug it to their chest."},
+        {e:"🏊", t:"Pool Noodle or Kickboard — REACH or THROW", p:"Stretch it out to the person, or toss it — foam floats great."},
+        {e:"🧹", t:"Pole, Oar, or Broom — REACH", p:"Anything long works. Lie down low so you don't get pulled in!"},
+        {e:"🧺", t:"Towel or Rope — REACH", p:"Hold one end TIGHT, swing the other end out to the person."},
+        {e:"🧊", t:"Cooler or Beach Ball — THROW", p:"Surprise! An empty cooler floats like a champ. Anything that floats can help."}
+      ]}
+    },
+    {
+      label: "Station 3",
+      title: "Be a Smart Swimmer",
+      html: "<p>The BEST water emergency is the one that never happens. Smart swimmers follow these rules every single time:</p>"+
+            "<ul><li>👨‍👩‍👧 <strong>Never swim alone.</strong> An adult should ALWAYS be watching — eyes on you, not on a phone.</li>"+
+            "<li>🏖️ <strong>Swim near a lifeguard</strong> at the beach or big pools whenever you can.</li>"+
+            "<li>🚶 <strong>Walk, don't run</strong> near the pool. Wet floors are slippery!</li>"+
+            "<li>🦺 <strong>Wear a life jacket</strong> on boats and in open water — even strong swimmers do.</li>"+
+            "<li>🙋 <strong>Know your limits.</strong> Stay where you can stand if you're still learning. There's no prize for the deep end.</li>"+
+            "<li>🚪 <strong>Only swim where you're allowed.</strong> No pools, ponds, or canals without permission and an adult.</li></ul>"+
+            "<div class=\"callout real\"><div class=\"ctag\">🌎 Real-World Connection</div><p>Florida has more swimming pools per family than almost anywhere in America — plus 825 miles of beaches! That's why Florida kids learn water safety in school. Knowing \"Reach or Throw, Don't Go\" makes YOU one of the safest kids at every pool party. 🏝️</p></div>",
+      activity: { type:"sort", title:"🕹️ Smart Swimmer or Not?", tag:"Tap to play",
+        sub:"Tap every card that is a <strong>smart swimmer rule</strong>. Find all 4!",
+        wrongMsg:"That's not safe — a smart swimmer would never do that! 🚫",
+        items:[
+          {t:"Never swim alone — an adult is watching", e:"👨‍👩‍👧", correct:true},
+          {t:"Walk, don't run near the pool", e:"🚶", correct:true},
+          {t:"Wear a life jacket on boats", e:"🦺", correct:true},
+          {t:"Only swim where you're allowed", e:"🚪", correct:true},
+          {t:"Swim alone in a deep canal", e:"🚫", correct:false},
+          {t:"Run fast on the wet pool deck", e:"🏃", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Splash Zone Movement Break",
+      html: "<p>Smart swimmers keep their bodies strong and ready! Let's practice some water-safe moves on dry land. 🌊</p>",
+      activity: { type:"snack", title:"⏱️ Splash Zone Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break. When you tap <strong>Start</strong>, the owl calls out a new water-safe move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["REACH out low and far! 🤝","THROW the ring buoy! 🛟","Big float — arms out wide! 🙆","Yell \"HELP!\" and wave! 📣","Kick, kick, kick your feet! 🦵","Walk — don't run! 🚶"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Water rescue heroes know the lingo! 🌊 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Water Emergency", d:"When someone in the water needs help right away."},
+        {w:"Reach Assist", d:"Helping with something LONG while you stay on land."},
+        {w:"Throw Assist", d:"Helping by tossing something that FLOATS."},
+        {w:"Ring Buoy", d:"The round floating ring made for water rescues."},
+        {w:"Life Jacket", d:"A vest that keeps you floating. Boats = always wear one!"},
+        {w:"Lifeguard", d:"A trained rescuer who watches swimmers to keep them safe."},
+        {w:"Float", d:"Resting on top of the water on your front or back."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Where do YOU see water most often — a pool, the beach, a lake? Who is the adult that watches you when you swim? What's ONE water safety rule you want your whole family to know?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Water Safety Discussion</strong>.",
+    placeholder: "One water safety rule my family should know is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Water Safety Discussion</strong> — share your favorite rescue helper and water safety rule with your classmates. Then show off your skills in the <strong>Water Rescue Heroes</strong> assignment, and your guardian will help you with the Swim Skills Check!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

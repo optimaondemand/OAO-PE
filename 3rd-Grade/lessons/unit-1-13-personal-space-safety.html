@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.13 · Personal Space and Movement Safety</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 25",
+  unit: "Unit 1.13",
+  title: "Personal Space and Movement Safety",
+  launch: {
+    h1: "Your Space, Your Safety! 🛡️",
+    leadHTML: "Personal space is the space around your body that helps you move safely and comfortably. This week you'll learn how to respect everyone's space and how to move safely so PE class is fun and safe for all!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "📘 Personal Space in PE",
+      html: "<p>Personal space is the <strong>space around your body</strong> that helps you move safely and comfortably. Everyone has their own personal space, and it is important to <strong>respect it</strong> during PE class and games.</p>"+
+            "<p>A good way to check your personal space is to <strong>stretch your arms out like airplane wings</strong>. If you can move your arms without touching anyone, you are in good personal space.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"How can you <strong>check</strong> your personal space?",
+        options:[
+          "Stretch your arms out like airplane wings and make sure you don't touch anyone",
+          "Stand as close to a friend as you can",
+          "Close your eyes and spin around fast"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "🤸 Why Is Personal Space Important?",
+      html: "<p>Personal space helps us:</p>"+
+            "<ul><li>🛡️ <strong>Stay safe</strong> while running, jumping, and playing</li>"+
+            "<li>🚫 <strong>Avoid bumping into others</strong></li>"+
+            "<li>😊 <strong>Feel comfortable and respected</strong></li>"+
+            "<li>🏃 <strong>Move freely</strong> without accidents</li></ul>"+
+            "<p>When we respect personal space, PE class is more fun and safe for everyone.</p>"+
+            "<p>You use personal space when you:</p>"+
+            "<ul><li>🏃 Run without pushing</li>"+
+            "<li>🧍 Line up without touching</li>"+
+            "<li>🙆 Stretch without hitting someone</li>"+
+            "<li>🏷️ Play tag without grabbing</li></ul>"+
+            "<p>If someone is too close, it is okay to <strong>step back</strong> or tell the teacher.</p>",
+      activity: { type:"snack", title:"⏱️ Personal Space Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second space-check break. When you tap <strong>Start</strong>, give yourself lots of room — stretch out your airplane wings! — and copy the owl without touching anything around you.</p>",
+        moves:["Spread your airplane wings! ✈️","Turn in a slow circle — keep your space! 🔄","Reach up high in your bubble! 🙆","Step side to side — no bumping! ↔️","Wiggle without touching anyone! 🕺","Freeze and check your space! 🛑"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "📘 Movement Safety in PE",
+      html: "<p>Movement safety means <strong>moving your body in a safe way</strong> during PE class. This helps prevent injuries and keeps everyone healthy.</p>"+
+            "<p>Movement safety includes:</p>"+
+            "<ul><li>👂 Listening to the teacher</li>"+
+            "<li>📋 Following rules</li>"+
+            "<li>🏀 Using equipment the right way</li>"+
+            "<li>👀 Being aware of others around you</li></ul>",
+      activity: { type:"flip", points:15, title:"🃏 Movement Safety Habits", sub:"Tap each card to reveal a habit that keeps you safe. (Reveal all 4!)", cards:[
+        {e:"👂", t:"Listen up", p:"Listening to the teacher keeps you safe during PE."},
+        {e:"📋", t:"Play fair", p:"Following rules helps everyone move safely."},
+        {e:"🏀", t:"Gear smart", p:"Using equipment the right way prevents injuries."},
+        {e:"👀", t:"Look around", p:"Being aware of others around you keeps everyone safe."}
+      ]}
+    },
+    {
+      label: "Station 4",
+      title: "⚠️ Safe vs. Unsafe Movement",
+      html: "<p><strong>✅ Safe Movement:</strong></p>"+
+            "<ul><li>🚶 Walking when told to walk</li>"+
+            "<li>🛑 Stopping when the whistle blows</li>"+
+            "<li>🤲 Holding equipment correctly</li>"+
+            "<li>👀 Watching where you are going</li></ul>"+
+            "<p><strong>❌ Unsafe Movement:</strong></p>"+
+            "<ul><li>🏃 Running when told to stop</li>"+
+            "<li>🪃 Throwing equipment</li>"+
+            "<li>💥 Pushing or tripping others</li>"+
+            "<li>🙈 Not paying attention</li></ul>",
+      activity: { type:"sort", title:"🕹️ Spot the Safe Moves", tag:"Tap to play",
+        sub:"Tap every card that shows <strong>SAFE</strong> movement. Find all 4!",
+        wrongMsg:"That one's an unsafe move — try again!",
+        items:[
+          {t:"Walking when told to walk", e:"🚶", correct:true},
+          {t:"Stopping when the whistle blows", e:"🛑", correct:true},
+          {t:"Holding equipment correctly", e:"🤲", correct:true},
+          {t:"Watching where you are going", e:"👀", correct:true},
+          {t:"Running when told to stop", e:"🏃", correct:false},
+          {t:"Pushing or tripping others", e:"💥", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "🧠 Why Safety Matters & 🛑 Rules to Remember",
+      html: "<p>Movement safety helps us:</p>"+
+            "<ul><li>🤕 <strong>Avoid injuries</strong></li>"+
+            "<li>🤝 <strong>Protect our classmates</strong></li>"+
+            "<li>📚 <strong>Learn and play better</strong></li>"+
+            "<li>🎉 <strong>Have fun without getting hurt</strong></li></ul>"+
+            "<p>When everyone moves safely, PE class runs smoothly.</p>"+
+            "<p class=\"mbox-sub\" style=\"margin-top:6px;\"><strong>🛑 Safety Rules to Remember:</strong></p>"+
+            "<ul><li>Stop, look, and listen</li>"+
+            "<li>Keep hands and feet to yourself</li>"+
+            "<li>Use kind words and calm actions</li>"+
+            "<li>Ask for help if you are unsure</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Remember!</div><p>Personal space and movement safety help everyone enjoy PE. When you move safely and respect space, you show responsibility and care for others. 💙</p></div>"
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Safe movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Personal space", d:"The space around your body that helps you move safely and comfortably."},
+        {w:"Movement safety", d:"Moving your body in a safe way during PE class."},
+        {w:"Airplane wings", d:"Stretch your arms out like airplane wings to check your space."},
+        {w:"Safe movement", d:"Walking when told to walk."},
+        {w:"Unsafe movement", d:"Running when told to stop."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about a time someone was too close while you were moving or playing. How did it feel? What is one thing you can do to keep good personal space and move safely in your next PE class?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Personal Space and Movement Discussion</strong>.",
+    placeholder: "One way I can keep my personal space is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Personal Space and Movement Discussion</strong> — share one way you keep your personal space with your classmates. Then put it into action in the <strong>Personal Space and Movement Reflection</strong>, where you'll show how you move safely in PE!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

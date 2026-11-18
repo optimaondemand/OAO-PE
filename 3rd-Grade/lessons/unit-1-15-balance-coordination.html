@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.15 · Balance and Coordination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 29",
+  unit: "Unit 1.15",
+  title: "Balance and Coordination",
+  launch: {
+    h1: "Steady, Smooth, and Super! ⚖️🤹",
+    leadHTML: "Balance and coordination are important skills that help your body <strong>move safely and smoothly</strong>. This week you'll discover how to stay steady, how to make your eyes, hands, and feet work together, and how practicing both helps you play, learn, and feel confident every day!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Is Balance?",
+      html: "<p><strong>Balance</strong> is the ability to <strong>stay steady</strong> and not fall over while standing, walking, or moving. Balance helps you keep your body under control.</p>"+
+            "<p>You use balance when you:</p>"+
+            "<ul><li>🦩 Stand on one foot</li>"+
+            "<li>➖ Walk on a line</li>"+
+            "<li>🧘 Hold a yoga pose</li>"+
+            "<li>🛑 Stop quickly while running</li></ul>"+
+            "<p>Good balance helps prevent falls and keeps your body strong.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What does good <strong>balance</strong> help your body do?",
+        options:[
+          "Stay steady and keep from falling over",
+          "Run as fast as possible without ever stopping",
+          "Skip warming up before you play"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "What Is Coordination?",
+      html: "<p><strong>Coordination</strong> is how well your <strong>body parts work together</strong> to move in the right way. Coordination helps your <strong>eyes, hands, and feet work together</strong>.</p>"+
+            "<p>You use coordination when you:</p>"+
+            "<ul><li>🤾 Catch or throw a ball</li>"+
+            "<li>⛹️ Dribble a ball</li>"+
+            "<li>🦵 Jump and land safely</li>"+
+            "<li>⚽ Kick a moving ball</li></ul>"+
+            "<p>Coordination helps you move smoothly and accurately.</p>",
+      activity: { type:"sort", title:"🕹️ Is It Coordination?", tag:"Tap to play",
+        sub:"Tap every action that uses <strong>COORDINATION</strong> — your eyes, hands, and feet working together. Find all 4!",
+        wrongMsg:"That one's more of a balance skill — try again! ⚖️",
+        items:[
+          {t:"Catch or throw a ball", e:"🤾", correct:true},
+          {t:"Dribble a ball", e:"⛹️", correct:true},
+          {t:"Jump and land safely", e:"🦵", correct:true},
+          {t:"Kick a moving ball", e:"⚽", correct:true},
+          {t:"Stand on one foot", e:"🦩", correct:false},
+          {t:"Hold a yoga pose", e:"🧘", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "Why Are Balance and Coordination Important?",
+      html: "<p>Balance and coordination help you:</p>"+
+            "<ul><li>🛡️ Stay safe during movement</li>"+
+            "<li>⚡ Learn new skills faster</li>"+
+            "<li>🏅 Play sports and games better</li>"+
+            "<li>😊 Feel confident when you move</li></ul>"+
+            "<div class=\"callout think\"><div class=\"ctag\">💭 Think About It</div><p>When your balance and coordination get stronger, every game and activity starts to feel a little easier. What is something you'd love to get better at?</p></div>"
+    },
+    {
+      label: "Station 4",
+      title: "Brain + Body Benefits",
+      html: "<p>Balance and coordination are great for your <strong>🧠 brain</strong> AND your <strong>💪 body</strong>. <strong>Tap each card</strong> to reveal a benefit. (Reveal all 5!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🧠", t:"Clear Messages", p:"Helps your brain send clear messages to your body."},
+        {e:"🎯", t:"Focus + Reaction", p:"Improves focus and reaction time."},
+        {e:"💪", t:"Stronger Muscles", p:"Strengthens muscles."},
+        {e:"🧍", t:"Better Posture", p:"Improves posture."},
+        {e:"🤸", t:"Control + Stability", p:"Helps you move with control and stability."}
+      ]}
+    },
+    {
+      label: "Station 5",
+      title: "Balance and Coordination in PE",
+      html: "<p>In PE class, we practice balance and coordination to help us play games, try new skills, and stay safe. Here are some of the activities we use:</p>"+
+            "<table style=\"width:100%;border-collapse:collapse;margin:10px 0;\">"+
+              "<thead><tr><th style=\"text-align:left;padding:8px;border-bottom:2px solid var(--purple);\">Activity</th><th style=\"text-align:left;padding:8px;border-bottom:2px solid var(--purple);\">Skill Used</th></tr></thead>"+
+              "<tbody>"+
+                "<tr><td style=\"padding:8px;\">Balance Beams</td><td style=\"padding:8px;\">Balance</td></tr>"+
+                "<tr><td style=\"padding:8px;\">Hopscotch</td><td style=\"padding:8px;\">Balance &amp; Coordination</td></tr>"+
+                "<tr><td style=\"padding:8px;\">Throw and Catch</td><td style=\"padding:8px;\">Coordination</td></tr>"+
+                "<tr><td style=\"padding:8px;\">Obstacle Courses</td><td style=\"padding:8px;\">Balance &amp; Coordination</td></tr>"+
+                "<tr><td style=\"padding:8px;\">Dance or Yoga</td><td style=\"padding:8px;\">Balance &amp; Coordination</td></tr>"+
+              "</tbody>"+
+            "</table>"+
+            "<div class=\"callout know\"><div class=\"ctag\">⭐ Remember!</div><p>Balance and coordination work <strong>together</strong>. When you practice them, your body learns how to move better every day!</p></div>",
+      activity: { type:"snack", title:"⏱️ Steady-and-Smooth Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second balance-and-coordination break. When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Stand on one foot! 🦩","Walk the line — heel to toe! ➖","Balance like a tree — arms out! 🌳","March with high knees! 🦵","Catch an imaginary ball! 🙌","Reach up and touch the sky! 🙆"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Balance", d:"The ability to stay steady and not fall over while standing, walking, or moving."},
+        {w:"Coordination", d:"How well your body parts work together to move in the right way."},
+        {w:"Posture", d:"The way you hold your body; good balance and coordination help improve it."},
+        {w:"Reaction time", d:"How fast your body reacts; coordination helps improve your focus and reaction time."},
+        {w:"Stability", d:"Staying steady and in control while your body moves."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think of one activity you do that needs good balance or coordination — like riding a bike, dancing, or catching a ball. How could practicing balance and coordination help you do it even better?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Balance and Coordination Discussion</strong>.",
+    placeholder: "One skill I want to improve is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Balance and Coordination Discussion</strong> — share one balance or coordination skill you want to practice with your classmates. Then get ready for the <strong>Balance and Coordination Reflection</strong>, where you'll think about how far your steady, smooth moves have come!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

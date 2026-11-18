@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.14 · Rhythmic Movement and Dance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 27",
+  unit: "Unit 1.14",
+  title: "Rhythmic Movement and Dance",
+  launch: {
+    h1: "Move to the Beat! 💃",
+    leadHTML: "Rhythmic movement and dance are ways to <strong>move your body to a beat</strong>. The beat can come from music, clapping, or counting. This week you'll learn how to control your body, have fun, and express yourself — all while staying on the beat!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "📘 Rhythmic Movement and Dance",
+      html: "<p>Rhythmic movement and dance are ways to <strong>move your body to a beat</strong>. The beat can come from music, clapping, or counting. When you move in rhythm, your body follows the beat in a smooth and steady way.</p>"+
+            "<p>In PE class, rhythmic movement and dance help you learn how to <strong>control your body</strong>, have fun, and express yourself.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"Where can a <strong>beat</strong> come from?",
+        options:[
+          "Music, clapping, or counting",
+          "Only from a radio",
+          "Only when a grown-up is watching"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "🎵 What Is Rhythm?",
+      html: "<p>Rhythm is the <strong>pattern of beats</strong> you hear in music or sounds.</p>"+
+            "<ul><li>⚡ Fast beats make you move quickly</li>"+
+            "<li>🐢 Slow beats make you move slowly</li></ul>"+
+            "<p>You can show rhythm by:</p>"+
+            "<ul><li>👏 Clapping</li>"+
+            "<li>👣 Stepping</li>"+
+            "<li>⬆️ Jumping</li>"+
+            "<li>🔄 Turning</li>"+
+            "<li>🌊 Swaying</li></ul>",
+      activity: { type:"snack", title:"⏱️ Rhythm Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second rhythm break. When you tap <strong>Start</strong>, stand up, give yourself room, and copy the owl — move your body to the beat as each new move pops up!</p>",
+        moves:["Clap to the beat! 👏","Step, step, step! 👣","Jump on the beat! ⬆️","Turn around! 🔄","Sway side to side! 🌊","Freeze on the beat! 🛑"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "💃 What Is Dance?",
+      html: "<p>Dance is a form of rhythmic movement where you:</p>"+
+            "<ul><li>🎶 Move to music</li>"+
+            "<li>🙆 Use your arms, legs, and body</li>"+
+            "<li>💭 Show feelings and ideas with movement</li></ul>"+
+            "<p>There is no “right” or “wrong” way to dance in PE. What matters is that you <strong>try your best</strong>, move safely, and stay on the beat.</p>",
+      activity: { type:"flip", points:15, title:"🃏 Ways to Dance", sub:"Tap each card to reveal a way you dance. (Reveal all 3!)", cards:[
+        {e:"🎶", t:"Move to music", p:"Dance lets your whole body follow the music!"},
+        {e:"🙆", t:"Use your body", p:"Use your arms, legs, and body as you dance."},
+        {e:"💭", t:"Show feelings", p:"Show feelings and ideas with your movement."}
+      ]}
+    },
+    {
+      label: "Station 4",
+      title: "🤸 Why Dance Matters & 🧠 Brain + 💪 Body Benefits",
+      html: "<p>Rhythmic movement and dance help you:</p>"+
+            "<ul><li>⚖️ Improve balance and coordination</li>"+
+            "<li>💪 Build strength and endurance</li>"+
+            "<li>⏱️ Learn timing and control</li>"+
+            "<li>✨ Express creativity and confidence</li>"+
+            "<li>🎉 Have fun while being active</li></ul>"+
+            "<p class=\"mbox-sub\" style=\"margin-top:6px;\"><strong>🧠 Brain Benefits:</strong> Helps you focus and listen · Builds memory as you remember steps · Boosts confidence and self-expression</p>"+
+            "<p class=\"mbox-sub\"><strong>💪 Body Benefits:</strong> Strengthens muscles · Improves flexibility · Keeps your heart healthy</p>",
+      activity: { type:"sort", title:"🕹️ Brain Benefits of Dance", tag:"Tap to play",
+        sub:"Tap every card that is a <strong>BRAIN</strong> benefit of dance. Find all 3!",
+        wrongMsg:"That one's a body benefit — try again!",
+        items:[
+          {t:"Helps you focus and listen", e:"🧠", correct:true},
+          {t:"Builds memory as you remember steps", e:"💭", correct:true},
+          {t:"Boosts confidence and self-expression", e:"✨", correct:true},
+          {t:"Strengthens muscles", e:"💪", correct:false},
+          {t:"Improves flexibility", e:"🤸", correct:false},
+          {t:"Keeps your heart healthy", e:"❤️", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "🕺 Examples of Rhythmic Movement in PE",
+      html: "<p>There are lots of ways to move to the beat in PE class. Here's how you use rhythm in each one:</p>"+
+            "<ul><li><strong>Clapping Games</strong> — Clapping to a steady beat</li>"+
+            "<li><strong>Line Dances</strong> — Moving steps together</li>"+
+            "<li><strong>Freeze Dance</strong> — Stopping and starting on the beat</li>"+
+            "<li><strong>Creative Movement</strong> — Making up moves to music</li>"+
+            "<li><strong>Cultural Dances</strong> — Learning dances from different cultures</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Remember!</div><p>Rhythmic movement and dance are about <strong>moving, listening, and having fun</strong>. When you follow the beat and move safely, you are learning an important PE skill! 🎶</p></div>"
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great dancers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Rhythmic movement and dance", d:"Ways to move your body to a beat."},
+        {w:"Rhythm", d:"The pattern of beats you hear in music or sounds."},
+        {w:"Dance", d:"A form of rhythmic movement where you move to music."},
+        {w:"Freeze Dance", d:"Stopping and starting on the beat."},
+        {w:"Creative Movement", d:"Making up moves to music."},
+        {w:"Cultural Dances", d:"Learning dances from different cultures."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "What is your favorite way to move to a beat — clapping, stepping, jumping, turning, or swaying? How does moving to music make you feel, and what new dance move would you like to try?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Rhythmic Movement and Dance Discussion</strong>.",
+    placeholder: "My favorite way to move to a beat is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Rhythmic Movement and Dance Discussion</strong> — share your favorite way to move to the beat with your classmates. Then show your moves in the <strong>Rhythmic Movement & Dance Reflection</strong>, where you'll dance your way through an important PE skill!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

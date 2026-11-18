@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.5 · Flexibility and Stretching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 9",
+  unit: "Unit 1.5",
+  title: "Flexibility and Stretching",
+  launch: {
+    h1: "Bend, Twist, and Stretch! 🤸",
+    leadHTML: "Have you ever tried to tie your shoes, reach for something high, or do a cartwheel? You need flexibility to do all of these! This week you'll discover how stretching helps your body move better and feel great."
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "Why Is Flexibility Important?",
+      html: "<p>Have you ever tried to tie your shoes, reach for something high, or do a cartwheel? You need flexibility to do all of these! Flexibility means your body can bend, twist, and stretch easily. When your muscles are flexible, you move better and feel less sore after playing or exercising.</p>"+
+            "<p>Being flexible helps you:</p>"+
+            "<ul><li>🏃 Run, jump, and play without getting hurt</li>"+
+            "<li>🪑 Sit comfortably at your desk</li>"+
+            "<li>⚖️ Balance better in sports and games</li>"+
+            "<li>🧭 Move your body safely in all directions</li></ul>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What does <strong>flexibility</strong> mean?",
+        options:[
+          "Your body can bend, twist, and stretch easily",
+          "Your muscles can never move at all",
+          "You can lift the heaviest weights in the gym"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "What Happens to Your Body When You Stretch?",
+      html: "<p>Stretching helps your muscles stay long and loose, like rubber bands! It also:</p>"+
+            "<ul><li>🔥 Warms up your body for movement</li>"+
+            "<li>🛡️ Prevents injuries during sports and games</li>"+
+            "<li>😊 Makes your muscles feel good after activity</li>"+
+            "<li>🦴 Helps your joints move better (like your knees, hips, and shoulders!)</li></ul>",
+      activity: { type:"sort", title:"🕹️ What Does Stretching Do?", tag:"Tap to play",
+        sub:"Tap every card that is something <strong>stretching</strong> does for you. Find all 4!",
+        wrongMsg:"That's not what stretching does — try again!",
+        items:[
+          {t:"Warms up your body for movement", e:"🔥", correct:true},
+          {t:"Prevents injuries during games", e:"🛡️", correct:true},
+          {t:"Makes your muscles feel good", e:"😊", correct:true},
+          {t:"Helps your joints move better", e:"🦴", correct:true},
+          {t:"Makes your muscles tight and stiff", e:"😣", correct:false},
+          {t:"Makes you more sore the next day", e:"👎", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "How Does Flexibility Help You Feel?",
+      html: "<p>Stretching can help you feel great! <strong>Tap each card</strong> to reveal how flexibility helps you feel. (Reveal all 3!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"😌", t:"Relaxed & Calm", p:"Stretching can help you feel relaxed and calm."},
+        {e:"🙆", t:"Less Tight", p:"You'll feel less tight after sitting for a long time."},
+        {e:"🌟", t:"Proud", p:"You'll feel proud, because it shows you're taking care of your body!"}
+      ]}
+    },
+    {
+      label: "Station 4",
+      title: "Why Is Stretching Fun?",
+      html: "<p>Stretching feels good and can be fun when you:</p>"+
+            "<ul><li>⭐ Pretend you're reaching for the stars</li>"+
+            "<li>🐱 Move like an animal (cat stretch, flamingo stand!)</li>"+
+            "<li>🤝 Stretch with a friend or partner</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>You can stretch before and after your favorite activities like dancing, running, or swimming. The more you practice, the better your body moves!</p></div>",
+      activity: { type:"snack", title:"⏱️ Stretch Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second stretch break. When you tap <strong>Start</strong>, the owl calls out a new stretch every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Reach for the stars! ⭐","Cat stretch — round your back! 🐱","Flamingo stand — balance! 🦩","Big side stretch — lean over! 🙆","Reach down for your toes! 🙇","Twist side to side! 🧭"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Flexibility", d:"How easily your body can bend, twist, and stretch."},
+        {w:"Stretch", d:"To gently pull your muscles longer to help them move better."},
+        {w:"Muscles", d:"The parts of your body that help you move and stay strong."},
+        {w:"Joint", d:"The place where two bones meet and let you move (like knees or elbows)."},
+        {w:"Balance", d:"Staying steady while you move or stand in one place."},
+        {w:"Warm-Up", d:"Gentle movement to get your body ready for activity."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Stretching keeps your muscles long and loose like rubber bands! Which fun stretch — reaching for the stars, a cat stretch, a flamingo stand, or stretching with a friend — do you want to try this week?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 9 Discussion</strong>.",
+    placeholder: "One stretch I want to try is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 9 Discussion</strong> — share your favorite fun stretch with your classmates. Then get ready for <strong>Week 10: Create Your Own Stretching Guide</strong>, where you'll design your very own stretching routine!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.10 · Teamwork and Cooperation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 19",
+  unit: "Unit 1.10",
+  title: "Teamwork and Cooperation",
+  launch: {
+    h1: "Better Together! 🤝",
+    leadHTML: "Teamwork happens when two or more people work together to reach the same goal. This week you'll discover how working together and cooperating makes games more fun — and helps everyone win!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Is Teamwork and Cooperation?",
+      html: "<p>Teamwork happens when two or more people work together to reach the same goal. In Physical Education (PE), teamwork means playing, learning, and moving together. When students work as a team, they help each other and make games more fun.</p>"+
+            "<p>In PE class, teamwork can look like:</p>"+
+            "<ul><li>⚽ Passing the ball to a partner</li>"+
+            "<li>⏳ Waiting your turn</li>"+
+            "<li>🤕 Helping a teammate who falls</li>"+
+            "<li>🙌 Giving a high-five or saying \"Good job!\"</li></ul>"+
+            "<p>When everyone works together, no one feels left out, and the class runs more smoothly.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What is <strong>teamwork</strong>?",
+        options:[
+          "When two or more people work together to reach the same goal",
+          "When one person does everything alone",
+          "When you only cheer for yourself"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "What Is Cooperation?",
+      html: "<p>Cooperation is how we show teamwork through our actions. When we cooperate, we make good choices that help our team.</p>"+
+            "<p>Cooperation means:</p>"+
+            "<ul><li>👂 Listening when others are speaking</li>"+
+            "<li>📋 Following rules and directions</li>"+
+            "<li>🔁 Taking turns during games</li>"+
+            "<li>🤲 Sharing equipment like balls or cones</li>"+
+            "<li>💬 Using kind words instead of yelling</li>"+
+            "<li>🧩 Helping solve problems together</li></ul>"+
+            "<p>For example, if two students want the same ball, they can cooperate by taking turns or choosing a new activity. Cooperation helps everyone feel safe and respected.</p>",
+      activity: { type:"sort", title:"🕹️ Spot the Cooperation!", tag:"Tap to play",
+        sub:"Tap every card that shows <strong>COOPERATION</strong>. Find all 4!",
+        wrongMsg:"That's not cooperating — try another! 😊",
+        items:[
+          {t:"Listening when others are speaking", e:"👂", correct:true},
+          {t:"Taking turns during games", e:"🔁", correct:true},
+          {t:"Sharing equipment like balls or cones", e:"🤲", correct:true},
+          {t:"Using kind words instead of yelling", e:"💬", correct:true},
+          {t:"Yelling instead of talking", e:"😠", correct:false},
+          {t:"Keeping all the balls to yourself", e:"🙅", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "Teamwork in Action: A Sports Example",
+      html: "<p>Think about a soccer game. One player cannot run, kick, pass, and score every goal alone. The team must work together by:</p>"+
+            "<ul><li>⚽ Passing the ball</li>"+
+            "<li>🥅 Defending the goal</li>"+
+            "<li>🗣️ Talking to teammates</li>"+
+            "<li>📣 Cheering and encouraging each other</li></ul>"+
+            "<p>When players cooperate, the team plays better, and everyone has more fun—even if they don't win.</p>",
+      activity: { type:"snack", title:"⏱️ Team Play Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break. When you tap <strong>Start</strong>, the owl calls out a new teamwork move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Pass the ball to a teammate! ⚽","Defend the goal! 🥅","Run down the field! 🏃","Cheer for your team! 📣","High-five a teammate! 🙌","Kick and score together! 🎉"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Why Is Teamwork Important?",
+      html: "<p>Teamwork helps us in many ways — in PE class and with our social skills. <strong>Tap each card</strong> to reveal a reason teamwork matters. (Reveal all 6!)</p>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>When everyone cooperates, no one feels left out — and the whole class has more fun together!</p></div>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🏅", t:"Play Fair", p:"Everyone gets a chance to join in."},
+        {e:"🛡️", t:"Stay Safe", p:"Talking and paying attention helps prevent accidents."},
+        {e:"📈", t:"Improve Skills", p:"Passing, catching, and moving together helps you learn faster."},
+        {e:"😊", t:"Make Friends", p:"Being kind builds trust."},
+        {e:"🤝", t:"Show Respect", p:"You learn to value others' ideas."},
+        {e:"💖", t:"Feel Confident", p:"Helping your team feels good."}
+      ]}
+    },
+    {
+      label: "Station 5",
+      title: "Brain, Body, and Real-Life Teamwork",
+      html: "<p>Working together helps your mind and body grow strong.</p>"+
+            "<p><strong>🧠 Brain Benefits:</strong></p>"+
+            "<ul><li>Helps you listen and focus better</li>"+
+            "<li>Teaches problem-solving with others</li>"+
+            "<li>Helps you stay calm and use words instead of arguing</li>"+
+            "<li>Makes you feel proud when your team succeeds</li></ul>"+
+            "<p><strong>💪 Body Benefits:</strong></p>"+
+            "<ul><li>Builds coordination through passing and moving together</li>"+
+            "<li>Increases strength and endurance during group activities</li>"+
+            "<li>Helps keep everyone safe and in control</li></ul>"+
+            "<div class=\"callout real\"><div class=\"ctag\">🌎 Real-World Connection</div><p>Teamwork shows up everywhere you move and play:</p>"+
+            "<ul><li>🏃 <strong>Relay Races</strong> — Passing batons and cheering teammates</li>"+
+            "<li>🪂 <strong>Parachute Games</strong> — Lifting and lowering together</li>"+
+            "<li>⚽ <strong>Soccer or Basketball</strong> — Passing the ball and communicating</li>"+
+            "<li>💪 <strong>Group Fitness Challenges</strong> — Encouraging teammates to keep going</li>"+
+            "<li>🧗 <strong>Obstacle Courses</strong> — Helping teammates and waiting turns</li></ul></div>"+
+            "<p>When you see a team playing smoothly, it means students are listening, cooperating, and helping each other.</p>"+
+            "<div class=\"callout think\"><div class=\"ctag\">💭 Think About It</div><p>Teamwork is not just for PE. You use teamwork every day — working with classmates on a project, helping clean up at home, and playing games with friends or family. When you cooperate, everyone wins!</p></div>"
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great teammates know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Teamwork", d:"Working together with others to reach a goal"},
+        {w:"Cooperation", d:"Helping, listening, and sharing with teammates"},
+        {w:"Sportsmanship", d:"Being kind, fair, and respectful during games and activities"},
+        {w:"Respect", d:"Showing care for others' feelings, space, and effort"},
+        {w:"Encouragement", d:"Using kind words to cheer for teammates and help them do their best"}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about a time you worked with a team or a partner. What is one way you cooperated to help your team — and one new way you could cooperate next time?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Teamwork and Cooperation Discussion</strong>.",
+    placeholder: "One way I cooperate with my team is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Teamwork and Cooperation Discussion</strong> — share a time you worked together with others. Then get ready for <strong>Teamwork & Cooperation in Action!</strong>, where you'll put these team skills to work!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>

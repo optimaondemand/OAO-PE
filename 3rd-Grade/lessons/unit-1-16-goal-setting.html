@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.16 · Goal Setting and Personal Fitness Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 31",
+  unit: "Unit 1.16",
+  title: "Goal Setting and Personal Fitness Plans",
+  launch: {
+    h1: "Set a Goal, Make a Plan! 🎯",
+    leadHTML: "A <strong>goal</strong> is something you want to get better at. In PE class, goal setting helps you <strong>focus, practice, and improve</strong>. This week you'll learn how to set a great fitness goal and build your very own personal fitness plan to reach it!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Is Goal Setting?",
+      html: "<p>A <strong>goal</strong> is something you want to get better at. In PE class, goal setting helps you <strong>focus, practice, and improve</strong>.</p>"+
+            "<p>A fitness goal should be:</p>"+
+            "<ul><li>🧩 Easy to understand</li>"+
+            "<li>🛡️ Safe for your body</li>"+
+            "<li>🔁 Something you can practice</li></ul>"+
+            "<p>Examples of fitness goals:</p>"+
+            "<ul><li>🏃 I want to run longer</li>"+
+            "<li>🤸 I want to stretch better</li>"+
+            "<li>⭐ I want to do more jumping jacks</li>"+
+            "<li>🦩 I want to balance on one foot longer</li></ul>"+
+            "<p>Setting a goal helps you try your best and feel proud of your progress.</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"What is a <strong>goal</strong>?",
+        options:[
+          "Something you want to get better at",
+          "A game you always win on the first try",
+          "A snack you eat after PE class"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "Why Is Goal Setting Important?",
+      html: "<p>Goal setting helps you:</p>"+
+            "<ul><li>📋 Know what to practice</li>"+
+            "<li>🔥 Stay motivated</li>"+
+            "<li>📈 See how you improve</li>"+
+            "<li>😊 Feel confident when you reach your goal</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>Even small goals can make a big difference!</p></div>"
+    },
+    {
+      label: "Station 3",
+      title: "Tips for Setting a Good Goal",
+      html: "<p>A good goal is <strong>Clear</strong>, <strong>Safe</strong>, and <strong>Doable</strong>. <strong>Tap each card</strong> to reveal what that means. (Reveal all 3!)</p>"+
+            "<p class=\"mbox-sub\" style=\"margin-top:6px;\">Example: <em>\"I want to jump rope for 30 seconds without stopping.\"</em></p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🔎", t:"Clear", p:"You know what you want to improve."},
+        {e:"🛡️", t:"Safe", p:"It will not hurt your body."},
+        {e:"🔁", t:"Doable", p:"You can practice it often."}
+      ]}
+    },
+    {
+      label: "Station 4",
+      title: "What Is a Personal Fitness Plan?",
+      html: "<p>A <strong>personal fitness plan</strong> is your plan to help you reach your goal. It tells you <strong>what to do and when to do it</strong>.</p>"+
+            "<p>Your fitness plan includes:</p>"+
+            "<ul><li>🎯 Your goal</li>"+
+            "<li>🏃 The activity you will practice</li>"+
+            "<li>📅 How often you will practice</li>"+
+            "<li>🤝 Who can help you</li></ul>"+
+            "<p>A plan helps you stay organized and keep trying. Here is an example:</p>"+
+            "<ul><li><strong>My Goal:</strong> I want to run longer</li>"+
+            "<li><strong>My Activity:</strong> Jogging</li>"+
+            "<li><strong>How Often:</strong> 3 days each week</li>"+
+            "<li><strong>Who Can Help Me:</strong> My teacher or family</li></ul>"+
+            "<p>You can make your plan <strong>by yourself or with a guardian or friend</strong>.</p>",
+      activity: { type:"sort", title:"🕹️ Build a Fitness Plan", tag:"Tap to play",
+        sub:"Tap every part that belongs in a <strong>personal fitness plan</strong>. Find all 4!",
+        wrongMsg:"That one isn't part of a fitness plan — try again! 😊",
+        items:[
+          {t:"Your goal", e:"🎯", correct:true},
+          {t:"The activity you will practice", e:"🏃", correct:true},
+          {t:"How often you will practice", e:"📅", correct:true},
+          {t:"Who can help you", e:"🤝", correct:true},
+          {t:"Your favorite TV show", e:"📺", correct:false},
+          {t:"The color of your shoes", e:"👟", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 5",
+      title: "Why Is a Personal Fitness Plan Important?",
+      html: "<p>A fitness plan helps you:</p>"+
+            "<ul><li>⚡ Stay active</li>"+
+            "<li>🛡️ Practice safely</li>"+
+            "<li>💚 Build healthy habits</li>"+
+            "<li>🪜 Reach your goal step by step</li></ul>"+
+            "<p>Let's practice staying active right now with a quick movement break!</p>"+
+            "<div class=\"callout know\"><div class=\"ctag\">⭐ Remember!</div><p>Goals and fitness plans work <strong>together</strong>. When you set a goal and follow your plan, you are taking care of your body and your health.</p></div>",
+      activity: { type:"snack", title:"⏱️ Goal-Getter Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second movement break to practice staying active — just like your fitness plan! When you tap <strong>Start</strong>, the owl calls out a new move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Jog in place — run longer! 🏃","Jumping jacks! ⭐","Reach and stretch! 🤸","Balance on one foot! 🦩","Jump rope — no rope needed! 🪢","March it out! 🚶"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 6",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Goal", d:"Something you want to get better at."},
+        {w:"Personal fitness plan", d:"Your plan to help you reach your goal. It tells you what to do and when to do it."},
+        {w:"Motivated", d:"Feeling ready and excited to keep practicing toward your goal."},
+        {w:"Progress", d:"The improvement you make as you practice and get better."},
+        {w:"Healthy habit", d:"Something good for your body that you do often."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think of one thing you want to get better at in PE or at home. What is your fitness goal, and what will you do to practice it — what activity, how often, and who can help you?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Goals and Plans Discussion</strong>.",
+    placeholder: "My fitness goal is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Goals and Plans Discussion</strong> — share your fitness goal with your classmates and cheer each other on. Then get ready to build <strong>My Fitness Goal &amp; Plan</strong>, where you'll write out your very own personal fitness plan step by step!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>
