@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — 3rd Grade PE · Lesson Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E1C42; --cyan:#55C8E8; --cyan-dark:#0E5568;
+    --gold:#C7922C; --green:#76C043; --orange:#F78F1E; --purple:#A53E97;
+    --body:#2c3148; --muted:#46506b; --border:#e5e7eb;
+    --sky1:#eaf7fc; --sky2:#f6fbff;
+    --disp:'Fredoka','Nunito','Helvetica Neue',Arial,sans-serif;
+    --text:'Nunito','Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--text);color:var(--body);line-height:1.5;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(85,200,232,.25), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(199,146,44,.16), transparent 55%),
+      linear-gradient(180deg,var(--sky1),var(--sky2));
+    min-height:100vh;}
+  h1,h2,h3{font-family:var(--disp);color:var(--navy);line-height:1.15;}
+
+  .hero{background:radial-gradient(900px 400px at 50% -40%, #15306b, var(--navy) 75%);color:#fff;
+    text-align:center;padding:38px 20px 30px;position:relative;overflow:hidden;}
+  .hero .stars i{position:absolute;color:#fff;opacity:.5;}
+  .hero img{width:92px;height:92px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.4));position:relative;z-index:1;}
+  .hero h1{color:#fff;font-size:clamp(30px,6vw,52px);margin-top:8px;position:relative;z-index:1;
+    background:linear-gradient(90deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero p{color:rgba(255,255,255,.85);font-size:clamp(14px,2.4vw,18px);margin-top:4px;position:relative;z-index:1;}
+  .hero .tagline{color:var(--cyan);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-top:10px;position:relative;z-index:1;}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:30px 20px 60px;}
+  .sectlabel{font-family:var(--disp);font-weight:700;color:var(--cyan-dark);font-size:13px;letter-spacing:.12em;
+    text-transform:uppercase;margin:26px 4px 12px;display:flex;align-items:center;gap:8px;}
+  .sectlabel::after{content:"";flex:1;height:2px;background:var(--border);border-radius:2px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px;}
+  .card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:16px;
+    padding:18px;text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(14,28,66,.06);
+    transition:transform .14s ease,box-shadow .2s ease,border-color .2s;position:relative;overflow:hidden;}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--cyan);}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,28,66,.14);border-color:var(--cyan);}
+  .card .top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .card .emoji{font-size:34px;line-height:1;}
+  .card .meta{display:flex;flex-direction:column;}
+  .card .unit{font-family:var(--disp);font-weight:700;color:var(--navy);font-size:15px;}
+  .card .week{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .card h3{font-size:17px;margin:2px 0 10px;}
+  .card .go{margin-top:auto;font-family:var(--disp);font-weight:700;color:var(--cyan-dark);font-size:14px;}
+  .card:hover .go{color:var(--purple);}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:0 20px 40px;}
+  @media (max-width:520px){ .grid{grid-template-columns:1fr 1fr;} .card{padding:14px;} .card .emoji{font-size:28px;} }
+  @media (max-width:360px){ .grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="stars" id="stars"></div>
+    <img src="assets/optima-owl.png?v=2" alt="Optima owl"/>
+    <h1>Mission: Move!</h1>
+    <p>3rd Grade Physical Education · Optima Academy Online</p>
+    <div class="tagline">Lesson Hub · Flight Club</div>
+  </header>
+
+  <main class="wrap">
+    <div class="sectlabel">🚀 Semester 1 · Units 1.1–1.9</div>
+    <div class="grid" id="grid-a"></div>
+    <div class="sectlabel">🏅 Semester 2 · Units 1.10–1.17</div>
+    <div class="grid" id="grid-b"></div>
+  </main>
+
+  <footer>Tap any lesson to begin your mission. Earn Flight Points and climb the owl ranks! 🦉</footer>
+
+<script>
+  var LESSONS=[
+    {u:"1.1", w:"Week 1",  t:"Intro to P.E.", f:"unit-1-1-intro.html", e:"🌟"},
+    {u:"1.2", w:"Week 3",  t:"Warm-Ups & Cool-Downs", f:"unit-1-2-warm-ups-cool-downs.html", e:"🤸"},
+    {u:"1.3", w:"Week 5",  t:"Muscular Strength & Endurance", f:"unit-1-3-muscular-strength.html", e:"💪"},
+    {u:"1.4", w:"Week 7",  t:"Cardiovascular Fitness", f:"unit-1-4-cardiovascular-fitness.html", e:"❤️"},
+    {u:"1.5", w:"Week 9",  t:"Flexibility & Stretching", f:"unit-1-5-flexibility-stretching.html", e:"🧘"},
+    {u:"1.6", w:"Week 11", t:"Nutrition", f:"unit-1-6-nutrition.html", e:"🍎"},
+    {u:"1.7", w:"Week 13", t:"Locomotor Skills", f:"unit-1-7-locomotor-skills.html", e:"🏃"},
+    {u:"1.8", w:"Week 15", t:"Throwing & Catching", f:"unit-1-8-throwing-catching.html", e:"🤾"},
+    {u:"1.9", w:"Week 17", t:"Kicking & Striking", f:"unit-1-9-kicking-striking.html", e:"⚽"},
+    {u:"1.10",w:"Week 19", t:"Teamwork & Cooperation", f:"unit-1-10-teamwork-cooperation.html", e:"🤝"},
+    {u:"1.11",w:"Week 21", t:"Sportsmanship & Respect", f:"unit-1-11-sportsmanship-respect.html", e:"🏅"},
+    {u:"1.12",w:"Week 23", t:"Fitness Components", f:"unit-1-12-fitness-components.html", e:"📊"},
+    {u:"1.13",w:"Week 25", t:"Personal Space & Movement Safety", f:"unit-1-13-personal-space-safety.html", e:"🛡️"},
+    {u:"1.14",w:"Week 27", t:"Rhythmic Movement & Dance", f:"unit-1-14-rhythm-dance.html", e:"💃"},
+    {u:"1.15",w:"Week 29", t:"Balance & Coordination", f:"unit-1-15-balance-coordination.html", e:"🤹"},
+    {u:"1.16",w:"Week 31", t:"Goal Setting & Fitness Plans", f:"unit-1-16-goal-setting.html", e:"🎯"},
+    {u:"1.17",w:"Week 33", t:"Water Safety", f:"unit-1-17-water-safety.html", e:"🌊"}
+  ];
+  function card(l){
+    return '<a class="card" href="lessons/'+l.f+'">'+
+      '<div class="top"><span class="emoji">'+l.e+'</span>'+
+      '<span class="meta"><span class="unit">Unit '+l.u+'</span><span class="week">'+l.w+'</span></span></div>'+
+      '<h3>'+l.t+'</h3><span class="go">Start lesson &rarr;</span></a>';
+  }
+  var a=document.getElementById('grid-a'), b=document.getElementById('grid-b');
+  LESSONS.forEach(function(l){
+    var num=parseFloat(l.u.split('.')[1]);
+    (num<=9 ? a : b).insertAdjacentHTML('beforeend', card(l));
+  });
+  // sprinkle a few stars in the hero
+  (function(){var s=document.getElementById('stars');for(var i=0;i<22;i++){var x=document.createElement('i');x.textContent='✦';x.style.left=(Math.random()*100)+'%';x.style.top=(Math.random()*100)+'%';x.style.fontSize=(7+Math.random()*12)+'px';s.appendChild(x);}})();
+</script>
+</body>
+</html>
