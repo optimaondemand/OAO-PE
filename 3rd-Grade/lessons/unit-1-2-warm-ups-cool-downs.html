@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mission: Move! — Unit 1.2 · Warm-Ups and Cool-Downs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson-engine.css">
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.LESSON = {
+  week: "Week 3",
+  unit: "Unit 1.2",
+  title: "Warm-Ups and Cool-Downs",
+  launch: {
+    h1: "Getting Your Body Ready to Move! 🏁",
+    leadHTML: "Before you start running, jumping, or playing games, your body needs to warm up — and after you're done, it needs to cool down. This week you'll discover how to get your body ready to move and how to recharge your superpowers when you're done!"
+  },
+  stations: [
+    {
+      label: "Station 1",
+      title: "What Are Warm-Ups and Cool-Downs?",
+      html: "<p>Before you start running, jumping, or playing games, your body needs to warm up—just like a car needs to warm up before driving on a cold morning. A warm-up gets your body ready to move by making your heart beat a little faster, waking up your muscles, and helping you stay safe from injuries.</p>"+
+            "<p>After you're done being active, your body needs a chance to cool down. This helps your heart slow back down and gives your muscles time to relax. Cooling down also helps stop you from feeling sore the next day!</p>",
+      activity: { type:"quiz", title:"✅ Quick Check", tag:"Pick one",
+        q:"Why does your body need a <strong>warm-up</strong> before you play?",
+        options:[
+          "To get your heart, muscles, and body ready to move safely",
+          "To make you tired before the game starts",
+          "Because warm-ups are only for grown-ups"
+        ], answer:0, points:15 }
+    },
+    {
+      label: "Station 2",
+      title: "Why Do Warm-Ups Matter?",
+      html: "<p>When you <strong>warm up</strong>:</p>"+
+            "<ul><li>💪 Your muscles get warmer and more flexible.</li>"+
+            "<li>❤️ Your heart gets ready to pump faster.</li>"+
+            "<li>🎯 You feel ready to move and focus.</li>"+
+            "<li>🛡️ You lower your chances of getting hurt.</li></ul>"+
+            "<p>When you <strong>cool down</strong>:</p>"+
+            "<ul><li>🌬️ Your breathing and heart rate return to normal.</li>"+
+            "<li>😌 Your body relaxes.</li>"+
+            "<li>🧘 You stretch and recover after activity.</li></ul>"+
+            "<div class=\"callout know\"><div class=\"ctag\">💡 Did You Know?</div><p>Think of your body like a superhero—warming up gets your powers going, and cooling down recharges them for next time!</p></div>",
+      activity: { type:"sort", title:"🕹️ What Does a Warm-Up Do?", tag:"Tap to play",
+        sub:"Tap every card that is a job of a <strong>WARM-UP</strong>. Find all 4!",
+        wrongMsg:"That one's a cool-down job 😌",
+        items:[
+          {t:"Warms up your muscles", e:"💪", correct:true},
+          {t:"Gets your heart ready to pump", e:"❤️", correct:true},
+          {t:"Helps you focus and feel ready", e:"🎯", correct:true},
+          {t:"Lowers your chance of getting hurt", e:"🛡️", correct:true},
+          {t:"Slows your heart back down", e:"🌬️", correct:false},
+          {t:"Relaxes your body after playing", e:"😌", correct:false}
+        ], points:20 }
+    },
+    {
+      label: "Station 3",
+      title: "Try These Warm-Up Activities",
+      html: "<p>Here are five quick moves that wake your body up. Ready to try them with the owl?</p>"+
+            "<ul><li>🔄 <strong>Arm Circles</strong> – 10 seconds forward, 10 seconds backward</li>"+
+            "<li>🦵 <strong>High Knees</strong> – 15 seconds</li>"+
+            "<li>🤷 <strong>Shoulder Rolls</strong> – 5 forward, 5 backward</li>"+
+            "<li>🙇 <strong>Toe Touches</strong> – 10 seconds</li>"+
+            "<li>🏃 <strong>Jog in Place</strong> – 30 seconds</li></ul>"+
+            "<p class=\"mbox-sub\" style=\"margin-top:6px;\">Ask Yourself: <em>\"Do I feel ready to move?\"</em> If yes—go play!</p>",
+      activity: { type:"snack", title:"⏱️ Warm-Up Snack", tag:"Get up!",
+        introHTML:"<p class=\"mbox-sub\"><strong>What is this?</strong> A quick 30-second warm-up break. When you tap <strong>Start</strong>, the owl calls out a new warm-up move every few seconds. Stand up, give yourself room, and copy the owl!</p>",
+        moves:["Arm circles — forward! 🔄","High knees! 🦵","Shoulder rolls! 🤷","Toe touches! 🙇","Jog in place! 🏃","Arm circles — backward! 🔄"],
+        seconds:30, points:20 }
+    },
+    {
+      label: "Station 4",
+      title: "Try These Cool-Down Stretches",
+      html: "<p>After moving, it's time to cool down. <strong>Tap each card</strong> to reveal how to do the stretch. (Reveal all 5!)</p>",
+      activity: { type:"flip", points:15, cards:[
+        {e:"🤗", t:"Hug Yourself Stretch", p:"Wrap your arms around yourself and hold for 10 seconds."},
+        {e:"🦋", t:"Butterfly Stretch", p:"Sit with the soles of your feet together, and gently flap your knees."},
+        {e:"🌬️", t:"Deep Breathing", p:"Breathe in slowly through your nose, then out through your mouth."},
+        {e:"🙆", t:"Reach for the Sky", p:"Hold your arms up high, then slowly lower them down."},
+        {e:"🦵", t:"Leg Stretch", p:"Sit down and reach gently toward your toes."}
+      ]}
+    },
+    {
+      label: "Station 5",
+      title: "Vocabulary Words to Know",
+      html: "<p>Great movers know the lingo! 🎯 <strong>Match each word to its meaning.</strong> Tap a word on the left, then tap its meaning on the right.</p>",
+      activity: { type:"match", points:20, pairs:[
+        {w:"Warm-Up", d:"Movements that help your body get ready to play or exercise."},
+        {w:"Cool-down", d:"Movements that help your body rest and recover after being active."},
+        {w:"Stretch", d:"Gently pulling or reaching your muscles to help them stay loose and flexible."},
+        {w:"Injury", d:"When a part of your body gets hurt (like a sprain or muscle pull)."},
+        {w:"Heart rate", d:"How fast your heart is beating."},
+        {w:"Recovery", d:"Giving your body time to relax and feel better after exercise."}
+      ]}
+    }
+  ],
+  reflection: {
+    promptHTML: "Think about a time you played hard without warming up first. How did your body feel? Now that you know about warm-ups and cool-downs, what is one warm-up move and one cool-down stretch you want to try next time?",
+    noteHTML: "Jot your thoughts below to get them ready — this box is just for you to think. You'll post your real answer in the <strong>Week 3 Discussion</strong>.",
+    placeholder: "One warm-up move I want to try is…"
+  },
+  finish: {
+    whatsNextHTML: "Next up: <strong>Week 3 Discussion</strong> — share your favorite warm-up move with your classmates. Then get ready for the <strong>Week 4: Routine Creation Activity</strong>, where you'll build your own warm-up routine!"
+  }
+};
+</script>
+<script src="../assets/lesson-engine.js"></script>
+</body>
+</html>
