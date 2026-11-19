@@ -1511,3 +1511,26 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 @media (prefers-reduced-motion: reduce) {
   .engine .ic, .engine .ic-brain .glow { animation: none; }
 }
+
+/* ---- lesson video "jumbotron" (PE, v1.0 2026-11-19) ----
+   Markup: .vid > .vidbar (.vt + .vlen) + <video> + p.vcap
+   Same navy scoreboard as the referee game, so the page reads as one gym. */
+.vid {
+  margin: 18px 0; border-radius: var(--radius); overflow: hidden;
+  border: 2px solid var(--line); box-shadow: var(--shadow); background: var(--card);
+}
+.vid .vidbar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  background: var(--brand-navy, #0E1C42); color: #fff; padding: 11px 16px;
+}
+.vid .vidbar .vt {
+  font-family: var(--display); font-weight: 600; font-size: 16px;
+  letter-spacing: 1px; text-transform: uppercase; color: #F3C969;
+}
+.vid .vidbar .vlen {
+  margin-left: auto; font-size: 12.5px; font-weight: 800;
+  letter-spacing: 1.4px; text-transform: uppercase; color: #9FB4D8;
+}
+.vid video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.vid .vcap { font-size: 13.5px; color: var(--ink-soft); padding: 11px 16px 13px; margin: 0; line-height: 1.5; }
+.vid .vcap a { color: var(--learn); }
