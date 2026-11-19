@@ -4778,3 +4778,18 @@
     });
   });
 })();
+
+/* ---- exercise demo clips (PE, v1.0 2026-11-19) ----
+   .demo video autoplays muted and loops as a movement demo. When the reader
+   has asked for less motion we don't loop at them: pause on the first frame
+   and show controls so they start it themselves. */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) return;
+  document.querySelectorAll('.demo video').forEach(function (v) {
+    v.removeAttribute('autoplay');
+    v.loop = false;
+    v.controls = true;
+    v.pause();
+  });
+})();

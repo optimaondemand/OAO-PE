@@ -1534,3 +1534,29 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
 .vid video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
 .vid .vcap { font-size: 13.5px; color: var(--ink-soft); padding: 11px 16px 13px; margin: 0; line-height: 1.5; }
 .vid .vcap a { color: var(--learn); }
+
+/* ---- exercise demo clip (PE, v1.0 2026-11-19) ----
+   The short clips in assets/demos/ are 608x1080 PORTRAIT and SILENT, 6-14s.
+   Markup:  <div class="demo"><video src="../assets/demos/<name>.mp4"
+              autoplay loop muted playsinline></video><span class="dcap">Forearm plank</span></div>
+   Silent + muted is what lets them autoplay; they loop as a movement demo.
+   Drop one inside a .todo li (it floats to the right of the step) or on its own. */
+.demo {
+  width: 132px; border-radius: 14px; overflow: hidden;
+  border: 2.5px solid var(--ink); box-shadow: 0 3px 0 var(--line);
+  background: #000; flex: 0 0 auto;
+}
+.demo video {
+  display: block; width: 100%; aspect-ratio: 608 / 1080;
+  object-fit: cover; background: #000;
+}
+.demo .dcap {
+  display: block; background: var(--ink); color: #fff; text-align: center;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .6px;
+  padding: 5px 6px; text-transform: uppercase;
+}
+/* .todo li is a grid, so a .demo dropped inside flows in under the step's
+   text at the left — which is where it reads best. */
+@media (max-width: 640px) { .demo { width: 108px; } }
+/* reduced motion is handled in pe-studio.js: the loop is paused and
+   controls are shown, so the student starts the demo themselves. */
