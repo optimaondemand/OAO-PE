@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.3 — Muscular Strength &amp; Endurance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.3 · Briefing</span>
+    <h1 class="brief-title">Build the<br><span class="hl">Engine</span></h1>
+    <p class="brief-sub">Strength is how hard you can go <em>once</em>. Endurance is how long you can keep going. Learn to train both — and the muscles that power every move.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.3 · Muscular Strength &amp; Endurance</div>
+  </div>
+  <div class="oao-pill">Week 5</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="strength"><span class="num"><span class="n">1</span></span>Strength</button>
+      <button class="tr-dot" data-go="muscles"><span class="num"><span class="n">2</span></span>Muscles</button>
+      <button class="tr-dot" data-go="train"><span class="num"><span class="n">3</span></span>Train</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">4</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">5</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.3 · Unit 1.3 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Muscular Strength &amp; Endurance: Build the Engine 💪</h1>
+        <p class="mb-lede">Strength and endurance sound similar, but they're two different skills. Strength is how hard your muscles can push or pull <em>once</em>. Endurance is how many times you can do it before they quit. Every athlete needs both — and the way you train each is different.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">5</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">5</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~12</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/understanding-strength-poster.jpg">
+        <source src="../assets/understanding-strength.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/understanding-strength.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Understanding Strength” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — STRENGTH VS ENDURANCE -->
+  <section class="obj reveal" id="strength">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">Strength vs. Endurance</div></div>
+    </div>
+    <p><span class="hl-term">Muscular strength</span> is the maximum amount of force a muscle can produce in a single effort. Lifting a heavy box, pushing a stuck door, or jumping as high as you can — those use strength.</p>
+    <p><span class="hl-term">Muscular endurance</span> is how long a muscle can keep producing force without getting tired. Holding a plank for two minutes, doing 30 push-ups in a row, or carrying groceries up the stairs — those use endurance.</p>
+    <p>Imagine your bicep is a battery. Strength is the maximum power that battery can put out in one second. Endurance is how long the battery lasts before it dies.</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · Strength or Endurance?</span>
+      <h4>Which one is it?</h4>
+      <div class="act-sub">Tap each card to flip it and see whether it needs strength or endurance.</div>
+      <div class="flipgrid" id="seFlip" data-done-step="strength">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🤸</div><div class="fn">Jump as high as you can</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Strength</div>One maximum effort — that's muscular strength.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🪵</div><div class="fn">Hold a 2-minute plank</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Endurance</div>Producing force for a long time — muscular endurance.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🚪</div><div class="fn">Push a stuck door</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Strength</div>Maximum force once — strength.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🦾</div><div class="fn">30 push-ups in a row</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Endurance</div>Many reps before fatigue — endurance.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJ 2 — MUSCLE GROUPS -->
+  <section class="obj reveal" id="muscles">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Major Muscle Groups</div></div>
+    </div>
+    <p>Your body has hundreds of muscles, but PE focuses on the big ones — the muscle groups that move you through space:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · Tap Each Muscle Group</span>
+      <h4>Meet your movers</h4>
+      <div class="act-sub">Tap each muscle group to power it on and see what it does.</div>
+      <div class="sys-grid" id="muscleGrid" data-done-step="muscles">
+        <button class="sys" data-react="On!"><div class="emo">🦵</div><div class="nm">Quads</div><div class="ds">Front of your thighs — straighten the knee. Powers jumping and sprinting.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="On!"><div class="emo">🦵</div><div class="nm">Hamstrings</div><div class="ds">Back of your thighs — bend the knee. Helps you decelerate and run.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="On!"><div class="emo">🍑</div><div class="nm">Glutes</div><div class="ds">Your butt muscles — the strongest muscle group in your body. Power for running and jumping.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="On!"><div class="emo">🎯</div><div class="nm">Core</div><div class="ds">Abs, obliques, and lower back — keep your spine stable when you move.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="On!"><div class="emo">💪</div><div class="nm">Biceps &amp; Triceps</div><div class="ds">Bend and straighten the elbow. Used for pulling and pushing.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="On!"><div class="emo">🪶</div><div class="nm">Lats</div><div class="ds">Wide back muscles — power pull-ups, climbing, and swimming strokes.</div><div class="react">● Online</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>When you train a muscle, you actually create <em>microscopic tears</em> in its fibers. During recovery (mostly while you sleep), your body repairs those tears and adds extra protein — making the muscle slightly bigger and stronger than before. This process is called <span class="hl-term">muscle protein synthesis</span>. It's the reason rest days matter as much as training days.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — TRAINING -->
+  <section class="obj reveal" id="train">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Training Strength vs. Endurance</div></div>
+    </div>
+    <p>The number of reps and how heavy the resistance is decides which one you're building:</p>
+    <ul>
+      <li><strong>Strength training</strong> — heavier resistance, fewer reps (3–6). Think: a few heavy push-ups against the wall.</li>
+      <li><strong>Endurance training</strong> — lighter resistance, more reps (12–25+). Think: 30 bodyweight squats in a row.</li>
+    </ul>
+    <p>Both are important. A soccer player needs endurance to run for a full game <em>and</em> strength to win battles for the ball. A swimmer needs endurance for long laps <em>and</em> strength for the dive off the wall.</p>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>The strongest muscle in your body — for its size — is your <strong>masseter</strong> (the muscle that closes your jaw). It can produce up to 200 pounds of force on your back teeth! Your largest and most powerful muscle group, though, is your <strong>gluteus maximus</strong> — the muscle that lets you stand up, climb stairs, and sprint.</p>
+    </div>
+
+    <!-- ACTIVITY: build a bodyweight circuit -->
+    <div class="act">
+      <span class="act-tag">⚡ Try It · Build a Bodyweight Circuit</span>
+      <h4>No weights needed</h4>
+      <div class="act-sub">Tap each move to add it to today's circuit. Stack all four for a full-body workout.</div>
+      <div class="chips" id="circuitChips" data-done-step="train" data-target="4" data-unit="moves" data-ring="circuitRing" data-num="circuitNum" data-msg="circuitMsg">
+        <button class="chip" data-min="1">🦾 Push-Ups <span class="mins">10 reps</span></button>
+        <button class="chip" data-min="1">🏋️ Squats <span class="mins">15 reps</span></button>
+        <button class="chip" data-min="1">🪜 Plank Hold <span class="mins">30 sec</span></button>
+        <button class="chip" data-min="1">🌉 Glute Bridges <span class="mins">12 reps</span></button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="circuitRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="circuitNum">0</span><span class="small">of 4 moves</span></div>
+        </div>
+        <div class="meter-msg" id="circuitMsg">Push-ups and plank build strength and core endurance; squats and glute bridges hit your legs. Tap to stack your circuit.</div>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Strength training isn't just for athletes — it helps everyone. Firefighters need it to carry equipment. Nurses need it to lift patients. Carpenters need it to swing hammers all day. Even adults who sit at desks train strength so they can stay healthy as they age. The strength you build now is part of your body's foundation for life.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Muscular strength</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The maximum force a muscle can produce in a single effort.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Muscular endurance</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">How long a muscle can produce force before getting tired.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Rep (repetition)</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">One complete cycle of an exercise (one push-up, one squat).</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Quads, hamstrings, glutes</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The three main muscle groups in your legs.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Core</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The muscles in your trunk that stabilize your spine.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Muscle protein synthesis</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">How muscles rebuild stronger after exercise.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>Which is more important in your favorite activity — strength or endurance?</strong> Pick one sport, hobby, or game you play. Explain which fitness component you'd train more of, and <em>why</em>. How do you know? Give one example from how the activity is actually played.</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">My sport, hobby, or game:</label>
+        <textarea id="j1" data-key="mm-l13-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">Which I'd train more — strength or endurance — and why:</label>
+        <textarea id="j2" data-key="mm-l13-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">My evidence — one example from how the activity is actually played:</label>
+        <textarea id="j3" data-key="mm-l13-j3" placeholder="How do I KNOW?…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: showcase your strength in this week's <strong>assignment</strong>, then test your endurance in Flight Club.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.3 Complete!</h2>
+    <p>You learned the difference between strength and endurance, met your major muscle groups, and saw how to train each one.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.3 · Muscular Strength &amp; Endurance</div>
+
+</body>
+</html>

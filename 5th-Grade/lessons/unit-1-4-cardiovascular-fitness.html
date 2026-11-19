@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.4 — Cardiovascular Fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.4 · Briefing</span>
+    <h1 class="brief-title">Train Your<br><span class="hl">Heart</span></h1>
+    <p class="brief-sub">Your heart is a muscle — and it gets stronger when you train it. Learn the engine behind almost every sport, and how to read how hard it's working.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.4 · Cardiovascular Fitness</div>
+  </div>
+  <div class="oao-pill">Week 7</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="system"><span class="num"><span class="n">1</span></span>System</button>
+      <button class="tr-dot" data-go="fuel"><span class="num"><span class="n">2</span></span>Fuel</button>
+      <button class="tr-dot" data-go="zones"><span class="num"><span class="n">3</span></span>Zones</button>
+      <button class="tr-dot" data-go="train"><span class="num"><span class="n">4</span></span>Train</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">5</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">6</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.4 · Unit 1.4 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Cardiovascular Fitness: Train Your Heart 🫀</h1>
+        <p class="mb-lede">Your heart is a muscle — and like every muscle, it gets stronger when you train it. <span class="hl-term">Cardiovascular fitness</span> is how well your heart, lungs, and blood vessels work together to deliver oxygen to your body. The better that delivery system, the longer you can keep moving without slowing down. This is the engine behind almost every sport.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">7</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">6</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~14</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/cardiovascular-fitness-poster.jpg">
+        <source src="../assets/cardiovascular-fitness.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/cardiovascular-fitness.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Cardiovascular Fitness: Keep Your Heart Happy &amp; Strong” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — SYSTEM -->
+  <section class="obj reveal" id="system">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">The Cardiovascular System, Explained</div></div>
+    </div>
+    <p>Your cardiovascular system is a closed loop made of three parts:</p>
+    <ul>
+      <li><strong>Heart</strong> — a fist-sized pump that beats around 100,000 times a day</li>
+      <li><strong>Blood vessels</strong> — arteries carry oxygen-rich blood out, veins carry it back; capillaries are the tiny vessels where the swap happens</li>
+      <li><strong>Blood</strong> — carries oxygen, nutrients, and carries away waste like carbon dioxide</li>
+    </ul>
+    <p>When you breathe in, your lungs pull oxygen out of the air. Your heart pumps that oxygen-loaded blood out to working muscles. The muscles use the oxygen to make energy. The heart pumps the now low-oxygen blood back to the lungs to reload. Loop complete.</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · The Oxygen Loop</span>
+      <h4>Power on the loop</h4>
+      <div class="act-sub">Tap each part of the system to bring it online.</div>
+      <div class="sys-grid" id="loopGrid" data-done-step="system">
+        <button class="sys" data-react="Pumping!"><div class="emo">🫀</div><div class="nm">Heart</div><div class="ds">A fist-sized pump that beats around 100,000 times a day.</div><div class="react">● Online — pumping</div></button>
+        <button class="sys" data-react="Flowing!"><div class="emo">🩸</div><div class="nm">Blood Vessels</div><div class="ds">Arteries carry oxygen-rich blood out, veins carry it back; capillaries are where the swap happens.</div><div class="react">● Online — carrying</div></button>
+        <button class="sys" data-react="Loaded!"><div class="emo">💧</div><div class="nm">Blood</div><div class="ds">Carries oxygen and nutrients, and carries away waste like carbon dioxide.</div><div class="react">● Online — delivering</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>Athletes have a measurable number called <span class="hl-term">VO₂ max</span> — the maximum amount of oxygen your body can use during all-out exercise. Distance runners and cyclists have some of the highest VO₂ max numbers ever recorded. Tour de France winners can be more than <em>twice as efficient</em> at using oxygen as the average adult. The good news: VO₂ max improves with training, especially when you start young.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 2 — AEROBIC VS ANAEROBIC -->
+  <section class="obj reveal" id="fuel">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Aerobic vs. Anaerobic</div></div>
+    </div>
+    <p>Not all cardio is the same. There are two main fuel systems:</p>
+    <ul>
+      <li><strong><span class="hl-term">Aerobic</span></strong> ("with oxygen") — Moderate activity you can sustain for a long time. Examples: jogging, biking, swimming laps. Your breathing is faster but steady. You could hold a short conversation.</li>
+      <li><strong><span class="hl-term">Anaerobic</span></strong> ("without oxygen") — Short bursts of all-out effort. Examples: sprinting, jumping for a rebound, racing to home base. You can't keep this up for long — usually under a minute.</li>
+    </ul>
+    <p>Most sports use both. A basketball player jogs down the court (aerobic), then sprints for a fast break (anaerobic), then jogs back. Training one helps the other, but they're trained differently.</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · Aerobic or Anaerobic?</span>
+      <h4>Which fuel system?</h4>
+      <div class="act-sub">Tap each card to flip it and sort the effort.</div>
+      <div class="flipgrid" id="fuelFlip" data-done-step="fuel">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🏃</div><div class="fn">Jogging a mile</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Aerobic</div>Steady and sustained — fueled with oxygen.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">⚡</div><div class="fn">Sprinting to home base</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Anaerobic</div>Short all-out burst — under a minute.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🏊</div><div class="fn">Swimming laps</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Aerobic</div>Long and steady — you could say a sentence.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🏀</div><div class="fn">Jumping for a rebound</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Anaerobic</div>Explosive effort — no time to breathe through it.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — ZONES (heart-rate sim) -->
+  <section class="obj reveal" id="zones">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Heart Rate &amp; Target Zones</div></div>
+    </div>
+    <p>You can check how hard your heart is working by measuring your <span class="hl-term">heart rate</span> — beats per minute (BPM). Place two fingers on your wrist or neck, count beats for 10 seconds, multiply by 6.</p>
+    <ul>
+      <li><strong>Resting heart rate</strong> — usually 70–110 BPM for a 5th grader at rest</li>
+      <li><strong>Target zone during exercise</strong> — roughly 130–170 BPM for moderate activity</li>
+      <li><strong>Max heart rate</strong> — estimated as 220 minus your age (so ~210 for a 10-year-old)</li>
+    </ul>
+    <p>You don't need to be in the top zone all the time. Most of your training should be in the moderate zone — fast enough that you can't sing, but slow enough that you could still say a sentence.</p>
+
+    <div class="act">
+      <span class="act-tag">💓 Simulate · Watch Your Heart Rate Climb</span>
+      <h4>Change the effort, watch the monitor</h4>
+      <div class="act-sub">Tap each effort level to see your heart rate and rhythm change. Try all four to complete this objective.</div>
+      <div class="hr-box">
+        <div class="hr-top">
+          <div class="hr-read"><span class="hr-bpm" id="bpm">70</span><span class="hr-unit">BPM</span></div>
+          <span class="hr-state" id="hrState">Resting</span>
+        </div>
+        <div class="hr-mon">
+          <svg viewBox="0 0 320 56" preserveAspectRatio="none"><path class="hr-pulse" id="hrPath" d=""></path></svg>
+        </div>
+        <div class="hr-btns">
+          <button class="hr-btn on" data-bpm="70" data-state="Resting">Rest<span class="sub">~70 bpm</span></button>
+          <button class="hr-btn" data-bpm="120" data-state="Moderate">Jog<span class="sub">~120 bpm</span></button>
+          <button class="hr-btn" data-bpm="160" data-state="Target Zone">Target<span class="sub">~160 bpm</span></button>
+          <button class="hr-btn" data-bpm="195" data-state="All Out">Sprint<span class="sub">~195 bpm</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>Trained endurance athletes can have a <em>resting heart rate</em> as low as 40 BPM — about half the rate of an average adult. That doesn't mean their heart is weak. It means each beat pumps so much blood that the heart doesn't need to fire as often. A stronger heart works <em>less</em> hard at rest.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 4 — TRAIN -->
+  <section class="obj reveal" id="train">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Try It</div><div class="obj-title">Cardio Training Options</div></div>
+    </div>
+    <p>There are lots of ways to train your heart. Tap each one to add it to your personal cardio menu.</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · Build Your Cardio Menu</span>
+      <h4>Pick your training</h4>
+      <div class="act-sub">Tap each option to add it. Light them all up to see your full menu.</div>
+      <div class="sys-grid" id="cardioGrid" data-done-step="train">
+        <button class="sys" data-react="Added!"><div class="emo">🏃</div><div class="nm">Jogging</div><div class="ds">5–20 min of steady pace — classic aerobic training.</div><div class="react">● On the menu</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🚴</div><div class="nm">Biking</div><div class="ds">Low-impact way to build aerobic endurance.</div><div class="react">● On the menu</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">⚡</div><div class="nm">Sprint Intervals</div><div class="ds">8× (20 sec all-out, 40 sec walk). Anaerobic + aerobic mix.</div><div class="react">● On the menu</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🏊</div><div class="nm">Swimming</div><div class="ds">Full-body cardio with almost no joint stress.</div><div class="react">● On the menu</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🪜</div><div class="nm">Stair Climbing</div><div class="ds">Builds heart strength + leg power.</div><div class="react">● On the menu</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">💃</div><div class="nm">Dance</div><div class="ds">Yes — high-energy dance counts as serious cardio.</div><div class="react">● On the menu</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Cardio fitness isn't just about sports — it's one of the strongest predictors of long-term health. Adults with high cardiovascular fitness live longer, get sick less often, and recover faster from injury. The habits you build at age 10 set up your heart for the next 70+ years.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Cardiovascular fitness</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">How well your heart, lungs, and blood vessels deliver oxygen.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Aerobic</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Steady, moderate-intensity exercise that uses oxygen as fuel.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Anaerobic</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Short bursts of all-out effort that don't use oxygen as the main fuel.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Heart rate</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Beats per minute — a measure of how hard your heart is working.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Target zone</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The heart rate range where cardio training is most effective.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">VO₂ max</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Your body's maximum rate of oxygen use.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>What does cardio fitness feel like in your body?</strong> After this week's hardest activity, what changed: breathing, heart rate, sweat, how your legs felt? How do you know your heart and lungs were working harder than at rest? Describe at least two pieces of evidence.</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">My hardest activity this week was:</label>
+        <textarea id="j1" data-key="mm-l14-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">What changed in my body (breathing, heart rate, sweat, legs):</label>
+        <textarea id="j2" data-key="mm-l14-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">Two pieces of evidence my heart &amp; lungs worked harder than at rest:</label>
+        <textarea id="j3" data-key="mm-l14-j3" placeholder="How do I KNOW?…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: design your own cardio plan for Week 8, then test your heart in Flight Club.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.4 Complete!</h2>
+    <p>You traced the oxygen loop, sorted aerobic from anaerobic effort, read your heart-rate zones, and built a cardio menu of your own.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.4 · Cardiovascular Fitness</div>
+
+<script>
+/* bespoke: animated heart-rate monitor for Objective 3 */
+(function () {
+  var hrPath = document.getElementById('hrPath'), bpmEl = document.getElementById('bpm'), hrStateEl = document.getElementById('hrState');
+  if (!hrPath) return;
+  var curBpm = 70, shownBpm = 70, W = 320, H = 56, offset = 0;
+  function beatSpacing(bpm) { return Math.max(26, 150 - bpm * 0.62); }
+  function buildPath() {
+    var sp = beatSpacing(curBpm), d = 'M0,' + (H / 2), x = -(offset % sp);
+    while (x < W) {
+      var b = x;
+      d += ' L' + (b + sp * 0.5) + ',' + (H / 2);
+      d += ' L' + (b + sp * 0.56) + ',' + (H * 0.78);
+      d += ' L' + (b + sp * 0.6) + ',' + (H * 0.12);
+      d += ' L' + (b + sp * 0.64) + ',' + (H * 0.88);
+      d += ' L' + (b + sp * 0.7) + ',' + (H / 2);
+      x += sp;
+    }
+    hrPath.setAttribute('d', d);
+  }
+  function animateHR() { offset += Math.max(1.4, curBpm / 34); buildPath(); requestAnimationFrame(animateHR); }
+  buildPath(); requestAnimationFrame(animateHR);
+  setInterval(function () { if (shownBpm !== curBpm) { shownBpm += (curBpm > shownBpm ? 1 : -1); bpmEl.textContent = shownBpm; } }, 16);
+  var tried = {}, btns = document.querySelectorAll('.hr-btn');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('on'); });
+      btn.classList.add('on');
+      curBpm = parseInt(btn.getAttribute('data-bpm'), 10);
+      hrStateEl.textContent = btn.getAttribute('data-state');
+      hrPath.style.stroke = curBpm > 150 ? '#F78F1E' : (curBpm > 100 ? '#C7922C' : '#55C8E8');
+      tried[btn.getAttribute('data-bpm')] = true;
+      if (Object.keys(tried).length >= btns.length && window.Mission) window.Mission.markDone('zones');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
