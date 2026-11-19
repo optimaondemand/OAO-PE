@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.6 — Nutrition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.6 · Briefing</span>
+    <h1 class="brief-title">Fuel for the<br><span class="hl">Machine</span></h1>
+    <p class="brief-sub">Food becomes the energy that powers your muscles, grows your bones, and fuels your brain. Learn to fuel the athlete you're becoming.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.6 · Nutrition</div>
+  </div>
+  <div class="oao-pill">Week 11</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="macros"><span class="num"><span class="n">1</span></span>Macros</button>
+      <button class="tr-dot" data-go="micros"><span class="num"><span class="n">2</span></span>Micros</button>
+      <button class="tr-dot" data-go="rainbow"><span class="num"><span class="n">3</span></span>Rainbow</button>
+      <button class="tr-dot" data-go="plate"><span class="num"><span class="n">4</span></span>Plate</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">5</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">6</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.6 · Unit 1.6 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Nutrition: Fuel for the Machine 🥗</h1>
+        <p class="mb-lede">Your body is an athletic machine — and like every machine, it runs on fuel. The food you eat becomes the energy that powers your muscles, the building blocks that grow your bones, and the chemicals your brain uses to focus. Eat well, and your body has what it needs to perform. Eat poorly, and even the best training routine falls flat.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">11</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">6</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~14</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/understanding-nutrition-poster.jpg">
+        <source src="../assets/understanding-nutrition.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/understanding-nutrition.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Understanding Nutrition” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — MACROS -->
+  <section class="obj reveal" id="macros">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">The Three Macronutrients</div></div>
+    </div>
+    <p>Almost every food gives you a mix of three main <span class="hl-term">macronutrients</span> ("macro" = big). Each does a different job:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · The Big Three</span>
+      <h4>Tap each macronutrient</h4>
+      <div class="act-sub">Power on all three to see how your body uses each one.</div>
+      <div class="sys-grid" id="macroGrid" data-done-step="macros">
+        <button class="sys" data-react="Fuel!"><div class="emo">🍞</div><div class="nm">Carbohydrates</div><div class="ds">Your body's preferred fuel for movement. Found in grains, fruits, vegetables, dairy.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="Build!"><div class="emo">🍗</div><div class="nm">Proteins</div><div class="ds">Building blocks for muscles, bones, skin, blood. Found in meat, eggs, beans, dairy, nuts.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="Store!"><div class="emo">🥑</div><div class="nm">Fats</div><div class="ds">Long-lasting energy + protect your organs and brain. Found in oils, nuts, avocado, fish.</div><div class="react">● Online</div></button>
+      </div>
+    </div>
+    <p>You need all three. Skipping any one — like cutting all fat or all carbs — leaves your body short on something important.</p>
+  </section>
+
+  <!-- OBJ 2 — MICROS -->
+  <section class="obj reveal" id="micros">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Vitamins, Minerals, and Water</div></div>
+    </div>
+    <p>Macronutrients are the big ones, but your body also needs smaller amounts of <span class="hl-term">micronutrients</span> — vitamins and minerals — to function:</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · Micronutrient Match</span>
+      <h4>What does each one do?</h4>
+      <div class="act-sub">Tap each card to flip it and see the job — and where to find it.</div>
+      <div class="flipgrid" id="microFlip" data-done-step="micros">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🍊</div><div class="fn">Vitamin C</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Heal &amp; defend</div>Helps heal cuts and fight off colds — citrus, peppers, strawberries.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🦴</div><div class="fn">Calcium</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Strong bones</div>Builds strong bones and teeth — milk, yogurt, leafy greens.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🩸</div><div class="fn">Iron</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Carry oxygen</div>Helps blood carry oxygen — red meat, beans, spinach.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🍌</div><div class="fn">Potassium</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">No cramps</div>Keeps muscles working and prevents cramps — bananas, potatoes.</div>
+        </div></div>
+      </div>
+    </div>
+    <p>And don't forget water. Your body is about 60% water. Even small amounts of <span class="hl-term">dehydration</span> can hurt your focus, mood, and performance.</p>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>When you eat carbs, your body breaks them down into <em>glucose</em> — a simple sugar. Glucose either gets used right away as fuel, or stored in your muscles and liver as <em>glycogen</em> for later. During a long workout, your muscles tap into that glycogen storage. That's why athletes "carb load" before big events — they're topping off their fuel tanks.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — RAINBOW -->
+  <section class="obj reveal" id="rainbow">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Eat the Rainbow</div></div>
+    </div>
+    <p>Different colored fruits and vegetables contain different vitamins. The more colors on your plate, the wider the range of nutrients you get:</p>
+
+    <div class="act">
+      <span class="act-tag">🌈 Try It · Eat the Rainbow</span>
+      <h4>Collect all five colors</h4>
+      <div class="act-sub">Tap each color to add it to today's plate. Fill the ring with a full rainbow.</div>
+      <div class="chips" id="rainbowChips" data-done-step="rainbow" data-target="5" data-unit="colors" data-ring="rainbowRing" data-num="rainbowNum" data-msg="rainbowMsg">
+        <button class="chip" data-min="1">🍎 Red <span class="mins">heart</span></button>
+        <button class="chip" data-min="1">🥕 Orange/Yellow <span class="mins">eyes + skin</span></button>
+        <button class="chip" data-min="1">🥦 Green <span class="mins">vitamins</span></button>
+        <button class="chip" data-min="1">🫐 Blue/Purple <span class="mins">brain</span></button>
+        <button class="chip" data-min="1">🧄 White <span class="mins">immune</span></button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="rainbowRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="rainbowNum">0</span><span class="small">of 5 colors</span></div>
+        </div>
+        <div class="meter-msg" id="rainbowMsg">Red is good for the heart, orange/yellow for eyes and skin, green packs vitamins, blue/purple feeds the brain, white supports your immune system. Tap to collect them all.</div>
+      </div>
+    </div>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>Your gut — the long tube that processes food — contains <strong>trillions of bacteria</strong> that help break down food and even talk to your brain. Scientists call this the "gut microbiome," and it's connected to your mood, immune system, and energy level. The way you build a healthy microbiome? Eat lots of different plants (fruits, veggies, beans, nuts). The more variety, the better.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 4 — PLATE -->
+  <section class="obj reveal" id="plate">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Objective 4</div><div class="obj-title">Building a Balanced Plate</div></div>
+    </div>
+    <p>The simplest tool for healthy eating is the <span class="hl-term">MyPlate</span> model from the U.S. Department of Agriculture:</p>
+
+    <div class="act">
+      <span class="act-tag">🍽️ Explore · Build the Plate</span>
+      <h4>Tap each section of MyPlate</h4>
+      <div class="act-sub">Power on all four to assemble a balanced plate.</div>
+      <div class="sys-grid" id="plateGrid" data-done-step="plate">
+        <button class="sys" data-react="½ plate"><div class="emo">🥗</div><div class="nm">Fruits &amp; Vegetables</div><div class="ds">½ of your plate — the biggest share.</div><div class="react">● On the plate</div></button>
+        <button class="sys" data-react="¼ plate"><div class="emo">🌾</div><div class="nm">Grains</div><div class="ds">¼ of your plate — preferably whole grains.</div><div class="react">● On the plate</div></button>
+        <button class="sys" data-react="¼ plate"><div class="emo">🍗</div><div class="nm">Protein</div><div class="ds">¼ of your plate — meat, beans, nuts, eggs.</div><div class="react">● On the plate</div></button>
+        <button class="sys" data-react="Side"><div class="emo">🥛</div><div class="nm">Dairy</div><div class="ds">A side — milk, yogurt, cheese, or a calcium alternative.</div><div class="react">● On the plate</div></button>
+      </div>
+    </div>
+    <p>You don't have to be perfect at every meal. The goal is to look at most of your meals over a week and see balance.</p>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Pro athletes work with sports nutritionists who plan meals down to the gram. An NBA player might eat <strong>4,000 calories a day</strong> during the season, carefully timed before, during, and after practice. Meanwhile, an Olympic gymnast might eat closer to 2,000 calories with extra protein and calcium for bone health. Different sports = different fuel needs.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Macronutrients</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The three big nutrients your body needs in large amounts — carbs, protein, fat.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Micronutrients</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Vitamins and minerals — needed in small amounts but still essential.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Carbohydrates</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The body's main fuel source for movement.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Protein</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Nutrient used to build and repair muscles.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Glycogen</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Stored form of carbs that your muscles use as fuel.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Dehydration</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">When your body doesn't have enough water to function well.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>What did you eat yesterday?</strong> List your meals and snacks. Which macronutrients did you get? Did you eat the rainbow? Pick one meal you'd change for better fuel, and explain <em>why</em> that change would help your body — what specific nutrient or system would benefit?</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">My meals and snacks yesterday:</label>
+        <textarea id="j1" data-key="mm-l16-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">Which macronutrients I got — and whether I ate the rainbow:</label>
+        <textarea id="j2" data-key="mm-l16-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">One meal I'd change, and why that change would help my body:</label>
+        <textarea id="j3" data-key="mm-l16-j3" placeholder="What nutrient or system would benefit?…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: build a healthy plate in Week 12, then power your Flight Club challenge with what you've learned.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.6 Complete!</h2>
+    <p>You learned the three macronutrients, the micronutrients and water your body needs, how to eat the rainbow, and how to build a balanced plate.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.6 · Nutrition</div>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.9 — Kicking &amp; Striking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.9 · Briefing</span>
+    <h1 class="brief-title">Power From the<br><span class="hl">Ground Up</span></h1>
+    <p class="brief-sub">Kicks and strikes share throwing's secret: power comes from a chain, and it starts at your base. Get the base right, and the rest works.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.9 · Kicking &amp; Striking</div>
+  </div>
+  <div class="oao-pill">Week 17</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="kick"><span class="num"><span class="n">1</span></span>Kick</button>
+      <button class="tr-dot" data-go="strike"><span class="num"><span class="n">2</span></span>Strike</button>
+      <button class="tr-dot" data-go="shots"><span class="num"><span class="n">3</span></span>Shots</button>
+      <button class="tr-dot" data-go="drills"><span class="num"><span class="n">4</span></span>Drills</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">5</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">6</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.9 · Unit 1.9 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Kicking &amp; Striking: Power From the Ground Up 🦶</h1>
+        <p class="mb-lede">Kicking and striking are manipulative skills that use your legs and arms to hit an object. They share something in common with throwing: the power comes from a chain — but for kicks, the chain starts at your planted foot, not your throwing hand. For racket sports, your feet still set the foundation. The lesson is the same: <em>get your base right, and the rest works</em>.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">17</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">6</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~14</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/kicking-and-striking-poster.jpg">
+        <source src="../assets/kicking-and-striking.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/kicking-and-striking.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Mastering Manipulative Skills: Kicking and Striking” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — KICK -->
+  <section class="obj reveal" id="kick">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">The Kicking Motion</div></div>
+    </div>
+    <p>A good kick uses your whole leg — and a little bit of your whole body. Here's the breakdown:</p>
+    <ol>
+      <li><strong>Plant your non-kicking foot</strong> next to (not behind) the ball — about 6 inches to the side</li>
+      <li><strong>Lock your ankle</strong> on the kicking foot, toes pointed down</li>
+      <li><strong>Swing your kicking leg back</strong> — hip extends, knee bends</li>
+      <li><strong>Drive the leg forward</strong> — hip leads, knee follows, foot whips through last</li>
+      <li><strong>Strike with the laces</strong> (for power) or inside of foot (for accuracy)</li>
+      <li><strong>Follow through</strong> — kicking leg keeps going up after contact</li>
+    </ol>
+
+    <div class="act">
+      <span class="act-tag">⚡ Try It · Build the Kick</span>
+      <h4>Link all six steps</h4>
+      <div class="act-sub">Tap each step to build a full-power kick from a solid base.</div>
+      <div class="chips" id="kickChips" data-done-step="kick" data-target="6" data-unit="steps" data-ring="kickRing" data-num="kickNum" data-msg="kickMsg">
+        <button class="chip" data-min="1">🦶 Plant foot</button>
+        <button class="chip" data-min="1">🔒 Lock ankle</button>
+        <button class="chip" data-min="1">↩️ Swing back</button>
+        <button class="chip" data-min="1">➡️ Drive forward</button>
+        <button class="chip" data-min="1">⚽ Strike</button>
+        <button class="chip" data-min="1">⬆️ Follow through</button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="kickRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="kickNum">0</span><span class="small">of 6 steps</span></div>
+        </div>
+        <div class="meter-msg" id="kickMsg">The plant foot sets your base; the hip leads, the knee follows, the foot whips through last. Tap each step to complete the kick.</div>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>Cristiano Ronaldo's free kicks fly at over <strong>70 mph</strong> because his kicking leg moves at about <strong>20 meters per second</strong> at the moment of contact. That speed doesn't come from leg strength alone — it comes from a perfectly timed hip rotation, called the <span class="hl-term">hip-to-knee separation</span>. His hips start rotating before his knee straightens, which whips the foot through at maximum speed. Same physics as a baseball pitch or a tennis serve.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 2 — STRIKE -->
+  <section class="obj reveal" id="strike">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Striking with the Hands or a Tool</div></div>
+    </div>
+    <p><span class="hl-term">Striking</span> is hitting an object with your hand, a paddle, a bat, or a racket. It shows up in volleyball, tennis, baseball, hockey, pickleball, and more. The setup looks different depending on the sport, but the same body chain is at work:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · The Striking Chain</span>
+      <h4>Tap each key to power it on</h4>
+      <div class="act-sub">Every strike — hand or tool — uses these same four keys.</div>
+      <div class="sys-grid" id="strikeGrid" data-done-step="strike">
+        <button class="sys" data-react="Set!"><div class="emo">👣</div><div class="nm">Feet Positioned</div><div class="ds">For balance and power transfer.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="Rotate!"><div class="emo">🔄</div><div class="nm">Hips Rotate</div><div class="ds">Through the swing — the engine of power.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="Watch!"><div class="emo">👀</div><div class="nm">Eyes on Contact</div><div class="ds">Never look up early — watch the contact point.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="Finish!"><div class="emo">➡️</div><div class="nm">Follow Through</div><div class="ds">For power and accuracy.</div><div class="react">● Online</div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — SHOTS -->
+  <section class="obj reveal" id="shots">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Forehand, Backhand, Volley</div></div>
+    </div>
+    <p>Racket and paddle sports use three core strikes. Flip each card to learn when you'd use it.</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · Three Core Strikes</span>
+      <h4>Know your shots</h4>
+      <div class="act-sub">Tap each card to flip it and see how the strike works.</div>
+      <div class="flipgrid" id="shotFlip" data-done-step="shots">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">➡️</div><div class="fn">Forehand</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Dominant side</div>Power shots in tennis, pickleball, table tennis.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">⬅️</div><div class="fn">Backhand</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Non-dominant side</div>Trickier — but essential for full-court coverage.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🏐</div><div class="fn">Volley</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Before the bounce</div>Quick reflexes, short stroke — strike it in the air.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>A Major League Baseball player has roughly <strong>0.4 seconds</strong> to decide whether to swing at a 95 mph fastball, where to swing, and to actually swing — all before the ball arrives. That's less time than it takes to blink. Hitting is one of the hardest skills in any sport, which is why even pros are considered great if they get a hit just 3 out of 10 times at bat.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 4 — DRILLS -->
+  <section class="obj reveal" id="drills">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Try It</div><div class="obj-title">Kick &amp; Strike Drills</div></div>
+    </div>
+    <p>These four drills build kicking accuracy and striking control. Tap each one to add it to today's practice.</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · Your Practice Set</span>
+      <h4>Four drills to sharpen your aim</h4>
+      <div class="act-sub">Tap each drill to add it. Light them all up for a full session.</div>
+      <div class="sys-grid" id="drillGrid" data-done-step="drills">
+        <button class="sys" data-react="Added!"><div class="emo">⚽</div><div class="nm">Wall Pass</div><div class="ds">Kick a ball at a wall and trap the return. 20 reps each foot.</div><div class="react">● In the set</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🎯</div><div class="nm">Cone Targets</div><div class="ds">Set up 3 cones 10 feet away. Try to hit each by kicking accurately.</div><div class="react">● In the set</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🏓</div><div class="nm">Paddle Bounce</div><div class="ds">Bounce a ball on a paddle 20 times without dropping it.</div><div class="react">● In the set</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🏐</div><div class="nm">Wall Volley</div><div class="ds">Use your hand or paddle to keep a ball going against a wall, 10 in a row.</div><div class="react">● In the set</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Soccer goalkeepers can kick a ball over <strong>200 feet</strong> downfield. Tennis pros serve at over <strong>140 mph</strong>. The world record for the fastest hockey slap shot is over <strong>100 mph</strong>. None of those came from raw strength — they came from years of practicing the same body chain you're starting now. The pros built on the basics. You're building the basics.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Striking</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Hitting an object with your hand, a bat, or a racket.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Forehand</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Striking on your dominant-hand side.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Backhand</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Striking on your non-dominant side.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Volley</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Striking a ball before it bounces.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Hip-to-knee separation</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">The hip starts rotating before the knee straightens — generates power.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Follow-through</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The motion after contact — adds power and accuracy.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>Why does the position of your non-kicking foot matter so much?</strong> Try kicking a ball with your plant foot in three different positions: behind the ball, beside it, ahead of it. How does each change the kick? What evidence does this give you about how your body uses leverage?</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">What happened with each plant-foot position (behind / beside / ahead):</label>
+        <textarea id="j1" data-key="mm-l19-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">The position that worked best — and why:</label>
+        <textarea id="j2" data-key="mm-l19-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">What this tells me about how my body uses leverage:</label>
+        <textarea id="j3" data-key="mm-l19-j3" placeholder="How do I KNOW?…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: design your own kicking or striking game in Week 18, then test your aim in Flight Club.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.9 Complete!</h2>
+    <p>You built a full-power kick from the base up, learned the four keys to any strike, knew your forehand from your volley, and set up your aim drills.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.9 · Kicking &amp; Striking</div>
+
+</body>
+</html>

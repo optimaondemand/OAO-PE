@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.7 — Locomotor Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.7 · Briefing</span>
+    <h1 class="brief-title">Master How<br><span class="hl">You Move</span></h1>
+    <p class="brief-sub">There are eight basic ways to move your body — the alphabet of athletic movement. Master the basics, and every advanced move gets easier.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.7 · Locomotor Skills</div>
+  </div>
+  <div class="oao-pill">Week 13</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="skills"><span class="num"><span class="n">1</span></span>The Eight</button>
+      <button class="tr-dot" data-go="sense"><span class="num"><span class="n">2</span></span>Awareness</button>
+      <button class="tr-dot" data-go="circuit"><span class="num"><span class="n">3</span></span>Circuit</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">4</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">5</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.7 · Unit 1.7 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Locomotor Skills: Master How You Move 🏃</h1>
+        <p class="mb-lede">Every athletic skill starts with <span class="hl-term">locomotion</span> — moving your body from one place to another. There are eight basic locomotor skills, and they're the alphabet of athletic movement. Volleyball players, dancers, ninja-warrior racers, soccer goalkeepers — they all combine these eight patterns into something more complex. Master the basics, and the advanced moves get easier.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">13</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">5</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~13</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/locomotor-skills-poster.jpg">
+        <source src="../assets/locomotor-skills.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/locomotor-skills.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Mastering Locomotor Skills: A Guide for Physical Education” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — THE EIGHT -->
+  <section class="obj reveal" id="skills">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">The Eight Locomotor Skills</div></div>
+    </div>
+    <p>Coaches and PE teachers group movement into eight foundational patterns:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · The Movement Alphabet</span>
+      <h4>Tap each of the eight</h4>
+      <div class="act-sub">Light up all eight patterns to master the movement alphabet.</div>
+      <div class="sys-grid" id="skillGrid" data-done-step="skills">
+        <button class="sys" data-react="✓"><div class="emo">🚶</div><div class="nm">Walking</div><div class="ds">One foot always on the ground. Heel strikes first, toe pushes off.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🏃</div><div class="nm">Running</div><div class="ds">Both feet leave the ground briefly between steps.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🦘</div><div class="nm">Hopping</div><div class="ds">Push off and land on the SAME foot.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🤾</div><div class="nm">Jumping</div><div class="ds">Push off two feet, land on two feet.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🏇</div><div class="nm">Galloping</div><div class="ds">One foot leads, the other catches up. Like a horse gait.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">⏭️</div><div class="nm">Skipping</div><div class="ds">Step + hop, alternating sides. Step-hop, step-hop.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">↔️</div><div class="nm">Sliding</div><div class="ds">Sideways movement — one foot leads, the other catches up.</div><div class="react">● Mastered</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🤸</div><div class="nm">Leaping</div><div class="ds">Push off one foot, land on the OTHER foot. Like jumping over a puddle.</div><div class="react">● Mastered</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>The brain region that controls locomotor patterns is called the <span class="hl-term">motor cortex</span> — a strip across the top of your brain. Every time you practice a movement, the connection between neurons (brain cells) gets a little stronger. After enough reps, the pattern becomes automatic — what athletes call "muscle memory." But it's not really stored in your muscles. It's stored in your brain.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 2 — AWARENESS -->
+  <section class="obj reveal" id="sense">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Why They Matter &amp; Kinesthetic Awareness</div></div>
+    </div>
+    <p>You probably already do most of these without thinking. So why practice them in PE? Because in real games, you need to combine and switch between them. Soccer: jog, sprint, slide to defend, leap over a tackle. Basketball: shuffle on defense, gallop down the court, jump to rebound. The smoother your transitions between locomotor patterns, the more efficient and faster you are — especially when you're tired, when an opponent is in the way, or when the ground is uneven.</p>
+    <p>Locomotor skills depend on <span class="hl-term">kinesthetic awareness</span> — your brain's ability to feel where your body is in space. Try this: close your eyes and touch your nose. You didn't see your finger, but you knew where it was. That's kinesthetic awareness.</p>
+
+    <div class="act brain-wrap">
+      <span class="act-tag">🧠 Activate · Kinesthetic Awareness</span>
+      <h4>What strong awareness lets you do</h4>
+      <div class="act-sub">Hit the button to light up what good kinesthetic awareness gives an athlete.</div>
+      <span class="brain-art" id="kaArt">🧠</span><br>
+      <button class="brain-btn" data-reveal="kaBenefits" data-done-step="sense" data-done-text="✓ Awareness online!" data-art="kaArt" type="button">⚡ Activate Awareness</button>
+      <div class="benefits" id="kaBenefits">
+        <div class="benefit"><div class="be">🛬</div><div class="bt">Land safely</div><div class="bd">Land safely when jumping from a height.</div></div>
+        <div class="benefit"><div class="be">👟</div><div class="bt">Avoid collisions</div><div class="bd">Avoid stepping on a teammate's foot.</div></div>
+        <div class="benefit"><div class="be">↪️</div><div class="bt">Dodge obstacles</div><div class="bd">Adjust your stride mid-run to dodge an obstacle.</div></div>
+        <div class="benefit"><div class="be">⚖️</div><div class="bt">Stay balanced</div><div class="bd">Stay balanced on uneven ground.</div></div>
+      </div>
+    </div>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>Astronauts on the International Space Station have to <em>re-learn</em> walking when they come back to Earth. Without gravity, their kinesthetic awareness drifts — their brain forgets how heavy their body is. NASA has astronauts do special rehab to relearn locomotor patterns. It's a powerful reminder that even "automatic" skills are actually learned and maintained.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — CIRCUIT -->
+  <section class="obj reveal" id="circuit">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Try It</div><div class="obj-title">Locomotor Skill Circuit</div></div>
+    </div>
+    <p>Try this 4-minute circuit to practice all 8 patterns. Do each for 30 seconds — tap each one as you add it to your circuit.</p>
+
+    <div class="act">
+      <span class="act-tag">⚡ Try It · Run the Circuit</span>
+      <h4>All eight, 30 seconds each</h4>
+      <div class="act-sub">Tap each move to add it. Stack all eight for a full 4-minute circuit.</div>
+      <div class="chips" id="circuitChips" data-done-step="circuit" data-target="8" data-unit="moves" data-ring="circuitRing" data-num="circuitNum" data-msg="circuitMsg">
+        <button class="chip" data-min="1">🚶 Walk <span class="mins">heel-to-toe</span></button>
+        <button class="chip" data-min="1">🏃 Jog <span class="mins">steady</span></button>
+        <button class="chip" data-min="1">🦘 Hop <span class="mins">switch feet</span></button>
+        <button class="chip" data-min="1">🤾 Jump <span class="mins">soft knees</span></button>
+        <button class="chip" data-min="1">🏇 Gallop <span class="mins">switch lead</span></button>
+        <button class="chip" data-min="1">⏭️ Skip <span class="mins">high knees</span></button>
+        <button class="chip" data-min="1">↔️ Slide <span class="mins">both ways</span></button>
+        <button class="chip" data-min="1">🤸 Leap <span class="mins">land soft</span></button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="circuitRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="circuitNum">0</span><span class="small">of 8 moves</span></div>
+        </div>
+        <div class="meter-msg" id="circuitMsg">Thirty seconds each: walk, jog, hop, jump, gallop, skip, slide, leap. Tap to build your full circuit.</div>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Track and field coaches use locomotor drills with even Olympic-level sprinters. Skipping (called "A-skips" and "B-skips"), high-knee runs, and side shuffles are part of every elite sprinter's warm-up. The basics never stop being useful — they just get more refined.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Locomotion</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Moving your body from one place to another.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Locomotor skills</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The 8 fundamental movement patterns: walk, run, hop, jump, gallop, skip, slide, leap.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Hop</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Push off and land on the same foot.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Leap</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Push off one foot, land on the other foot.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Kinesthetic awareness</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Your brain's sense of where your body is in space.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Motor cortex</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">The part of the brain that controls voluntary movement.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>Which locomotor skill is your strongest? Which is the weakest?</strong> How do you know? Pick the skill you'd want to improve most, and explain how it would help in a specific sport, game, or activity you enjoy.</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">My strongest locomotor skill (and how I know):</label>
+        <textarea id="j1" data-key="mm-l17-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">My weakest locomotor skill (and how I know):</label>
+        <textarea id="j2" data-key="mm-l17-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">The skill I'd improve most — and how it would help in an activity I enjoy:</label>
+        <textarea id="j3" data-key="mm-l17-j3" placeholder="Type your answer…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: log your locomotor skills in Week 14's project, then test them in Flight Club.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.7 Complete!</h2>
+    <p>You mastered the eight locomotor patterns, learned how kinesthetic awareness keeps you safe and smooth, and built a full movement circuit.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.7 · Locomotor Skills</div>
+
+</body>
+</html>
