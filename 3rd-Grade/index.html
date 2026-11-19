@@ -54,6 +54,10 @@
   .card .go{margin-top:auto;font-family:var(--disp);font-weight:700;color:var(--cyan-dark);font-size:14px;}
   .card:hover .go{color:var(--purple);}
 
+  .teacher{margin-top:4px;}
+  .teacher::before{background:var(--gold);}
+  .teacher:hover{border-color:var(--gold);}
+  .teacher:hover .go{color:var(--gold);}
   footer{text-align:center;color:var(--muted);font-size:13px;padding:0 20px 40px;}
   @media (max-width:520px){ .grid{grid-template-columns:1fr 1fr;} .card{padding:14px;} .card .emoji{font-size:28px;} }
   @media (max-width:360px){ .grid{grid-template-columns:1fr;} }
@@ -73,6 +77,14 @@
     <div class="grid" id="grid-a"></div>
     <div class="sectlabel">🏅 Semester 2 · Units 1.10–1.17</div>
     <div class="grid" id="grid-b"></div>
+
+    <div class="sectlabel">🧑‍🏫 For Teachers</div>
+    <a class="card teacher" href="canvas-embeds-all-lessons.html" target="_blank" rel="noopener">
+      <div class="top"><span class="emoji">📋</span>
+        <span class="meta"><span class="unit">Canvas Embed Codes</span>
+          <span class="week">Paste-ready · all 17 lessons</span></span></div>
+      <h3>Copy the iframe block for any lesson and paste it into its Canvas page.</h3>
+      <span class="go">Open embed sheet &rarr;</span></a>
   </main>
 
   <footer>Tap any lesson to begin your mission. Earn Flight Points and climb the owl ranks! 🦉</footer>
