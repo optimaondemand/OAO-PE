@@ -1322,15 +1322,15 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
   border-radius: 14px; padding: 36px 10px 12px; position: relative; min-height: 104px;
   box-shadow: inset 0 3px 8px rgba(14,28,66,.10);
 }
-.course-pe4 .sort .bucket[data-b="yes"] {
-  /* the game: green turf with a painted center arc */
+/* Two-tone court, by position rather than by answer key, so every week's
+   sort gets the look: first bucket is painted turf, second is bench slats. */
+.course-pe4 .sort .bucket:nth-of-type(1) {
   border: 2.5px solid #76C043;
   background:
     radial-gradient(150px 80px at 50% 118%, rgba(255,255,255,.5), transparent 62%),
     repeating-linear-gradient(0deg, #E0F2D3 0 16px, #D6EDC5 16px 32px);
 }
-.course-pe4 .sort .bucket[data-b="no"] {
-  /* the bench: sideline slats */
+.course-pe4 .sort .bucket:nth-of-type(2) {
   border: 2.5px solid #B6CBD9;
   background: repeating-linear-gradient(0deg, #F4F8FB 0 16px, #E4EDF4 16px 20px);
 }
@@ -1338,9 +1338,11 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
   position: absolute; top: 9px; left: 10px; right: 10px; background: #fff; border: 1.5px solid #B6CBD9;
   border-radius: 99px; padding: 3px 10px; font-size: 11px; color: var(--ink); text-align: center; letter-spacing: .8px;
 }
-.course-pe4 .sort .bucket[data-b="yes"] .bname { border-color: #76C043; color: #2F6B23; }
-.course-pe4 .sort .bucket[data-b="yes"] .bname::before { content: '🏃 '; }
-.course-pe4 .sort .bucket[data-b="no"] .bname::before { content: '🛋️ '; }
+.course-pe4 .sort .bucket:nth-of-type(1) .bname { border-color: #76C043; color: #2F6B23; }
+/* Week 1's buckets are literally "in the game" vs "on the bench", so only
+   that lesson's labels take the runner and couch. */
+.course-pe4[data-lesson-key="pe4-w1"] .sort .bucket[data-b="yes"] .bname::before { content: '🏃 '; }
+.course-pe4[data-lesson-key="pe4-w1"] .sort .bucket[data-b="no"] .bname::before { content: '🛋️ '; }
 .course-pe4 .sort .bucket:hover, .course-pe4 .sort .bucket.target { border-color: var(--make); }
 
 /* move break: a gold dashed energy card with a bouncing clock */
@@ -1555,8 +1557,9 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; color: var(-
   font-size: 11.5px; font-weight: 800; letter-spacing: .6px;
   padding: 5px 6px; text-transform: uppercase;
 }
-/* .todo li is a grid, so a .demo dropped inside flows in under the step's
-   text at the left — which is where it reads best. */
+/* .todo li is a grid (checkbox | text | extra), so a .demo dropped inside
+   lands in the third column, to the right of the step — the same slot a
+   .timer uses. Give a step a timer or a demo, not both. */
 @media (max-width: 640px) { .demo { width: 108px; } }
 /* reduced motion is handled in pe-studio.js: the loop is paused and
    controls are shown, so the student starts the demo themselves. */
