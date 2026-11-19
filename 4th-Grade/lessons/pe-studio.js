@@ -4697,3 +4697,84 @@
     show(0);
   });
 })();
+
+/* =====================================================================
+   "Body Engine" dashboard (PE, v1.0 2026-11-19).
+   Markup contract (no per-lesson JS):
+     .engine[data-done]
+       .gears button[data-lv="0..3"][data-fb]   — the gears, in order
+   The script draws four gauges (heart, lungs, muscles, brain) whose
+   animations change speed with the chosen gear. The done message is
+   earned after all gears are tried. Reduced motion: meters + words
+   still change, nothing pulses.
+   ===================================================================== */
+(function () {
+  var REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function h(tag, cls, txt) { var n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; }
+
+  /* drawn gauges: per-level caption + animation seconds-per-cycle */
+  var TILES = [
+    { k: 'heart', name: 'Heart',
+      sub: ['steady, even asleep', 'about 1 beat a second', 'speeding up', 'nearly double speed!'],
+      dur: [1.1, 0.9, 0.62, 0.48],
+      svg: '<svg viewBox="0 0 64 64" aria-hidden="true"><g class="ic ic-heart"><path d="M32 54 C18 44 8 35 8 24 a12 12 0 0 1 24-3 a12 12 0 0 1 24 3 c0 11-10 20-24 30z" fill="#E4553F"/><path d="M20 26 h7 l3-7 5 14 4-9 2 2 h7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g></svg>' },
+    { k: 'lungs', name: 'Lungs',
+      sub: ['slow, easy breaths', 'slow, easy breaths', 'pulling extra oxygen', 'big, fast breaths'],
+      dur: [4.6, 3.8, 2.2, 1.2],
+      svg: '<svg viewBox="0 0 64 64" aria-hidden="true"><g class="ic ic-lungs"><path d="M32 10 v14" stroke="#2E86A8" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M29 24 c-2 4-7 4-11 8 c-5 5-6 14-4 20 c1 3 11 3 13-1 c2-3 2-16 2-27z" fill="#55C8E8"/><path d="M35 24 c2 4 7 4 11 8 c5 5 6 14 4 20 c-1 3-11 3-13-1 c-2-3-2-16-2-27z" fill="#55C8E8"/></g></svg>' },
+    { k: 'muscle', name: 'Muscles',
+      sub: ['resting', 'barely working', 'using more energy', 'burning energy fast'],
+      dur: [7, 6, 2, 1.1],
+      svg: '<svg viewBox="0 0 64 64" aria-hidden="true"><g class="ic ic-muscle"><rect x="8" y="27" width="48" height="10" rx="5" fill="#2F6B23"/><rect x="4" y="16" width="12" height="32" rx="6" fill="#76C043"/><rect x="48" y="16" width="12" height="32" rx="6" fill="#76C043"/></g></svg>' },
+    { k: 'brain', name: 'Brain',
+      sub: ['dreaming', 'quietly focused', 'more blood flow', 'super alert'],
+      dur: [6, 5, 3, 1.8],
+      svg: '<svg viewBox="0 0 64 64" aria-hidden="true"><g class="ic ic-brain"><circle class="glow" cx="32" cy="32" r="26" fill="#C9A4E8"/><path d="M20 40 a12 12 0 0 1 -4-20 a10 10 0 0 1 16-8 a10 10 0 0 1 16 8 a12 12 0 0 1 -4 20 a8 8 0 0 1 -12 4 a8 8 0 0 1 -12-4z" fill="#A53E97"/><path d="M32 14 v30 M22 24 c4 2 6 6 4 10 M42 24 c-4 2-6 6-4 10" stroke="#F1E7F8" stroke-width="2.5" fill="none" stroke-linecap="round"/></g></svg>' }
+  ];
+
+  document.querySelectorAll('.engine').forEach(function (g) {
+    var gears = [].slice.call(g.querySelectorAll('.gears button'));
+    if (!gears.length) return;
+    var tried = {}, count = 0;
+
+    var dash = h('div', 'dash');
+    var tiles = TILES.map(function (t) {
+      var e = h('div', 'eg'); e.dataset.k = t.k;
+      e.innerHTML = t.svg;
+      e.appendChild(h('div', 'nm', t.name));
+      e.appendChild(h('div', 'sub', 'waiting…'));
+      var m = h('div', 'meter');
+      for (var i = 0; i < 4; i++) m.appendChild(h('i'));
+      e.appendChild(m);
+      dash.appendChild(e);
+      return e;
+    });
+    var fb = h('div', 'efb', 'Tap a gear above to start your engine.'); fb.setAttribute('aria-live', 'polite');
+    var prog = h('div', 'eprog', '');
+    g.appendChild(dash); g.appendChild(fb); g.appendChild(prog);
+
+    gears.forEach(function (b) {
+      b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', function () {
+        var lv = parseInt(b.dataset.lv, 10) || 0;
+        gears.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        dash.classList.add('live');
+        tiles.forEach(function (e, i) {
+          var t = TILES[i];
+          e.querySelector('.sub').textContent = t.sub[lv];
+          var ic = e.querySelector('.ic');
+          if (REDUCE) { ic.style.animation = 'none'; }
+          else { ic.style.animationDuration = t.dur[lv] + 's'; }
+          [].forEach.call(e.querySelectorAll('.meter i'), function (seg, si) { seg.classList.toggle('lit', si <= lv); });
+        });
+        fb.textContent = b.dataset.fb || '';
+        if (!tried[lv]) { tried[lv] = true; count++; }
+        prog.textContent = 'Gears tried: ' + count + ' of ' + gears.length;
+        if (count === gears.length && !g.querySelector('.edone')) {
+          var d = h('div', 'edone', '⭐ ' + (g.dataset.done || 'You tried every gear!'));
+          g.appendChild(d);
+        }
+      });
+    });
+  });
+})();
