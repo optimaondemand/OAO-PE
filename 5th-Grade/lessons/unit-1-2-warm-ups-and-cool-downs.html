@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.2 — Warm-Ups &amp; Cool-Downs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+<!--
+  MISSION: MOVE! — 5th GRADE PE · UNIT 1.2 · WEEK 3 · WARM-UPS & COOL-DOWNS
+  Hosted on GitHub Pages, embedded in Canvas via <iframe>.
+  Shared shell: ../assets/lesson.css + ../assets/lesson.js.
+  Lesson prose carried VERBATIM from the Canvas reading; interactive
+  activities wrap around the text, never changing it.
+-->
+</head>
+<body>
+
+<!-- ===================== MISSION BRIEFING ===================== -->
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.2 · Briefing</span>
+    <h1 class="brief-title">Prep Your<br><span class="hl">Athletic Machine</span></h1>
+    <p class="brief-sub">Before you train, you prime the machine. Learn what a real warm-up changes <em>inside</em> you — and why the cool-down is where tomorrow's athlete is made.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== OAO STRIP ===================== -->
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div>
+      <div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.2 · Warm-Ups &amp; Cool-Downs</div>
+  </div>
+  <div class="oao-pill">Week 3</div>
+</div>
+
+<!-- ===================== PROGRESS RAIL ===================== -->
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="warm"><span class="num"><span class="n">1</span></span>Warm-Up</button>
+      <button class="tr-dot" data-go="cool"><span class="num"><span class="n">2</span></span>Cool-Down</button>
+      <button class="tr-dot" data-go="timing"><span class="num"><span class="n">3</span></span>Timing</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">4</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">5</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<!-- ===================== LESSON ===================== -->
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.2 · Unit 1.2 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Warm-Ups &amp; Cool-Downs: Prep Your Athletic Machine 🛠️</h1>
+        <p class="mb-lede">Your body is an athletic machine — and like every machine, it works best when it's properly turned on and properly turned off. A real warm-up does more than "loosen you up." It changes the chemistry of your muscles, the way your blood flows, and even how fast your brain can react. Skip it, and you train at half power. Skip the cool-down, and you pay for it tomorrow.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">3</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">5</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~12</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <!-- video panel -->
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/warming-up-and-cooling-down-poster.jpg">
+        <source src="../assets/warming-up-and-cooling-down.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/warming-up-and-cooling-down.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “The Importance of Warming Up and Cooling Down” · 5th Grade</p>
+  </div>
+
+  <!-- ===================== OBJECTIVE 1 — WARM-UP ===================== -->
+  <section class="obj reveal" id="warm">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div>
+        <div class="obj-eyebrow">Objective 1</div>
+        <div class="obj-title">What a Warm-Up Actually Does</div>
+      </div>
+    </div>
+    <p>A <span class="hl-term">warm-up</span> is a planned set of low-intensity movements done <em>before</em> a workout. It raises your core body temperature by about 1–2 degrees, gets your heart rate up gradually, and lubricates your joints with a substance called <em>synovial fluid</em>. Warm muscles stretch farther without tearing and produce force faster.</p>
+    <p>A good warm-up has two parts:</p>
+    <ul>
+      <li><strong>General warm-up</strong> — 3–5 minutes of light cardio (jogging, jumping jacks) to raise heart rate</li>
+      <li><strong>Dynamic warm-up</strong> — controlled movements (arm circles, high knees, leg swings) that move your joints through their full range</li>
+    </ul>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p><span class="hl-term">Dynamic stretching</span> (moving while you stretch) is different from <span class="hl-term">static stretching</span> (holding a position). Research shows dynamic stretching before activity actually improves performance, while long static stretches before sprinting can <em>reduce</em> power. That's why coaches save the long holds for the cool-down.</p>
+    </div>
+
+    <!-- ACTIVITY: 5 dynamic warm-up moves explorer -->
+    <div class="act">
+      <span class="act-tag">🔎 Try It · Power On Your Warm-Up</span>
+      <h4>5 dynamic warm-up moves</h4>
+      <div class="act-sub">Tap each move to add it to today's warm-up. Light them all up to complete a full dynamic routine.</div>
+      <div class="sys-grid" id="warmGrid" data-done-step="warm">
+        <button class="sys" data-react="Added!"><div class="emo">💪</div><div class="nm">Arm Circles</div><div class="ds">10 forward, 10 backward — opens shoulder joints.</div><div class="react">● In the routine</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🦵</div><div class="nm">High Knees</div><div class="ds">20 seconds — lifts heart rate, warms hip flexors.</div><div class="react">● In the routine</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🔄</div><div class="nm">Leg Swings</div><div class="ds">10 per leg, forward and side — wakes up hamstrings and adductors.</div><div class="react">● In the routine</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🦶</div><div class="nm">Walking Lunges</div><div class="ds">10 steps — activates quads and glutes.</div><div class="react">● In the routine</div></button>
+        <button class="sys" data-react="Added!"><div class="emo">🏃</div><div class="nm">Light Jog</div><div class="ds">60 seconds in place — pulls everything together.</div><div class="react">● In the routine</div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OBJECTIVE 2 — COOL-DOWN ===================== -->
+  <section class="obj reveal" id="cool">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div>
+        <div class="obj-eyebrow">Objective 2</div>
+        <div class="obj-title">What a Cool-Down Actually Does</div>
+      </div>
+    </div>
+    <p>A <span class="hl-term">cool-down</span> is the opposite — a 5–10 minute slow-down period after activity. It gradually drops your heart rate, prevents blood from pooling in your legs (which can make you feel dizzy), and helps your body clear waste products from your muscles.</p>
+    <p>A complete cool-down includes:</p>
+    <ul>
+      <li><strong>Light movement</strong> — walking or easy jogging for 2–3 minutes</li>
+      <li><strong>Static stretches</strong> — gentle holds for 15–30 seconds per muscle group</li>
+      <li><strong>Deep breathing</strong> — to bring your nervous system out of "go mode"</li>
+    </ul>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>When you exercise hard, your muscles release a byproduct called <em>lactate</em>. For years, people blamed lactate for next-day soreness — but scientists have learned that lactate is actually a fuel your body recycles. The soreness comes from tiny stretches and tears in muscle fibers. Cool-downs help blood carry repair signals to those fibers faster, which can reduce how stiff you feel the next morning.</p>
+    </div>
+
+    <!-- ACTIVITY: 5 cool-down stretches explorer -->
+    <div class="act">
+      <span class="act-tag">🧘 Try It · Wind It Down</span>
+      <h4>5 cool-down stretches</h4>
+      <div class="act-sub">Tap each stretch to add it to your cool-down. Hold each one gently — never bounce.</div>
+      <div class="sys-grid" id="coolGrid" data-done-step="cool">
+        <button class="sys" data-react="Held ✓"><div class="emo">🧘</div><div class="nm">Standing Toe Touch</div><div class="ds">Hold 20s — hamstrings and lower back.</div><div class="react">● In the cool-down</div></button>
+        <button class="sys" data-react="Held ✓"><div class="emo">🦩</div><div class="nm">Quad Stretch</div><div class="ds">Pull one heel toward your glute, 15s per side.</div><div class="react">● In the cool-down</div></button>
+        <button class="sys" data-react="Held ✓"><div class="emo">🦋</div><div class="nm">Butterfly Stretch</div><div class="ds">Sit with soles together, gently press knees down. 30s.</div><div class="react">● In the cool-down</div></button>
+        <button class="sys" data-react="Held ✓"><div class="emo">🤸</div><div class="nm">Shoulder Stretch</div><div class="ds">Pull one arm across your chest, 15s per side.</div><div class="react">● In the cool-down</div></button>
+        <button class="sys" data-react="Held ✓"><div class="emo">🌬️</div><div class="nm">Deep Breaths</div><div class="ds">5 slow breaths — in through nose, out through mouth.</div><div class="react">● In the cool-down</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Every professional sports team — NBA, MLB, Olympic teams — has athletic trainers whose entire job is designing warm-ups and recovery routines. A pro soccer team's pre-game warm-up can last <strong>30 minutes</strong>. That tells you how much real athletes value this part. They don't skip it, and neither should you.</p>
+    </div>
+  </section>
+
+  <!-- ===================== OBJECTIVE 3 — TIMING ===================== -->
+  <section class="obj reveal" id="timing">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div>
+        <div class="obj-eyebrow">Objective 3</div>
+        <div class="obj-title">Dynamic Before, Static After</div>
+      </div>
+    </div>
+    <p>Here's the rule the pros live by: <strong>dynamic before, static after.</strong> Flip each card and match the move to when it belongs in your training.</p>
+
+    <!-- ACTIVITY: timing flip cards -->
+    <div class="act">
+      <span class="act-tag">🔁 Flip · When Does It Belong?</span>
+      <h4>Before or after?</h4>
+      <div class="act-sub">Tap each card to flip it and learn where it goes.</div>
+      <div class="flipgrid" id="timingFlip" data-done-step="timing">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🔄</div><div class="fn">Dynamic Stretching</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Before activity</div>Moving while you stretch — do it before to boost performance.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🧘</div><div class="fn">Static Stretching</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">After activity</div>Holding a position — save the long holds for the cool-down.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🏃</div><div class="fn">General Warm-Up</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Start of session</div>3–5 min of light cardio to raise your heart rate.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🌬️</div><div class="fn">Deep Breathing</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">End of session</div>Brings your nervous system out of "go mode" during the cool-down.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VOCAB ===================== -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div>
+        <div class="obj-eyebrow">Vocabulary</div>
+        <div class="obj-title">Words to Know</div>
+      </div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Warm-up</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Low-intensity movements done before activity to prepare the body.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Cool-down</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Slow-down movements done after activity to safely return to rest.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Dynamic stretching</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Stretching while moving — best before activity.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Static stretching</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Holding a stretch in one position — best after activity.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Range of motion</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">How far a joint can move comfortably.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Lactate</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">A substance your body produces and recycles during hard exercise.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REFLECTION ===================== -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div>
+        <div class="obj-eyebrow">Mission Log</div>
+        <div class="obj-title">Weekly Reflection</div>
+      </div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>Did you actually warm up before activity this week?</strong> Compare two PE sessions — one where you warmed up properly and one where you didn't. How did your body feel different? What evidence do you have that the warm-up helped (faster, less sore, more focused)?</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">The session I warmed up properly — how my body felt:</label>
+        <textarea id="j1" data-key="mm-l12-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">The session I skipped the warm-up — how my body felt:</label>
+        <textarea id="j2" data-key="mm-l12-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">My evidence the warm-up helped (faster, less sore, more focused):</label>
+        <textarea id="j3" data-key="mm-l12-j3" placeholder="How do I KNOW it helped?…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: design your own warm-up + cool-down routine in this week's <strong>VR assignment</strong>, then test it in Flight Club.</p>
+    </div>
+  </section>
+
+  <!-- ===================== MISSION COMPLETE ===================== -->
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.2 Complete!</h2>
+    <p>You learned what a real warm-up changes inside your body, what a cool-down does afterward, and the pro rule — dynamic before, static after.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.2 · Warm-Ups &amp; Cool-Downs</div>
+
+</body>
+</html>
