@@ -275,6 +275,7 @@
     background-size: 34px 34px;
   }
   .film-inner { position: relative; z-index: 2; padding: 20px; }
+  .film-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; display: block; border: 0; }
   .play {
     width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px;
     background: rgba(255,255,255,0.14); border: 2px solid rgba(255,255,255,0.5);
@@ -482,10 +483,12 @@
   /* MISSION COMPLETE                                      */
   /* ===================================================== */
   .complete {
+    display: none;
     margin: 40px 0 0; border-radius: 20px; padding: 40px 24px; text-align: center; color: #fff; position: relative; overflow: hidden;
     background: linear-gradient(135deg, #0E1C42 0%, #0E5568 55%, #67308F 100%);
     opacity: 0; transform: translateY(24px) scale(0.98); transition: opacity 0.7s ease, transform 0.7s ease;
   }
+  .complete.show { display: block; }
   .complete.in { opacity: 1; transform: translateY(0) scale(1); }
   .complete .medal { font-size: 60px; margin-bottom: 8px; display: inline-block; animation: pulse 2s ease-in-out infinite; }
   .complete h2 { font-size: clamp(24px, 5vw, 34px); font-weight: 900; letter-spacing: -0.01em; }
@@ -604,15 +607,15 @@
 
   <!-- briefing video panel -->
   <div class="film-wrap reveal">
-    <div class="film" id="film">
-      <div class="film-grid"></div>
-      <div class="film-inner">
-        <div class="play" id="playBtn" role="button" aria-label="Play mission video"></div>
-        <h3>Why Physical Activity Matters</h3>
-        <div class="cap">Mission Briefing Video · 5th Grade</div>
-      </div>
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/why-physical-activity-matters-poster.jpg">
+        <source src="../assets/why-physical-activity-matters.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/why-physical-activity-matters.mp4">Download the briefing video</a>.
+      </video>
     </div>
-    <p class="film-note">▸ Press play to watch your mission briefing video.</p>
+    <p class="film-note">▸ Mission Briefing Video — “Why Physical Activity Matters” · 5th Grade</p>
   </div>
 
   <!-- ===================== OBJECTIVE 1 ===================== -->
@@ -901,27 +904,6 @@
     }
   })();
 
-  /* ---------- VIDEO (hosted beside this page) ---------- */
-  var VIDEO_SRC = '../assets/why-physical-activity-matters.mp4';
-  function filmFallback(){
-    var f = document.getElementById('film');
-    var vid = f.querySelector('video'); if (vid) vid.remove();
-    f.querySelector('.film-inner').innerHTML = '<h3 style="margin-bottom:6px;">▶ Video loads once deployed</h3><div class="cap">This is the interactive review shell. On GitHub Pages (or in Canvas) the "Why Physical Activity Matters" clip plays right here.</div>';
-  }
-  document.getElementById('playBtn').addEventListener('click', function(){
-    var f = document.getElementById('film');
-    if (f.querySelector('video')) return;
-    var v = document.createElement('video');
-    v.setAttribute('controls',''); v.setAttribute('playsinline',''); v.setAttribute('preload','metadata');
-    v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;z-index:4;';
-    var src = document.createElement('source'); src.src = VIDEO_SRC; src.type = 'video/mp4';
-    src.addEventListener('error', filmFallback);
-    v.addEventListener('error', filmFallback, true);
-    v.appendChild(src);
-    f.appendChild(v);
-    var p = v.play(); if (p && p.catch) p.catch(function(){});
-  });
-
   /* ---------- OBJECTIVE 1: BUILD YOUR 60 ---------- */
   var CIRC = 326.7, total = 0;
   var ring = document.getElementById('ring60'), ringNum = document.getElementById('ring60num'), msg60 = document.getElementById('msg60');
@@ -1081,6 +1063,7 @@
   function finishMission(){
     if (finished) return; finished = true;
     var c = document.getElementById('complete');
+    c.classList.add('show');   // reveal the card (collapsed until earned, so no empty gap)
     // confetti burst
     var colors = ['#55C8E8','#C7922C','#76C043','#F78F1E','#A53E97','#fff'];
     for (var i=0;i<26;i++){
