@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.13 — Personal Space &amp; Movement Safety</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.13 · Briefing</span>
+    <h1 class="brief-title">Play Smart,<br><span class="hl">Stay Healthy</span></h1>
+    <p class="brief-sub">The fastest athletes share one trait: they don't get hurt often. Safety isn't a brake on performance — it's the foundation that lets you push harder.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.13 · Personal Space &amp; Movement Safety</div>
+  </div>
+  <div class="oao-pill">Week 25</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="space"><span class="num"><span class="n">1</span></span>Space</button>
+      <button class="tr-dot" data-go="awareness"><span class="num"><span class="n">2</span></span>Awareness</button>
+      <button class="tr-dot" data-go="injuries"><span class="num"><span class="n">3</span></span>Injuries</button>
+      <button class="tr-dot" data-go="rules"><span class="num"><span class="n">4</span></span>Rules</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">5</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">6</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.13 · Unit 1.13 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Personal Space &amp; Movement Safety: Play Smart, Stay Healthy 🛡️</h1>
+        <p class="mb-lede">The fastest athletes in the world have one thing in common: they don't get hurt often. Safety isn't a brake on performance — it's a foundation for it. Knowing how to read <span class="hl-term">personal space</span>, control your body, and avoid risks lets you push harder when it counts.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">25</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">6</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~14</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/personal-space-and-safety-poster.jpg">
+        <source src="../assets/personal-space-and-safety.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/personal-space-and-safety.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Understanding Personal Space and Movement Safety” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — SPACE -->
+  <section class="obj reveal" id="space">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">What Personal Space Really Means</div></div>
+    </div>
+    <p>Personal space is the invisible bubble around your body that you control. In PE, it has two layers:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · Your Two Bubbles</span>
+      <h4>Tap each bubble</h4>
+      <div class="act-sub">Power on both layers of your personal space.</div>
+      <div class="sys-grid" id="bubbleGrid" data-done-step="space">
+        <button class="sys" data-react="✓"><div class="emo">🫧</div><div class="nm">Physical Bubble</div><div class="ds">About an arm's length around you when moving. Anything inside is at risk of a collision.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="✓"><div class="emo">💬</div><div class="nm">Social Bubble</div><div class="ds">The comfortable distance for talking, listening, or working close — about 1.5–4 feet for most people.</div><div class="react">● Online</div></button>
+      </div>
+    </div>
+    <p>In a fast game, your physical bubble shrinks because you're moving toward and around teammates and opponents. The skill is being aware of your bubble AND everyone else's at the same time.</p>
+  </section>
+
+  <!-- OBJ 2 — AWARENESS -->
+  <section class="obj reveal" id="awareness">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Spatial Awareness on the Field</div></div>
+    </div>
+    <p><span class="hl-term">Spatial awareness</span> is your brain's ability to track where things are around you — not just in front. Strong spatial awareness lets you avoid collisions, find open passing lanes, and stay safe in chaotic moments.</p>
+
+    <div class="act brain-wrap">
+      <span class="act-tag">🧠 Activate · Build Your Awareness</span>
+      <h4>Four habits that build it</h4>
+      <div class="act-sub">Hit the button to light up the four habits that sharpen spatial awareness.</div>
+      <span class="brain-art" id="awArt">👁️</span><br>
+      <button class="brain-btn" data-reveal="awHabits" data-done-step="awareness" data-done-text="✓ Awareness online!" data-art="awArt" type="button">⚡ Build Awareness</button>
+      <div class="benefits" id="awHabits">
+        <div class="benefit"><div class="be">🔭</div><div class="bt">Scan the field</div><div class="bd">Look around every few seconds, not just at the ball.</div></div>
+        <div class="benefit"><div class="be">👂</div><div class="bt">Listen</div><div class="bd">Sounds — footsteps, calls — give you info your eyes miss.</div></div>
+        <div class="benefit"><div class="be">👀</div><div class="bt">Watch peripheral motion</div><div class="bd">Your eyes detect movement to the side without turning your head.</div></div>
+        <div class="benefit"><div class="be">🔮</div><div class="bt">Anticipate</div><div class="bd">Predict where teammates and opponents will be in 2 seconds.</div></div>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>Hockey legend Wayne Gretzky was famous for being "where the puck was going to be, not where it was." Coaches called it a <em>sixth sense</em>, but really it was elite spatial awareness combined with pattern recognition — his brain had seen so many game situations that it could predict what came next. Your brain is wired to do this too, with practice. Every scrimmage, every game, builds the pattern library you draw from.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — INJURIES -->
+  <section class="obj reveal" id="injuries">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Common Injuries — and How to Avoid Them</div></div>
+    </div>
+    <p>Knowing the common injuries helps you dodge them. Flip each card to see how to stay safe.</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · Know the Risk</span>
+      <h4>Four injuries, four preventions</h4>
+      <div class="act-sub">Tap each card to flip it.</div>
+      <div class="flipgrid" id="injuryFlip" data-done-step="injuries">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🦴</div><div class="fn">Sprains</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Avoid it</div>Stretched or torn ligaments (often ankles). Warm up, watch your footing.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">💢</div><div class="fn">Strains</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Avoid it</div>Pulled muscles or tendons (often hamstrings). Warm up, build strength gradually.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">💥</div><div class="fn">Collisions</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Avoid it</div>Two players running into each other. Use spatial awareness, communicate.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🧠</div><div class="fn">Concussions</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Avoid it</div>A blow to the head that affects brain function. Tell a coach IMMEDIATELY if you feel dizzy or confused after impact.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>Sports doctors estimate that <strong>up to half of youth sports injuries are preventable</strong> with proper warm-up, technique, and rest. The number one cause of preventable injury? <em>Doing too much, too fast.</em> Athletes who add training intensity gradually — by no more than 10% per week — get hurt much less often than those who jump in at full speed.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 4 — RULES -->
+  <section class="obj reveal" id="rules">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Objective 4</div><div class="obj-title">Safety Rules in PE</div></div>
+    </div>
+    <p>Every PE class has rules — they aren't there to slow you down, they're there to keep you in the game:</p>
+    <ol>
+      <li><strong>Listen for instructions</strong> before starting</li>
+      <li><strong>Wear safe shoes</strong> — closed-toe, laced, with grip</li>
+      <li><strong>Stay in the assigned space</strong> — out-of-bounds is dangerous, not just illegal</li>
+      <li><strong>Use equipment correctly</strong> — bats are for hitting balls, not waving around</li>
+      <li><strong>Tell an adult if you see a hazard</strong> — wet floor, broken equipment, an injured player</li>
+      <li><strong>Hydrate</strong> — water before, during, and after</li>
+    </ol>
+
+    <div class="act">
+      <span class="act-tag">✅ Try It · Run the Safety Checklist</span>
+      <h4>Six rules that keep you in the game</h4>
+      <div class="act-sub">Tap each rule to check it off your pre-game list.</div>
+      <div class="chips" id="ruleChips" data-done-step="rules" data-target="6" data-unit="rules" data-ring="ruleRing" data-num="ruleNum" data-msg="ruleMsg">
+        <button class="chip" data-min="1">👂 Listen first</button>
+        <button class="chip" data-min="1">👟 Safe shoes</button>
+        <button class="chip" data-min="1">🟦 Stay in space</button>
+        <button class="chip" data-min="1">🏏 Use equipment right</button>
+        <button class="chip" data-min="1">⚠️ Report hazards</button>
+        <button class="chip" data-min="1">💧 Hydrate</button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="ruleRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="ruleNum">0</span><span class="small">of 6 rules</span></div>
+        </div>
+        <div class="meter-msg" id="ruleMsg">These six rules aren't there to slow you down — they're there to keep you in the game. Tap each to complete your safety check.</div>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Athletic trainers (ATCs) are the safety experts at high schools, colleges, and pro teams. Their job: assess injuries on the sideline, decide who plays and who sits, and design return-to-play plans. They're licensed medical professionals — and the rules they enforce in pro sports are based on the same principles you're learning now: warm up, hydrate, communicate, and respect the space around you.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Personal space</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The area immediately around your body — your physical bubble.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Spatial awareness</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Your brain's tracking of where things are around you.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Sprain</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">A stretched or torn ligament — often at the ankle or wrist.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Strain</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">A pulled or torn muscle — often in the hamstring or calf.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Collision</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">When two objects (or players) come into contact unintentionally.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Hydration</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Keeping enough water in your body for it to function well.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>What is the most common way kids get hurt in PE or sports you play?</strong> Why does it happen — is it about awareness, warm-up, equipment, or attitude? How could the player AND the coach have prevented it? Give specific evidence from a real situation you've seen or experienced.</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">The most common way kids get hurt in my PE or sport:</label>
+        <textarea id="j1" data-key="mm-l113-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">Why it happens (awareness, warm-up, equipment, attitude):</label>
+        <textarea id="j2" data-key="mm-l113-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">How the player AND coach could have prevented it:</label>
+        <textarea id="j3" data-key="mm-l113-j3" placeholder="Give specific evidence…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: complete the VR Personal Space &amp; Safety Signs activity and reflect on why it matters, then take the Jumping Jack Flight Club Countdown. This unit also includes two safety readings — <strong>Water Safety</strong> and <strong>Cycling Safety</strong>.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.13 Complete!</h2>
+    <p>You learned to read your personal space, build spatial awareness, spot and avoid common injuries, and run a safety checklist before every game.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.13 · Personal Space &amp; Movement Safety</div>
+
+</body>
+</html>
