@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.15 — Balance &amp; Coordination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.15 · Briefing</span>
+    <h1 class="brief-title">The Invisible<br><span class="hl">Skills</span></h1>
+    <p class="brief-sub">You don't see balance and coordination on a scoreboard — but the moment they fail, you trip or drop. Athletes who look "smooth" trained them on purpose.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.15 · Balance &amp; Coordination</div>
+  </div>
+  <div class="oao-pill">Week 29</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="balance"><span class="num"><span class="n">1</span></span>Balance</button>
+      <button class="tr-dot" data-go="coord"><span class="num"><span class="n">2</span></span>Coordination</button>
+      <button class="tr-dot" data-go="why"><span class="num"><span class="n">3</span></span>Why Train</button>
+      <button class="tr-dot" data-go="drills"><span class="num"><span class="n">4</span></span>Drills</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">5</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">6</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.15 · Unit 1.15 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Balance &amp; Coordination: The Invisible Skills ⚖️</h1>
+        <p class="mb-lede"><span class="hl-term">Balance</span> and <span class="hl-term">coordination</span> are the quiet skills behind every athletic move. You don't see them on a scoreboard — but the moment they fail, you trip, drop, or get blocked. Athletes who look "smooth" almost always have well-trained balance and coordination. The best news? Both can be trained at home with no equipment.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">29</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">6</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~13</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <div class="film-wrap reveal">
+    <div class="film">
+      <video class="film-vid" controls preload="metadata" playsinline
+             poster="../assets/balance-and-coordination-poster.jpg">
+        <source src="../assets/balance-and-coordination.mp4" type="video/mp4">
+        Your browser can’t play this video.
+        <a href="../assets/balance-and-coordination.mp4">Download the lesson video</a>.
+      </video>
+    </div>
+    <p class="film-note">▸ Lesson Video — “Unlocking Your Body's Potential: The Importance of Balance” · 5th Grade</p>
+  </div>
+
+  <!-- OBJ 1 — BALANCE -->
+  <section class="obj reveal" id="balance">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">Static vs. Dynamic Balance</div></div>
+    </div>
+    <p>Sport scientists describe two kinds of balance:</p>
+    <ul>
+      <li><strong><span class="hl-term">Static balance</span></strong> — holding a position without moving. Example: standing on one foot.</li>
+      <li><strong><span class="hl-term">Dynamic balance</span></strong> — keeping balance while moving. Example: running on a balance beam, skateboarding, dribbling a soccer ball.</li>
+    </ul>
+    <p>Sports almost always need dynamic balance — but static balance is the foundation. If you can't hold a still position, you can't control a moving one.</p>
+
+    <div class="act brain-wrap">
+      <span class="act-tag">🧠 Activate · Your Three Balance Sensors</span>
+      <h4>Balance is a team effort</h4>
+      <div class="act-sub">Hit the button to reveal the three sources your brain blends to keep you upright.</div>
+      <span class="brain-art" id="balArt">🧘</span><br>
+      <button class="brain-btn" data-reveal="balSources" data-done-step="balance" data-done-text="✓ Sensors online!" data-art="balArt" type="button">⚡ Find Your Balance</button>
+      <div class="benefits" id="balSources">
+        <div class="benefit"><div class="be">👁️</div><div class="bt">Eyes</div><div class="bd">Visual feedback about where you are in space.</div></div>
+        <div class="benefit"><div class="be">👂</div><div class="bt">Inner Ear</div><div class="bd">Fluid-filled tubes that detect head motion.</div></div>
+        <div class="benefit"><div class="be">🦵</div><div class="bt">Proprioception</div><div class="bd">Sensors in your joints and muscles that report position.</div></div>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>Your sense of balance comes from three sources working together: your <strong>eyes</strong> (visual feedback), your <strong>inner ear</strong> (which has fluid-filled tubes that detect head motion), and your <span class="hl-term">proprioception</span> (sensors in your joints and muscles that report position). When one source fails — like closing your eyes — the other two have to work harder. That's why balancing on one foot is so much harder with your eyes shut.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 2 — COORDINATION -->
+  <section class="obj reveal" id="coord">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">What Coordination Means</div></div>
+    </div>
+    <p>Coordination is the smooth working-together of body parts during movement. There are several specific types:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · Types of Coordination</span>
+      <h4>Tap each type</h4>
+      <div class="act-sub">Light up all four kinds of coordination.</div>
+      <div class="sys-grid" id="coordGrid" data-done-step="coord">
+        <button class="sys" data-react="✓"><div class="emo">👁️</div><div class="nm">Hand-Eye</div><div class="ds">Tracking with your eyes while your hands do something — catching, throwing, hitting.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="✓"><div class="emo">👣</div><div class="nm">Foot-Eye</div><div class="ds">Same idea, but with feet — soccer dribbling, jumping over obstacles.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="✓"><div class="emo">👐</div><div class="nm">Bilateral</div><div class="ds">Both sides of your body working together — swimming, jumping rope, rowing.</div><div class="react">● Online</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🔄</div><div class="nm">Cross-Lateral</div><div class="ds">Opposite arm and leg coordinating — walking, running, swimming a freestyle stroke.</div><div class="react">● Online</div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — WHY -->
+  <section class="obj reveal" id="why">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Why Athletes Train These on Purpose</div></div>
+    </div>
+    <p>If a goalkeeper has bad hand-eye, they don't catch shots. If a soccer player has bad foot-eye, they trip over the ball. If a swimmer has bad bilateral coordination, their stroke is uneven. Athletes train coordination because raw strength alone doesn't make a great move — strength <em>combined with</em> coordination does.</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · Match the Athlete</span>
+      <h4>Which coordination does each need?</h4>
+      <div class="act-sub">Tap each card to flip it.</div>
+      <div class="flipgrid" id="whyFlip" data-done-step="why">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🥅</div><div class="fn">Goalkeeper</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Hand-Eye</div>Bad hand-eye and they don't catch shots.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">⚽</div><div class="fn">Soccer Player</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Foot-Eye</div>Bad foot-eye and they trip over the ball.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🏊</div><div class="fn">Swimmer</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">Bilateral</div>Bad bilateral coordination and their stroke is uneven.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>Babies don't have coordination at birth — they develop it month by month. First they figure out how to track an object with their eyes (about 3 months). Then how to reach for it (about 5 months). Then how to bring their hands together (about 6 months). By age 1, they can pick something up. The same building-block process happens with new sports skills, just much faster — practice builds the pathways your brain needs.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 4 — DRILLS -->
+  <section class="obj reveal" id="drills">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Try It</div><div class="obj-title">Balance &amp; Coordination Drills</div></div>
+    </div>
+    <p>Five no-equipment drills you can do anywhere. Tap each to add it to today's practice:</p>
+
+    <div class="act">
+      <span class="act-tag">⚡ Try It · Train the Invisible Skills</span>
+      <h4>Five drills, no equipment</h4>
+      <div class="act-sub">Tap each drill to add it. Many get harder with your eyes closed — try it!</div>
+      <div class="chips" id="drillChips" data-done-step="drills" data-target="5" data-unit="drills" data-ring="drillRing" data-num="drillNum" data-msg="drillMsg">
+        <button class="chip" data-min="1">🦩 One-Foot Stand <span class="mins">30 sec</span></button>
+        <button class="chip" data-min="1">🚶 Heel-to-Toe Walk <span class="mins">20 steps</span></button>
+        <button class="chip" data-min="1">🦵 Stork Stand <span class="mins">30 sec/side</span></button>
+        <button class="chip" data-min="1">🤹 Ball Toss <span class="mins">both → one hand</span></button>
+        <button class="chip" data-min="1">🦘 Hop-Stick <span class="mins">stick the landing</span></button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="drillRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="drillNum">0</span><span class="small">of 5 drills</span></div>
+        </div>
+        <div class="meter-msg" id="drillMsg">One-foot stand, heel-to-toe walk, stork stand, ball toss, and hop-stick landings. Tap each to build your balance set.</div>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Olympic figure skaters land jumps from heights of 2+ feet on a quarter-inch metal blade — and they have to stick the landing while spinning, all while looking smooth. That's dynamic balance, body awareness, and coordination working at the highest level humans have ever reached. They got there by training the same drills above, plus thousands of harder ones, for a decade.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Balance</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The ability to control your body's position.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Static balance</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Holding a still position without falling.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Dynamic balance</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Keeping balance while moving.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Coordination</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Smooth, organized movement of multiple body parts.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Hand-eye coordination</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Eyes and hands working together accurately.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Proprioception</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Your body's internal sense of where its parts are.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>Which is your weaker skill — balance or coordination?</strong> Try one drill from this lesson. Time yourself or count reps. Try the same drill in three days. Did you improve? Why or why not? What's your evidence that practice made a difference (or didn't)?</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">My weaker skill — balance or coordination — and the drill I chose:</label>
+        <textarea id="j1" data-key="mm-l115-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">My score today (time or reps):</label>
+        <textarea id="j2" data-key="mm-l115-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">My score in three days — did I improve, and what's my evidence?</label>
+        <textarea id="j3" data-key="mm-l115-j3" placeholder="Come back and fill this in…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: experience and analyze your balance + coordination, then take the Wall Ball Toss Flight Club Challenge.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.15 Complete!</h2>
+    <p>You learned static vs. dynamic balance and the three sensors behind it, the four types of coordination, why athletes train them, and five no-equipment drills.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.15 · Balance &amp; Coordination</div>
+
+</body>
+</html>

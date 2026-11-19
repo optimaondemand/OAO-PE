@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light"/>
+<title>Mission Move · Unit 1.14 — Rhythmic Movement &amp; Dance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/lesson.css"/>
+<script src="../assets/lesson.js" defer></script>
+</head>
+<body>
+
+<div id="briefing">
+  <div class="grid-floor"></div>
+  <div class="brief-inner">
+    <div class="badge-ring">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="badge-core"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    </div>
+    <span class="brief-stamp">Mission 1.14 · Briefing</span>
+    <h1 class="brief-title">Move to the<br><span class="hl">Beat</span></h1>
+    <p class="brief-sub">Dance builds coordination, timing, and body awareness like nothing else. Steph Curry and Serena Williams use it to sharpen their footwork — so can you.</p>
+    <div class="ecg-strip" aria-hidden="true">
+      <svg viewBox="0 0 300 48" preserveAspectRatio="none">
+        <path class="ecg-line" d="M0,24 L60,24 L72,24 L80,8 L90,40 L100,24 L150,24 L162,24 L170,10 L180,38 L190,24 L240,24 L252,24 L260,12 L270,36 L280,24 L300,24"/>
+      </svg>
+    </div>
+    <div class="brief-btn">
+      <button id="beginBtn" type="button">▶ Begin Mission</button>
+      <button class="brief-skip" id="skipBtn" type="button">Skip intro</button>
+    </div>
+  </div>
+</div>
+
+<div class="oao-strip">
+  <div class="oao-brand">
+    <div class="oao-logo"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+    <div class="oao-wordmark">
+      <div class="oao-name">Optima</div><div class="oao-sub">Academy Online</div>
+    </div>
+  </div>
+  <div class="oao-divider"></div>
+  <div class="oao-course">
+    <div class="oao-course-name">Mission: Move!</div>
+    <div class="oao-course-sub">5th Grade PE · Unit 1.14 · Rhythmic Movement &amp; Dance</div>
+  </div>
+  <div class="oao-pill">Week 27</div>
+</div>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="tr-label">Mission Progress</span>
+    <div class="tr-steps" id="trSteps">
+      <button class="tr-dot active" data-go="rhythm"><span class="num"><span class="n">1</span></span>Rhythm</button>
+      <button class="tr-dot" data-go="dance"><span class="num"><span class="n">2</span></span>Why Dance</button>
+      <button class="tr-dot" data-go="music"><span class="num"><span class="n">3</span></span>Music</button>
+      <button class="tr-dot" data-go="drills"><span class="num"><span class="n">4</span></span>Drills</button>
+      <button class="tr-dot" data-go="vocab"><span class="num"><span class="n">5</span></span>Vocab</button>
+      <button class="tr-dot" data-go="log"><span class="num"><span class="n">6</span></span>Log</button>
+    </div>
+    <span class="tr-pct" id="trPct">0%</span>
+  </div>
+</div>
+
+<main class="lesson">
+
+  <section class="mission-banner reveal">
+    <div class="mb-lanes"></div>
+    <div class="mb-sweep"></div>
+    <div class="mb-inner">
+      <div class="mb-badge"><img class="owl-img" src="../assets/optima-owl.png" alt="Optima owl"/></div>
+      <div class="mb-text">
+        <div class="mb-eyebrow">Mission 1.14 · Unit 1.14 <span class="mb-live"><span class="dot"></span>Training in session</span></div>
+        <h1>Rhythmic Movement &amp; Dance: Move to the Beat 🎵</h1>
+        <p class="mb-lede">Dance and rhythmic movement aren't just for performance — they're some of the best full-body training out there. They develop <span class="hl-term">coordination</span>, <span class="hl-term">timing</span>, and <span class="hl-term">body awareness</span> in ways no other type of training can match. Professional athletes from Steph Curry to Serena Williams have used dance to sharpen their footwork.</p>
+        <div class="mb-stats">
+          <div class="mb-stat"><span class="k">27</span><span class="l">Week</span></div>
+          <div class="mb-stat"><span class="k">6</span><span class="l">Objectives</span></div>
+          <div class="mb-stat"><span class="k">~12</span><span class="l">Minutes</span></div>
+          <div class="mb-stat"><span class="k">+10</span><span class="l">Flight Pts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <!-- OBJ 1 — RHYTHM -->
+  <section class="obj reveal" id="rhythm">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div><div class="obj-eyebrow">Objective 1</div><div class="obj-title">What Rhythmic Movement Means</div></div>
+    </div>
+    <p><span class="hl-term">Rhythmic movement</span> is moving your body to a steady beat or pattern. It can be as simple as clapping along to a song or as complex as a dance routine. Either way, your brain has to do three things at once:</p>
+
+    <div class="act brain-wrap">
+      <span class="act-tag">🧠 Activate · What Your Brain Does</span>
+      <h4>Three jobs, every beat</h4>
+      <div class="act-sub">Hit the button to reveal what your brain juggles to move on the beat.</div>
+      <span class="brain-art" id="beatArt">🥁</span><br>
+      <button class="brain-btn" data-reveal="beatJobs" data-done-step="rhythm" data-done-text="✓ On the beat!" data-art="beatArt" type="button">⚡ Hear the Beat</button>
+      <div class="benefits" id="beatJobs">
+        <div class="benefit"><div class="be">👂</div><div class="bt">Hear the beat</div><div class="bd">Hear (or feel) the beat.</div></div>
+        <div class="benefit"><div class="be">🔮</div><div class="bt">Predict the next</div><div class="bd">Predict when the next beat is coming.</div></div>
+        <div class="benefit"><div class="be">🎯</div><div class="bt">Move on it</div><div class="bd">Tell your muscles to move <em>on</em> that beat — not before or after.</div></div>
+      </div>
+    </div>
+    <p>That timing skill is harder than it looks, which is why so many athletes train it on purpose.</p>
+  </section>
+
+  <!-- OBJ 2 — WHY DANCE -->
+  <section class="obj reveal" id="dance">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div><div class="obj-eyebrow">Objective 2</div><div class="obj-title">Why Dance Helps Athletes</div></div>
+    </div>
+    <p>Dance training improves several skills that show up in nearly every sport:</p>
+
+    <div class="act">
+      <span class="act-tag">🔎 Explore · The Dance Advantage</span>
+      <h4>Tap each skill dance builds</h4>
+      <div class="act-sub">Light them all up to see why athletes train with the beat.</div>
+      <div class="sys-grid" id="danceGrid" data-done-step="dance">
+        <button class="sys" data-react="✓"><div class="emo">🦶</div><div class="nm">Footwork</div><div class="ds">Quick, precise foot positions — the foundation of boxing, tennis, basketball defense.</div><div class="react">● Trained</div></button>
+        <button class="sys" data-react="✓"><div class="emo">⚖️</div><div class="nm">Balance</div><div class="ds">Holding positions on one foot, switching weight smoothly.</div><div class="react">● Trained</div></button>
+        <button class="sys" data-react="✓"><div class="emo">⏱️</div><div class="nm">Timing</div><div class="ds">Coordinating movement with external signals (the beat, an opponent, a ball).</div><div class="react">● Trained</div></button>
+        <button class="sys" data-react="✓"><div class="emo">🧠</div><div class="nm">Memory</div><div class="ds">Remembering and chaining sequences — useful for plays and routines.</div><div class="react">● Trained</div></button>
+        <button class="sys" data-react="✓"><div class="emo">💃</div><div class="nm">Body Control</div><div class="ds">Knowing exactly where every limb is at any moment.</div><div class="react">● Trained</div></button>
+      </div>
+    </div>
+
+    <div class="callout co-science">
+      <div class="co-head"><span>🧪</span>Sport Science</div>
+      <p>NFL wide receivers often take ballet classes during the off-season — yes, ballet. Why? Because ballet is the ultimate training for footwork, balance, and body control. Players who add dance to their training have measurably better agility scores. The same is true for boxers, who use jump rope and footwork drills built around music. The beat trains the body to move with timing under pressure.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 3 — MUSIC -->
+  <section class="obj reveal" id="music">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div><div class="obj-eyebrow">Objective 3</div><div class="obj-title">Tempo, Beat, and Pattern</div></div>
+    </div>
+    <p>Music has structure you can use to move. Flip each card to learn the three things that let you dance to any song.</p>
+
+    <div class="act">
+      <span class="act-tag">🔁 Flip · The Building Blocks</span>
+      <h4>Hear these three, and you can dance</h4>
+      <div class="act-sub">Tap each card to flip it.</div>
+      <div class="flipgrid" id="musicFlip" data-done-step="music">
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">💓</div><div class="fn">Beat</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">The pulse</div>The steady "pulse" you naturally tap to.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">⏩</div><div class="fn">Tempo</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">The speed</div>How fast the beat goes — slow songs vs. fast songs.</div>
+        </div></div>
+        <div class="flip"><div class="flip-in">
+          <div class="flip-face flip-front"><div class="fe">🔢</div><div class="fn">Pattern</div><div class="tap">Tap to flip</div></div>
+          <div class="flip-face flip-back"><div class="bk-t">The grouping</div>How beats group together — most music groups in sets of 4.</div>
+        </div></div>
+      </div>
+    </div>
+    <p>If you can hear those three things, you can dance. The rest is just style.</p>
+
+    <div class="callout co-know">
+      <div class="co-head"><span>💡</span>Did You Know?</div>
+      <p>Humans are the only species besides parrots and a few other birds that can "keep a beat" — moving in sync with an external rhythm. Scientists call this <em>beat-induction ability</em>. Other primates, including chimpanzees, generally can't do it. It's connected to language and complex social behavior. So when you dance with friends, you're using one of the most uniquely human skills in nature.</p>
+    </div>
+  </section>
+
+  <!-- OBJ 4 — DRILLS -->
+  <section class="obj reveal" id="drills">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div><div class="obj-eyebrow">Try It</div><div class="obj-title">Simple Rhythm Drills</div></div>
+    </div>
+    <p>Put on a song and train your timing. Tap each drill to add it to today's rhythm practice:</p>
+
+    <div class="act">
+      <span class="act-tag">⚡ Try It · Train Your Timing</span>
+      <h4>Four drills to the beat</h4>
+      <div class="act-sub">Tap each drill to add it. Stack all four for a full rhythm workout.</div>
+      <div class="chips" id="rhythmChips" data-done-step="drills" data-target="4" data-unit="drills" data-ring="rhythmRing" data-num="rhythmNum" data-msg="rhythmMsg">
+        <button class="chip" data-min="1">👏 Clap Pattern <span class="mins">beats 1 &amp; 3</span></button>
+        <button class="chip" data-min="1">🏀 Dribble to a Beat <span class="mins">each beat</span></button>
+        <button class="chip" data-min="1">🦶 Footwork Box <span class="mins">front-side-back-side</span></button>
+        <button class="chip" data-min="1">🕺 Mirror Move <span class="mins">with a partner</span></button>
+      </div>
+      <div class="meter-row">
+        <div class="ring-meter">
+          <svg viewBox="0 0 120 120" width="118" height="118">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" id="rhythmRing" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="ring-center"><span class="big" id="rhythmNum">0</span><span class="small">of 4 drills</span></div>
+        </div>
+        <div class="meter-msg" id="rhythmMsg">Clap on the beat, dribble on each beat, step a footwork box, and mirror a partner's moves. Tap each to build your rhythm set.</div>
+      </div>
+    </div>
+
+    <div class="callout co-real">
+      <div class="co-head"><span>🌎</span>Real-World Connection</div>
+      <p>Cheer squads, marching bands, drill teams, and color guards all combine athleticism with rhythmic movement. Many also compete at high levels — cheer is one of the most physically demanding sports there is, with all the strength, flexibility, and timing of gymnastics combined with team coordination. If you've ever thought "dance isn't a sport," watch a competitive cheer routine.</p>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section class="obj reveal" id="vocab">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div><div class="obj-eyebrow">Vocabulary</div><div class="obj-title">Words to Know</div></div>
+    </div>
+    <div class="act">
+      <span class="act-tag">🎯 Flashcards · Words to Know</span>
+      <div class="vocab-bar">
+        <span class="vocab-hint">Tap a card to reveal the meaning. <strong>Purple badge</strong> = stretch term.</span>
+        <button class="mini-btn" data-flip-all type="button">Flip all</button>
+      </div>
+      <div class="cards" id="vocabCards" data-done-step="vocab">
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Rhythmic movement</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Moving your body to a steady beat or pattern.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Beat</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The steady pulse that drives the rhythm.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Tempo</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">How fast the beat goes.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Coordination</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">The smooth working-together of body parts during movement.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Timing</div><div class="flipt">Tap to flip</div></div>
+          <div class="vc-face vc-back">Acting at the right moment — neither too early nor too late.</div>
+        </div></div>
+        <div class="vc"><div class="vc-in">
+          <div class="vc-face vc-front"><div class="term">Body awareness</div><div class="stretch">Stretch term</div></div>
+          <div class="vc-face vc-back">Your sense of how your body is positioned and moving.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="obj reveal" id="log">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div><div class="obj-eyebrow">Mission Log</div><div class="obj-title">Weekly Reflection</div></div>
+    </div>
+    <div class="callout co-reflect">
+      <div class="co-head"><span>📝</span>Weekly Reflection</div>
+      <p><strong>Are you more comfortable moving FAST or SLOW to a beat? Why?</strong> Pick a song you know. Try dancing to a section at normal speed, then at half speed, then at double speed. Which felt easier? How do you know — what specific moves got harder or simpler?</p>
+      <div class="journal" data-done-step="log">
+        <label for="j1">Fast or slow — which felt easier for me:</label>
+        <textarea id="j1" data-key="mm-l114-j1" placeholder="Type your answer…"></textarea>
+        <label for="j2">What happened at half speed vs. double speed:</label>
+        <textarea id="j2" data-key="mm-l114-j2" placeholder="Type your answer…"></textarea>
+        <label for="j3">The specific moves that got harder or simpler — and how I know:</label>
+        <textarea id="j3" data-key="mm-l114-j3" placeholder="Type your answer…"></textarea>
+        <div class="j-foot">
+          <span class="j-save" id="jSave">Your log saves on this device as you type.</span>
+          <button class="mini-btn" id="printBtn" type="button">🖨 Print / Save my log</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout co-next">
+      <div class="co-head"><span>→</span>What's Next</div>
+      <p>Next: reflect on your dance experience and put rhythm in motion, then take the Flight Club Wall Sit Countdown.</p>
+    </div>
+  </section>
+
+  <div class="complete" id="complete">
+    <span class="medal">🏅</span>
+    <h2>Mission 1.14 Complete!</h2>
+    <p>You learned what rhythmic movement asks of your brain, why dance sharpens athletes, the building blocks of music, and drills to train your timing.</p>
+    <div class="fp">⭐ +10 Flight Points earned</div>
+    <div class="rank-row">
+      <span class="rank now">Fledgling</span>
+      <span class="rank">Fluttering</span>
+      <span class="rank">Gliding</span>
+      <span class="rank">Wise</span>
+      <span class="rank">Soaring</span>
+    </div>
+    <div class="rank-bar"><div class="rank-fill" id="rankFill"></div></div>
+  </div>
+
+</div>
+</main>
+
+<div class="foot">Mission: Move! — 5th Grade PE · Unit 1.14 · Rhythmic Movement &amp; Dance</div>
+
+</body>
+</html>
